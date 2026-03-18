@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Authority Agent | Mr. TECHNOLOGY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .authority-card { @apply bg-slate-900/80 border border-slate-800 p-8 rounded-[2.5rem] backdrop-blur-xl shadow-2xl; }
+        .log-item { @apply border-l-2 border-blue-500/30 pl-4 py-2 hover:bg-blue-500/5 transition-all cursor-default; }
+        body { background: #050810; color: #f1f5f9; font-family: 'Inter', system-ui, -apple-system; }
+        .pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+        .platform-tag { @apply px-2 py-0.5 rounded bg-blue-600/10 border border-blue-600/30 text-blue-500 text-[9px] font-black uppercase tracking-tighter; }
+    </style>
+</head>
+<body class="min-h-screen py-20 px-10">
+    <div class="max-w-7xl mx-auto space-y-20">
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="space-y-4 text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-[0.4em]">
+                    ⚡ Build-in-Public Social Engine
+                </div>
+                <h1 class="text-7xl font-black tracking-tighter text-white leading-tight">LinkedIn <span class="text-blue-500 italic">Authority</span></h1>
+                <p class="text-slate-400 text-xl max-w-xl">Automate your authority. We monitor your OpenClaw workspace for "wins" and "vibe-code" them into viral Build-in-Public posts.</p>
+            </div>
+            <div class="authority-card bg-blue-600/5 border-blue-500/20 text-center space-y-2 py-6 px-12">
+                <div class="text-4xl font-black text-white">4</div>
+                <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-none">Projects Monitored</div>
+                <div class="flex justify-center gap-1 pt-2">
+                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                    <span class="w-2 h-2 rounded-full bg-blue-500 pulse"></span>
+                </div>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <!-- Left: Workspace Logs (5 cols) -->
+            <div class="lg:col-span-5 space-y-8">
+                <div class="authority-card relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-8 text-blue-500/10">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+                    </div>
+                    <h2 class="text-2xl font-black text-white uppercase tracking-tight mb-8">Workspace Intelligence</h2>
+                    <div class="space-y-6">
+                        <div class="log-item">
+                            <div class="flex justify-between items-start">
+                                <span class="text-[10px] font-black text-blue-400 uppercase">Project: Safe-Config</span>
+                                <span class="text-[9px] text-slate-600">32m ago</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mt-1">Role Engine upgraded to 39 profiles with full tool-locking logic.</p>
+                        </div>
+                        <div class="log-item">
+                            <div class="flex justify-between items-start">
+                                <span class="text-[10px] font-black text-blue-400 uppercase">Project: MCP Factory</span>
+                                <span class="text-[9px] text-slate-600">1h ago</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mt-1">Niche bridge connector built for Shopify Inventory API docs.</p>
+                        </div>
+                        <div class="log-item border-blue-500">
+                            <div class="flex justify-between items-start">
+                                <span class="text-[10px] font-black text-blue-500 uppercase">Project: GEO Machine</span>
+                                <span class="text-[9px] text-slate-600">JUST NOW</span>
+                            </div>
+                            <p class="text-white text-sm mt-1 font-medium">Content machine live. First "AI-ready" post hardened and cited.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="authority-card bg-slate-800/20 border-slate-700/50 p-6">
+                    <h3 class="text-xs font-black text-slate-500 uppercase tracking-widest mb-4">Authority Strategy</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-blue-500/50 transition-all">
+                            <input type="radio" name="strategy" class="accent-blue-500" checked>
+                            <span class="text-sm font-bold">The Visionary (High Signal / Hype)</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-blue-500/50 transition-all">
+                            <input type="radio" name="strategy" class="accent-blue-500">
+                            <span class="text-sm font-bold">The Builder (Technical / Deep-Dive)</span>
+                        </label>
+                    </div>
+                    <div class="space-y-2 mt-4 p-4 border border-slate-800 bg-slate-950 rounded-xl">
+    <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Authentication</label>
+    <div class="flex gap-2">
+        <input id="license-key" type="password" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-sm font-mono text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Founder License Key...">
+        <span id="auth-status" class="px-3 py-2 bg-slate-800 text-slate-500 text-[10px] font-black rounded-lg flex items-center uppercase whitespace-nowrap">Free Mode</span>
+    </div>
+</div>
+<button id="draft-btn" class="w-full mt-6 bg-white text-black font-black py-4 rounded-2xl hover:bg-blue-500 hover:text-white transition-all">DRAFT AUTHORITY POST</button>
+                </div>
+            </div>
+
+            <!-- Right: Post Draft (7 cols) -->
+            <div id="draft-panel" class="lg:col-span-7 space-y-8 opacity-10 pointer-events-none transition-all duration-1000 blur-md">
+                <div class="authority-card min-h-[500px] flex flex-col">
+                    <div class="flex items-center justify-between mb-8">
+                        <div class="flex items-center gap-3">
+                            <img src="https://api.dicebear.com/7.x/shapes/svg?seed=mrtechnology" class="w-12 h-12 rounded-2xl border-2 border-blue-500/30" />
+                            <div>
+                                <h3 class="font-black text-white">Mr. TECHNOLOGY</h3>
+                                <div class="flex gap-1 items-center">
+                                    <span class="platform-tag">Build-in-Public</span>
+                                    <span class="text-[9px] text-slate-600">• 1m ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="bg-blue-600 hover:bg-blue-500 text-white font-black px-6 py-2 rounded-xl text-xs uppercase tracking-widest">Publish</button>
+                    </div>
+
+                    <div class="flex-1 space-y-6 text-slate-200 text-lg leading-relaxed font-medium">
+                        <p id="post-hook" class="text-2xl font-black text-white">The "Post-SEO" world just arrived, and most brands aren't ready.</p>
+                        <p id="post-body">
+                            I just finished building the "GEO" Content Machine inside my OpenClaw ecosystem. <br><br>
+                            Traditional SEO is dying. Businesses now need "Generative Engine Optimization" to be cited by other AI agents (Perplexity, Gemini, SearchGPT). <br><br>
+                            The result? 98% Trust Score on technical citations and automated JSON-LD hardening. <br><br>
+                            This isn't just a content machine; it's an authority bridge for the agent economy.
+                        </p>
+                        <div class="text-blue-500 font-bold">#OpenClaw #BuildInPublic #AI #MCP #GEO</div>
+                    </div>
+
+                    <div class="mt-8 pt-8 border-t border-slate-800 flex justify-between items-center">
+                        <div class="flex gap-4">
+                            <button class="text-slate-500 hover:text-white text-xs font-bold transition-all">Refine Tone</button>
+                            <button class="text-slate-500 hover:text-white text-xs font-bold transition-all">Add Entity Tags</button>
+                        </div>
+                        <div class="text-[10px] text-slate-700 font-black uppercase tracking-widest">Status: Ready to Scale</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center text-slate-700 text-[10px] font-black uppercase tracking-[0.5em] pb-20 border-t border-slate-900 pt-10">
+            Sentry Social Authority Protocol | Built for Mr. TECHNOLOGY
+        </footer>
+    </div>
+
+    <script>
+        const draftBtn = document.getElementById('draft-btn');
+        const draftPanel = document.getElementById('draft-panel');
+
+        
+    const licenseInput = document.getElementById('license-key');
+    const authStatus = document.getElementById('auth-status');
+    draftBtn.onclick = async () => {
+        draftBtn.innerHTML = "<span>📡 Scanning Workspace...</span>";
+        draftBtn.disabled = true;
+        try {
+            const res = await fetch('http://localhost:9000/api/v1/social/draft', {
+                method: 'POST',
+                headers: { 'X-License-Key': licenseInput ? licenseInput.value : '' }
+            });
+            const data = await res.json();
+            if (res.status === 403) {
+                alert(data.message);
+                draftBtn.innerHTML = "<span>❌ License Required</span>";
+                draftBtn.disabled = false;
+                if(authStatus) { authStatus.textContent = 'Free Mode'; authStatus.className = 'px-3 py-2 bg-slate-800 text-slate-500 text-[10px] font-black rounded-lg flex items-center uppercase whitespace-nowrap'; }
+                return;
+            }
+            if(authStatus) { authStatus.textContent = 'Founder'; authStatus.className = 'px-3 py-2 bg-green-500/20 text-green-400 border border-green-500/30 text-[10px] font-black rounded-lg flex items-center uppercase whitespace-nowrap'; }
+            draftPanel.style.opacity = "1";
+            draftPanel.style.pointerEvents = "auto";
+            draftPanel.style.filter = "none";
+            draftBtn.innerHTML = "<span>✅ POST DRAFTED</span>";
+            draftBtn.classList.remove('bg-white', 'text-black');
+            draftBtn.classList.add('bg-blue-600', 'text-white');
+            document.getElementById('post-hook').textContent = data.hook;
+            document.getElementById('post-body').innerHTML = data.body;
+            document.querySelector('.text-blue-500.font-bold').textContent = data.tags;
+            draftBtn.disabled = false;
+        } catch (e) {
+            console.error(e);
+            draftBtn.innerHTML = "<span>❌ Error</span>";
+            draftBtn.disabled = false;
+        }
+    };
+
+    </script>
+</body>
+</html>

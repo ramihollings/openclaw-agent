@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niche MCP Server Factory | Mr. TECHNOLOGY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .factory-card { @apply border border-slate-700 bg-slate-900/50 p-6 rounded-2xl shadow-xl transition-all hover:border-blue-500/50 hover:shadow-blue-500/10; }
+        .step-num { @apply flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 text-white font-bold text-sm mb-4; }
+        body { background: #0f172a; color: #f1f5f9; font-family: ui-sans-serif, system-ui, -apple-system; }
+        .code-block { @apply bg-black/50 p-4 rounded-xl border border-slate-800 text-blue-300 font-mono text-sm overflow-x-auto; }
+    </style>
+</head>
+<body class="min-h-screen py-12 px-6">
+    <div class="max-w-5xl mx-auto space-y-12">
+        <!-- Header -->
+        <header class="text-center space-y-4">
+            <div class="inline-flex items-center px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium tracking-widest uppercase">
+                🏗️ Niche MCP Engine
+            </div>
+            <h1 class="text-6xl font-black tracking-tighter text-white leading-tight">MCP <span class="text-blue-500">Server Factory</span></h1>
+            <p class="text-slate-400 text-xl max-w-2xl mx-auto">The industry standard for bridging agents to niche data. Paste your docs, deploy your bridge.</p>
+        </header>
+
+        <!-- Factory Workflow -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left: Input & Config (5 cols) -->
+            <div class="lg:col-span-5 space-y-6">
+                <div class="factory-card bg-slate-900 border border-slate-700 p-8 rounded-3xl shadow-2xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="step-num !mb-0">1</div>
+                        <h2 class="text-xl font-bold text-white uppercase tracking-tight">Data Source</h2>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex gap-2">
+                            <button class="flex-1 bg-blue-600/20 border border-blue-500/30 text-blue-400 text-xs font-bold py-2 rounded-lg">Raw Docs</button>
+                            <button class="flex-1 bg-slate-800 border border-slate-700 text-slate-500 text-xs font-bold py-2 rounded-lg opacity-50">OpenAPI URL</button>
+                            <button class="flex-1 bg-slate-800 border border-slate-700 text-slate-500 text-xs font-bold py-2 rounded-lg opacity-50">GitHub Repo</button>
+                        </div>
+                        <textarea id="api-input" class="w-full h-80 bg-black/50 border border-slate-800 rounded-2xl p-6 text-sm font-mono text-blue-200 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-slate-700" placeholder="Paste Shopify, Salesforce, or niche API documentation here..."></textarea>
+                    </div>
+                </div>
+
+                <div class="factory-card bg-slate-900 border border-slate-700 p-8 rounded-3xl shadow-2xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="step-num !mb-0">2</div>
+                        <h2 class="text-xl font-bold text-white uppercase tracking-tight">Engine Specs</h2>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Runtime</label>
+                                <select class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-sm font-bold text-white cursor-pointer">
+                                    <option>Node.js (TS)</option>
+                                    <option>Python (FastMCP)</option>
+                                    <option>Go</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Transport</label>
+                                <select id="server-type" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-sm font-bold text-white cursor-pointer">
+                                    <option value="stdio">STDIO (Recommended)</option>
+                                    <option value="sse">SSE (HTTP)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="p-4 bg-blue-500/5 border border-blue-500/10 rounded-2xl space-y-2">
+                            <h4 class="text-[10px] font-black text-blue-400 uppercase tracking-widest">Factory Features</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-[10px] font-bold rounded uppercase">Auto-Auth</span>
+                                <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-[10px] font-bold rounded uppercase">Rate-Limit Safe</span>
+                                <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-[10px] font-bold rounded uppercase">Schema Validator</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 mt-4 mb-4 p-4 border border-slate-700 bg-slate-800/50 rounded-xl">
+    <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Authentication</label>
+    <div class="flex gap-2">
+        <input id="license-key" type="password" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-sm font-mono text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Founder License Key...">
+        <span id="auth-status" class="px-3 py-2 bg-slate-800 text-slate-500 text-[10px] font-black rounded-lg flex items-center uppercase whitespace-nowrap">Free Mode</span>
+    </div>
+</div>
+<button id="generate-btn" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-4 rounded-2xl transition-all shadow-lg shadow-blue-500/20 active:scale-[0.98]">
+                            GENERATE MCP SERVER
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Code & Deploy (7 cols) -->
+            <div id="output-col" class="lg:col-span-7 space-y-6 opacity-20 pointer-events-none transition-all duration-700 blur-sm">
+                <div class="factory-card bg-slate-900 border border-slate-700 p-8 rounded-3xl shadow-2xl h-full flex flex-col">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="step-num !mb-0">3</div>
+                            <h2 class="text-xl font-bold text-white uppercase tracking-tight">Generated Bridge</h2>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] font-bold px-3 py-1.5 rounded-lg border border-slate-700 transition-colors">Download .zip</button>
+                            <button id="copy-btn" class="bg-blue-600/20 hover:bg-blue-600/40 text-blue-400 text-[10px] font-bold px-3 py-1.5 rounded-lg border border-blue-500/30 transition-colors">Copy Code</button>
+                        </div>
+                    </div>
+
+                    <div class="flex-1 bg-black/60 rounded-2xl border border-slate-800 p-6 relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+                        <pre id="code-output" class="text-sm font-mono text-blue-300 leading-relaxed overflow-x-auto h-[480px]">Generating logic...</pre>
+                    </div>
+
+                    <div class="mt-8 pt-8 border-t border-slate-800">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="step-num !mb-0">4</div>
+                            <h2 class="text-xl font-bold text-white uppercase tracking-tight">Instant Deployment</h2>
+                        </div>
+                        <div class="bg-black/40 rounded-2xl border border-slate-800 p-4 flex items-center justify-between group">
+                            <code class="text-blue-400 font-mono text-xs"><span class="text-slate-600">$</span> openclaw plugins install niche-mcp-<span id="mcp-name-slug">server</span></code>
+                            <button class="text-slate-500 hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" /></svg>
+                            </button>
+                        </div>
+                        <p class="text-[10px] text-slate-500 mt-3 italic">Registering this bridge adds real-time Shopify inventory data to all your connected agents.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center text-slate-600 text-[10px] uppercase tracking-[0.2em] py-12 border-t border-slate-900">
+            Sentry Factory v1.0.4 | Secured by Mr. TECHNOLOGY
+        </footer>
+    </div>
+
+    <script>
+        const generateBtn = document.getElementById('generate-btn');
+        const outputCol = document.getElementById('output-col');
+        const codeOutput = document.getElementById('code-output');
+        const apiInput = document.getElementById('api-input');
+
+        
+    const licenseInput = document.getElementById('license-key');
+    const authStatus = document.getElementById('auth-status');
+    generateBtn.onclick = async () => {
+        if (!apiInput.value.trim()) { alert("Please paste docs"); return; }
+        generateBtn.innerHTML = "<span>⚙️ Parsing Docs...</span>";
+        generateBtn.disabled = true;
+        try {
+            const res = await fetch('http://localhost:9000/api/v1/mcp/generate', {
+                method: 'POST',
+                headers: { 'X-License-Key': licenseInput ? licenseInput.value : '' }
+            });
+            const data = await res.json();
+            if (res.status === 403) {
+                alert(data.message);
+                generateBtn.innerHTML = "<span>❌ License Required</span>";
+                generateBtn.disabled = false;
+                if(authStatus) { authStatus.textContent = 'Free Mode'; authStatus.className = 'px-3 py-2 bg-slate-800 text-slate-500 text-[10px] font-black rounded-lg flex items-center uppercase whitespace-nowrap'; }
+                return;
+            }
+            if(authStatus) { authStatus.textContent = 'Founder'; authStatus.className = 'px-3 py-2 bg-green-500/20 text-green-400 border border-green-500/30 text-[10px] font-black rounded-lg flex items-center uppercase whitespace-nowrap'; }
+            outputCol.style.opacity = "1";
+            outputCol.style.pointerEvents = "auto";
+            generateBtn.innerHTML = "<span>✅ Server Built</span>";
+            codeOutput.textContent = data.code;
+            generateBtn.disabled = false;
+        } catch (e) {
+            console.error(e);
+            generateBtn.innerHTML = "<span>❌ Connection Error</span>";
+            generateBtn.disabled = false;
+        }
+    };
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEO Content Machine | Mr. TECHNOLOGY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .geo-card { @apply bg-slate-900 border border-slate-800 p-8 rounded-[2rem] shadow-2xl; }
+        .stat-badge { @apply px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-bold uppercase tracking-widest; }
+        body { background: #0b0f1a; color: #f1f5f9; font-family: 'Inter', system-ui, -apple-system; }
+        .citation { @apply text-blue-400 hover:underline cursor-pointer; }
+        .ai-glow { box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.3); }
+    </style>
+</head>
+<body class="min-h-screen py-16 px-8">
+    <div class="max-w-6xl mx-auto space-y-16">
+        <!-- Header -->
+        <header class="text-center space-y-6">
+            <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-[0.3em]">
+                📡 Generative Engine Optimization
+            </div>
+            <h1 class="text-7xl font-black tracking-tighter text-white leading-tight">GEO <span class="text-blue-500">Content Machine</span></h1>
+            <p class="text-slate-400 text-xl max-w-3xl mx-auto">Build content that AI Answer Engines (Perplexity, Gemini, SearchGPT) love to cite. High entity density. Automated JSON-LD.</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            <!-- Settings Panel (4 cols) -->
+            <div class="lg:col-span-4 space-y-8">
+                <div class="geo-card ai-glow">
+                    <h2 class="text-xl font-bold mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-sm italic">i</span>
+                        Intelligence Input
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Target Topic</label>
+                            <input id="topic-input" type="text" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-4 text-white placeholder-slate-600 focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="e.g. The impact of MCP on SaaS moats">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Citation Depth</label>
+                            <input type="range" class="w-full accent-blue-600" min="1" max="10" value="7">
+                            <div class="flex justify-between text-[10px] font-bold text-slate-600">
+                                <span>MINIMAL</span>
+                                <span>BATTLE-READY</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 pt-4">
+                            <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Optimization Strategy</label>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button class="p-3 rounded-xl border border-blue-500/40 bg-blue-500/10 text-blue-400 text-xs font-bold">Entity Density</button>
+                                <button class="p-3 rounded-xl border border-slate-800 bg-slate-800 text-slate-500 text-xs font-bold">Citation Mining</button>
+                                <button class="p-3 rounded-xl border border-slate-800 bg-slate-800 text-slate-500 text-xs font-bold">JSON-LD Hardening</button>
+                                <button class="p-3 rounded-xl border border-slate-800 bg-slate-800 text-slate-500 text-xs font-bold">Fact Density</button>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 mt-4 p-4 border border-slate-800 bg-black/40 rounded-xl">
+    <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Authentication</label>
+    <div class="flex gap-2">
+        <input id="license-key" type="password" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-sm font-mono text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Founder License Key...">
+        <span id="auth-status" class="px-3 py-2 bg-slate-800 text-slate-500 text-[10px] font-black rounded-lg flex items-center uppercase whitespace-nowrap">Free Mode</span>
+    </div>
+</div>
+<button id="run-btn" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-4 rounded-2xl transition-all shadow-lg shadow-blue-500/20 active:scale-[0.98] mt-4">
+                            INITIALIZE GEO AGENT
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Panel (8 cols) -->
+            <div id="content-panel" class="lg:col-span-8 space-y-8 opacity-20 pointer-events-none transition-all duration-1000 blur-sm">
+                <div class="geo-card">
+                    <div class="flex items-center justify-between mb-8 pb-8 border-b border-slate-800">
+                        <div class="space-y-1">
+                            <h2 class="text-2xl font-black text-white uppercase tracking-tight">AI Agent Digest</h2>
+                            <p class="text-slate-500 text-xs">How generative engines will cite this content.</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <div class="stat-badge">Trust Score: 98%</div>
+                            <div class="stat-badge">Entity Count: 42</div>
+                        </div>
+                    </div>
+
+                    <!-- The Content -->
+                    <article class="prose prose-invert max-w-none space-y-6">
+                        <h1 id="output-title" class="text-3xl font-bold text-white leading-tight">...</h1>
+                        <p id="output-body" class="text-slate-300 leading-relaxed text-lg">
+                            // Agent vibe-coding highly citable facts and entities...
+                        </p>
+                        <div class="bg-black/40 rounded-2xl border border-slate-800 p-6 space-y-4">
+                            <h4 class="text-[10px] font-black text-blue-400 uppercase tracking-widest">Metadata: JSON-LD Hardening</h4>
+                            <pre id="json-ld-output" class="text-xs font-mono text-green-400 overflow-x-auto">Generating schema...</pre>
+                        </div>
+                    </article>
+
+                    <div class="mt-12 pt-12 border-t border-slate-800 flex justify-between items-center">
+                        <div class="flex gap-4">
+                            <button class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold px-6 py-3 rounded-xl transition-all">Copy HTML</button>
+                            <button class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-6 py-3 rounded-xl transition-all">Publish to CMS</button>
+                        </div>
+                        <div class="text-[10px] text-slate-600 font-bold uppercase tracking-widest">Citeable URL: mr.technology/geo-01</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center text-slate-600 text-[10px] font-bold uppercase tracking-[0.4em] pt-12 pb-24 border-t border-slate-900">
+            Sentry Intelligence Platform | Built for Mr. TECHNOLOGY
+        </footer>
+    </div>
+
+    <script>
+        const runBtn = document.getElementById('run-btn');
+        const contentPanel = document.getElementById('content-panel');
+        const topicInput = document.getElementById('topic-input');
+        const outTitle = document.getElementById('output-title');
+        const outBody = document.getElementById('output-body');
+        const outJson = document.getElementById('json-ld-output');
+
+        
+    const licenseInput = document.getElementById('license-key');
+    const authStatus = document.getElementById('auth-status');
+    runBtn.onclick = async () => {
+        if (!topicInput.value) return;
+        runBtn.innerHTML = "<span>📡 Crawling citations...</span>";
+        runBtn.disabled = true;
+        try {
+            const res = await fetch('http://localhost:9000/api/v1/geo/harden', {
+                method: 'POST',
+                headers: { 'X-License-Key': licenseInput ? licenseInput.value : '' }
+            });
+            const data = await res.json();
+            if (res.status === 403) {
+                alert(data.message);
+                runBtn.innerHTML = "<span>❌ License Required</span>";
+                runBtn.disabled = false;
+                if(authStatus) { authStatus.textContent = 'Free Mode'; authStatus.className = 'px-3 py-2 bg-slate-800 text-slate-500 text-[10px] font-black rounded-lg flex items-center uppercase whitespace-nowrap'; }
+                return;
+            }
+            if(authStatus) { authStatus.textContent = 'Founder'; authStatus.className = 'px-3 py-2 bg-green-500/20 text-green-400 border border-green-500/30 text-[10px] font-black rounded-lg flex items-center uppercase whitespace-nowrap'; }
+            contentPanel.style.opacity = "1";
+            contentPanel.style.pointerEvents = "auto";
+            contentPanel.style.filter = "none";
+            runBtn.innerHTML = "<span>✅ CONTENT HARDENED</span>";
+            outTitle.textContent = data.title;
+            outBody.innerHTML = data.body;
+            outJson.textContent = JSON.stringify(data.jsonLd, null, 2);
+            runBtn.disabled = false;
+        } catch (e) {
+            console.error(e);
+            runBtn.innerHTML = "<span>❌ Error</span>";
+            runBtn.disabled = false;
+        }
+    };
+
+    </script>
+</body>
+</html>

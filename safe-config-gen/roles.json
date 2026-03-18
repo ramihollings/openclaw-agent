@@ -1,0 +1,473 @@
+{
+  "roles": {
+    "researcher": {
+      "name": "Researcher",
+      "description": "Deep research & analysis. Read-only for local files. No system writes.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["web_search", "web_fetch", "pdf", "read", "memory_search", "lcm_grep", "lcm_expand"],
+            "deny": ["exec", "write", "edit", "browser", "canvas", "sessions_spawn"]
+          }
+        }
+      }
+    },
+    "developer": {
+      "name": "Developer",
+      "description": "Full access with safety rails for destructive tools.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["*"],
+            "confirm": ["exec", "write", "edit", "sessions_spawn"]
+          }
+        }
+      }
+    },
+    "social_engine": {
+      "name": "Social Engine",
+      "description": "Monitors logs to draft social posts. Locked out of system changes.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["read", "memory_search", "message", "web_search", "web_fetch"],
+            "deny": ["exec", "write", "edit", "browser", "canvas", "sessions_spawn"]
+          }
+        }
+      }
+    },
+    "creative_writer": {
+      "name": "Creative Writer",
+      "description": "Drafting and TTS focus. No search or shell access.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["write", "read", "tts", "canvas"],
+            "deny": ["exec", "web_search", "web_fetch", "edit", "sessions_spawn"]
+          }
+        }
+      }
+    },
+    "security_auditor": {
+      "name": "Security Auditor",
+      "description": "Read-only access to system logs and status. No execution.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["read", "session_status", "sessions_list", "memory_search"],
+            "deny": ["exec", "write", "edit", "message", "sessions_spawn", "browser"]
+          }
+        }
+      }
+    },
+    "automation_bot": {
+      "name": "Automation Bot",
+      "description": "Background task specialist. Restricted to session/subagent management.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["sessions_list", "sessions_history", "sessions_send", "sessions_yield", "subagents"],
+            "deny": ["exec", "web_search", "browser", "write", "edit"]
+          }
+        }
+      }
+    },
+    "kiosk_mode": {
+      "name": "Kiosk Mode",
+      "description": "Public-facing restricted mode. Browser and Search only.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["web_search", "web_fetch", "browser"],
+            "deny": ["read", "write", "edit", "exec", "memory_search", "message", "sessions_spawn"]
+          }
+        }
+      }
+    },
+    "vault_keeper": {
+      "name": "Vault Keeper",
+      "description": "Memory management only. No external web access.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["memory_search", "memory_get", "lcm_grep", "lcm_describe", "lcm_expand"],
+            "deny": ["web_search", "web_fetch", "exec", "write", "edit", "message"]
+          }
+        }
+      }
+    },
+    "paranoid_mode": {
+      "name": "Paranoid Mode",
+      "description": "Maximum lock. Every tool call requires explicit user confirmation.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "confirm": ["*"]
+          }
+        }
+      }
+    },
+    "data_cleaner": {
+      "name": "Data Cleaner",
+      "description": "File system & memory maintenance. No network access allowed.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["read", "write", "edit", "exec", "memory_search", "memory_get"],
+            "deny": ["web_search", "web_fetch", "browser", "message"]
+          }
+        }
+      }
+    },
+    "observer": {
+      "name": "The Observer",
+      "description": "No tools allowed. Can only talk and process session history.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "deny": ["*"]
+          }
+        }
+      }
+    },
+    "coding_apprentice": {
+      "name": "Coding Apprentice",
+      "description": "Can read/write files and run tests, but cannot spawn subagents or use web.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["read", "write", "edit", "exec"],
+            "deny": ["web_search", "web_fetch", "browser", "sessions_spawn", "subagents"]
+          }
+        }
+      }
+    },
+    "it_support": {
+      "name": "IT Support",
+      "description": "System status and shell access. No access to personal memory/vault.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["exec", "session_status", "sessions_list", "read"],
+            "deny": ["memory_search", "memory_get", "lcm_grep", "web_search", "message"]
+          }
+        }
+      }
+    },
+    "story_teller": {
+      "name": "Story Teller",
+      "description": "Specialized for Canvas and TTS. Creative mode with no system access.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["canvas", "tts", "read"],
+            "deny": ["exec", "write", "edit", "web_search", "sessions_spawn"]
+          }
+        }
+      }
+    },
+    "web_scout": {
+      "name": "Web Scout",
+      "description": "High-speed web crawling and browser automation only.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["web_search", "web_fetch", "browser"],
+            "deny": ["read", "write", "edit", "exec", "memory_search", "sessions_spawn"]
+          }
+        }
+      }
+    },
+    "ghost_protocol": {
+      "name": "Ghost Protocol",
+      "description": "Can send messages and bridge sessions but leaves no trace in local memory.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["message", "sessions_send", "sessions_yield"],
+            "deny": ["write", "edit", "memory_search", "memory_get", "lcm_grep"]
+          }
+        }
+      }
+    },
+    "osint_stalker": {
+      "name": "OSINT Stalker",
+      "description": "Deep web intel gathering only. No system or memory access.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["web_search", "web_fetch", "browser", "pdf"],
+            "deny": ["read", "write", "edit", "exec", "memory_search", "message"]
+          }
+        }
+      }
+    },
+    "compliance_officer": {
+      "name": "Compliance Officer",
+      "description": "Audits session history and status but cannot act or modify.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["sessions_list", "sessions_history", "session_status", "read"],
+            "deny": ["write", "edit", "exec", "web_search", "message", "browser"]
+          }
+        }
+      }
+    },
+    "triage_bot": {
+      "name": "Triage Bot",
+      "description": "Monitors incoming messages and reacts, but cannot search or execute.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["message", "read"],
+            "deny": ["exec", "write", "edit", "web_search", "browser", "pdf"]
+          }
+        }
+      }
+    },
+    "shadow_admin": {
+      "name": "Shadow Admin",
+      "description": "Full system control but explicitly denied access to messaging/external web.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["exec", "write", "edit", "read", "memory_search"],
+            "deny": ["message", "web_search", "web_fetch", "browser"]
+          }
+        }
+      }
+    },
+    "librarian": {
+      "name": "Librarian",
+      "description": "Specialized in organizing local files and memory. No shell or web.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["read", "write", "edit", "memory_search", "memory_get"],
+            "deny": ["exec", "web_search", "browser", "message", "sessions_spawn"]
+          }
+        }
+      }
+    },
+    "air_gap_architect": {
+      "name": "Air-Gap Architect",
+      "description": "Creation/Editing allowed, but strictly no network or sub-session tools.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["write", "edit", "read", "canvas"],
+            "deny": ["web_search", "web_fetch", "browser", "sessions_send", "message"]
+          }
+        }
+      }
+    },
+    "forensics_agent": {
+      "name": "Forensics Agent",
+      "description": "Replays history and grep logs. Cannot write or send anything.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["lcm_grep", "lcm_describe", "lcm_expand", "sessions_history", "read"],
+            "deny": ["write", "edit", "message", "web_search", "exec"]
+          }
+        }
+      }
+    },
+    "dispatcher": {
+      "name": "Dispatcher",
+      "description": "Manages subagents and sessions. No file access or browser allowed.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["sessions_spawn", "subagents", "sessions_list", "sessions_send"],
+            "deny": ["read", "write", "edit", "browser", "web_search"]
+          }
+        }
+      }
+    },
+    "ui_vibe_coder": {
+      "name": "UI Vibe Coder",
+      "description": "Canvas and Browser focus for UI/UX work. Restricted shell access.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["canvas", "browser", "write", "edit", "read"],
+            "deny": ["exec", "web_search", "memory_search", "sessions_spawn"]
+          }
+        }
+      }
+    },
+    "minimalist": {
+      "name": "The Minimalist",
+      "description": "Only 'read' and 'message' enabled for basic assistant duties.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["read", "message"],
+            "deny": ["*"]
+          }
+        }
+      }
+    },
+    "data_journalist": {
+      "name": "Data Journalist",
+      "description": "Brave Search and PDF analysis for fact-checking. No execution.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["web_search", "web_fetch", "pdf", "read"],
+            "deny": ["exec", "write", "edit", "message", "browser"]
+          }
+        }
+      }
+    },
+    "janitor": {
+      "name": "Janitor",
+      "description": "Can read/write but only for system cleanup tasks. No web.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["read", "write", "exec"],
+            "deny": ["web_search", "web_fetch", "message", "memory_search"]
+          }
+        }
+      }
+    },
+    "creative_director": {
+      "name": "Creative Director",
+      "description": "TTS, Canvas, and Message focus for managing content flow.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["tts", "canvas", "message", "read"],
+            "deny": ["exec", "write", "edit", "web_search", "browser"]
+          }
+        }
+      }
+    },
+    "vault_auditor": {
+      "name": "Vault Auditor",
+      "description": "Exclusively monitors long-term memory changes. No shell.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["memory_search", "memory_get", "lcm_grep"],
+            "deny": ["write", "edit", "exec", "web_search", "message", "browser"]
+          }
+        }
+      }
+    },
+    "web_harvester": {
+      "name": "Web Harvester",
+      "description": "High-volume web fetch and pdf extraction. Restricted message access.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["web_fetch", "pdf", "web_search", "write"],
+            "deny": ["exec", "browser", "memory_search", "sessions_spawn"]
+          }
+        }
+      }
+    },
+    "sandbox_shell": {
+      "name": "Sandbox Shell",
+      "description": "Exec only mode. Locked out of files, web, and memory.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["exec"],
+            "deny": ["read", "write", "edit", "web_search", "memory_search", "message"]
+          }
+        }
+      }
+    },
+    "session_navigator": {
+      "name": "Session Navigator",
+      "description": "Manages history and list but cannot send messages or search.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["sessions_list", "sessions_history", "session_status", "read"],
+            "deny": ["message", "web_search", "exec", "write", "edit"]
+          }
+        }
+      }
+    },
+    "content_refinery": {
+      "name": "Content Refinery",
+      "description": "Refines local text files and drafts. No external connectivity.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["read", "write", "edit"],
+            "deny": ["web_search", "web_fetch", "browser", "message", "exec"]
+          }
+        }
+      }
+    },
+    "mcp_tester": {
+      "name": "MCP Tester",
+      "description": "Browser and exec focus for testing new MCP servers. No memory access.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["browser", "exec", "web_search", "read"],
+            "deny": ["memory_search", "memory_get", "message", "sessions_spawn"]
+          }
+        }
+      }
+    },
+    "guardian": {
+      "name": "The Guardian",
+      "description": "Security-focused. Monitors status and audit tools. Confirm required for all.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["session_status", "sessions_list", "read"],
+            "confirm": ["*"]
+          }
+        }
+      }
+    },
+    "viral_thread_crafter": {
+      "name": "Viral Thread Crafter",
+      "description": "Social media specialist. High-speed research + drafting tools only.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["web_search", "web_fetch", "read", "write", "message"],
+            "deny": ["exec", "edit", "browser", "canvas", "sessions_spawn"]
+          }
+        }
+      }
+    },
+    "investigative_reporter": {
+      "name": "Investigative Reporter",
+      "description": "Deep archival research focus (PDF, Search, LCM) with zero system-write access.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["web_search", "web_fetch", "pdf", "read", "lcm_expand", "lcm_grep"],
+            "deny": ["exec", "write", "edit", "browser", "message", "sessions_spawn"]
+          }
+        }
+      }
+    },
+    "multi_platform_broadcaster": {
+      "name": "Multi-Platform Broadcaster",
+      "description": "Cross-channel message routing and session management. No file manipulation.",
+      "config": {
+        "permissions": {
+          "tools": {
+            "allow": ["message", "sessions_send", "sessions_yield", "read", "tts"],
+            "deny": ["write", "edit", "exec", "web_search", "browser"]
+          }
+        }
+      }
+    }
+
+
+
+  }
+}

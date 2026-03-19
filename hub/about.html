@@ -32,12 +32,34 @@
             <h2 class="text-xl font-bold tracking-tight uppercase">mr.technology</h2>
         </div>
         <nav class="hidden md:flex items-center gap-8">
-            <a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium " href="/index.html">Home</a>
-            <a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium " href="/solutions.html">Solutions</a>
-            <a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium " href="/status.html">System Status</a>
-            <a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium text-primary border-b-2 border-primary pb-1" href="/about.html">About</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-black uppercase tracking-widest " href="/index.html">Home</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-black uppercase tracking-widest " href="/solutions.html">Solutions</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-black uppercase tracking-widest " href="/status.html">System Status</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-black uppercase tracking-widest text-primary border-b-2 border-primary pb-1" href="/about.html">About</a>
         </nav>
         <div class="flex items-center gap-4">
+<!-- Mobile Menu Button -->
+<button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 dark:text-slate-400">
+    <span class="material-symbols-outlined">menu</span>
+</button>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="hidden fixed inset-0 top-16 z-40 bg-background-light dark:bg-background-dark p-6 md:hidden">
+    <nav class="flex flex-col gap-6 text-lg font-bold uppercase tracking-widest">
+        <a href="/index.html" class="text-slate-900 dark:text-white">Home</a>
+        <a href="/solutions.html" class="text-slate-900 dark:text-white">Solutions</a>
+        <a href="/status.html" class="text-slate-900 dark:text-white">System Status</a>
+        <a href="/about.html" class="text-slate-900 dark:text-white">About</a>
+    </nav>
+</div>
+<script>
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn.onclick = () => {
+        menu.classList.toggle('hidden');
+        btn.querySelector('.material-symbols-outlined').textContent = menu.classList.contains('hidden') ? 'menu' : 'close';
+    };
+</script>
             <button class="bg-primary hover:bg-primary/90 text-white text-sm font-bold px-5 py-2 rounded-lg transition-all shadow-lg shadow-primary/20">Agent Console</button>
         </div>
     </div>

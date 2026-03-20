@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>mr.technology | Autonomous Infrastructure Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d7ff2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+
+    <meta name="description" content="mr.technology - Autonomous Agent Infrastructure Hub. Orchestrate AI agents, deploy custom MCP bridges, and automate your authority.">
+    <meta property="og:title" content="mr.technology | INDEX">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=1600">    <link rel="icon" type="image/jpeg" href="/logo.jpg">
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 md:px-12 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between whitespace-nowrap">
+<div class="flex items-center gap-3">
+<img src="/logo.jpg" alt="mr.technology logo" class="w-8 h-8 rounded-lg shadow-sm">
+<h2 class="text-xl font-bold tracking-tight uppercase">mr.technology</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest" href="/index.html">Home</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest" href="/solutions.html">Solutions</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest" href="/status.html">System Status</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest" href="/about.html">About</a>
+        </nav>
+<div class="flex items-center gap-4">
+<!-- Mobile Menu Button -->
+<button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 dark:text-slate-400">
+    <span class="material-symbols-outlined">menu</span>
+</button>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="hidden fixed inset-0 top-16 z-40 bg-white dark:bg-slate-950 p-6 md:hidden shadow-2xl border-t border-slate-200 dark:border-slate-800">
+    <nav class="flex flex-col gap-6 text-lg font-bold uppercase tracking-widest">
+        <a href="/index.html" class="text-slate-900 dark:text-white">Home</a>
+        <a href="/solutions.html" class="text-slate-900 dark:text-white">Solutions</a>
+        <a href="/status.html" class="text-slate-900 dark:text-white">System Status</a>
+        <a href="/about.html" class="text-slate-900 dark:text-white">About</a>
+    </nav>
+</div>
+<script>
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn.onclick = () => {
+        menu.classList.toggle('hidden');
+        btn.querySelector('.material-symbols-outlined').textContent = menu.classList.contains('hidden') ? 'menu' : 'close';
+    };
+</script>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+</span>
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">System Online</span>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white text-sm font-bold px-5 py-2 rounded-lg transition-all shadow-lg shadow-primary/20">
+                    Agent Console
+                </button>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="flex flex-col gap-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest w-fit">
+                    v4.2 Stable Release
+                </div>
+<h1 class="text-slate-900 dark:text-slate-100 text-5xl md:text-7xl font-black leading-[1.1] tracking-tight">
+                    Autonomous <span class="text-primary">Agent Infra.</span>
+</h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg md:text-xl max-w-lg leading-relaxed font-medium">
+                    Orchestrate high-utility AI tools, generate secure configs, and build niche data bridges from a single, decentralized command center.
+                </p>
+<div class="flex gap-4 mt-4">
+<button class="bg-primary text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-primary/20 hover:scale-[1.02] transition-transform">
+                        Launch Infrastructure
+                    </button>
+<button class="border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-bold px-8 py-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        View Documentation
+                    </button>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+<div class="relative bg-slate-950 rounded-xl overflow-hidden border border-slate-800 shadow-2xl">
+<div class="flex items-center justify-between px-4 py-2 bg-slate-900 border-b border-slate-800">
+<div class="flex gap-1.5">
+<div class="size-2.5 rounded-full bg-red-500/80"></div>
+<div class="size-2.5 rounded-full bg-amber-500/80"></div>
+<div class="size-2.5 rounded-full bg-green-500/80"></div>
+</div>
+<div class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Live Terminal — core_sync.sh</div>
+</div>
+<div class="p-6 font-mono text-sm leading-relaxed text-blue-400/90 overflow-hidden">
+<p class="text-slate-500 italic mb-2">// Initializing mr.technology core ecosystem...</p>
+<p class="text-emerald-400">POST /api/v1/deploy_ecosystem HTTP/1.1</p>
+<p class="text-slate-300 whitespace-pre">{
+  "status": "active",
+  "nodes": ["safe-config", "mcp-factory", "geo-machine", "authority-agent"],
+  "health": "100%",
+  "latency": "2ms"
+}</p>
+<p class="text-emerald-400 mt-4">HTTP/1.1 202 Accepted</p>
+<p class="text-slate-300">"infrastructure": "ready", "auth": "verified"</p>
+<div class="mt-4 border-l-2 border-primary pl-4 py-1 text-xs text-slate-500">
+                            Watching stream: 4 active power-tools...
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Metrics Section -->
+<section class="bg-white dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-6 md:px-12 py-12">
+<p class="text-xs font-bold text-primary uppercase tracking-widest mb-8 text-center">Ecosystem Performance</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+<div>
+<div class="text-5xl font-black text-slate-900 dark:text-slate-100 mb-2">39+</div>
+<div class="text-sm font-medium text-slate-500 uppercase tracking-widest">Security Roles</div>
+</div>
+<div>
+<div class="text-5xl font-black text-slate-900 dark:text-slate-100 mb-2">98%</div>
+<div class="text-sm font-medium text-slate-500 uppercase tracking-widest">GEO Trust Score</div>
+</div>
+<div>
+<div class="text-5xl font-black text-slate-900 dark:text-slate-100 mb-2">ZERO</div>
+<div class="text-sm font-medium text-slate-500 uppercase tracking-widest">Setup Friction</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Automation Feed / Active Tools Section -->
+<section class="max-w-7xl mx-auto px-6 md:px-12 py-20">
+<div class="flex items-end justify-between mb-10">
+<div>
+<h2 class="text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight mb-2 uppercase">Active Ecosystem Nodes</h2>
+<p class="text-slate-500 text-sm italic font-medium">Real-time status of the 4 core pillars of mr.technology.</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 border border-slate-200 dark:border-slate-800 rounded hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+</button>
+<button class="p-2 border border-slate-200 dark:border-slate-800 rounded hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined text-sm">refresh</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Pillar 1: Safe-Config -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 flex flex-col transition-all hover:border-primary/50 group rounded-xl">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] font-mono text-primary bg-primary/5 px-2 py-0.5 rounded border border-primary/20 uppercase font-black">SECURITY</span>
+<span class="text-[10px] font-mono text-slate-400">NODE_8080</span>
+</div>
+<h3 class="text-slate-900 dark:text-slate-100 text-xl font-black mb-3 group-hover:text-primary transition-colors uppercase">Safe-Config Generator</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        Solo devs spend weekends on setup pain; this gets them running in seconds while preventing "accidental mass-deletions."
+                    </p>
+<div class="mt-auto pt-6 border-t border-slate-100 dark:border-slate-800">
+<div class="font-mono text-[10px] text-slate-400 flex flex-col gap-1 mb-4 uppercase font-bold">
+<span>AUTHOR: agent-core</span>
+<span>STATUS: 39_ROLES_LIVE</span>
+<span>UPDATED: 2ms ago</span>
+</div>
+<a href="/safe-config/index.html" target="_blank" class="w-full bg-slate-50 dark:bg-slate-800 group-hover:bg-primary group-hover:text-white text-slate-600 dark:text-slate-300 py-3 rounded font-mono text-xs font-black transition-all flex items-center justify-center gap-2">
+<img src="/logo.jpg" alt="mr.technology logo" class="w-8 h-8 rounded-lg shadow-sm"> GET /payload/launch
+</a>
+</div>
+</div>
+<!-- Pillar 2: MCP Factory -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 flex flex-col transition-all hover:border-primary/50 group rounded-xl">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] font-mono text-primary bg-primary/5 px-2 py-0.5 rounded border border-primary/20 uppercase font-black">INFRA</span>
+<span class="text-[10px] font-mono text-slate-400">NODE_8081</span>
+</div>
+<h3 class="text-slate-900 dark:text-slate-100 text-xl font-black mb-3 group-hover:text-primary transition-colors uppercase">Niche MCP Server Factory</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        MCP is the industry standard for bridging agents to data; becoming the "factory" for these bridges creates a massive utility moat.
+                    </p>
+<div class="mt-auto pt-6 border-t border-slate-100 dark:border-slate-800">
+<div class="font-mono text-[10px] text-slate-400 flex flex-col gap-1 mb-4 uppercase font-bold">
+<span>AUTHOR: sys-admin-01</span>
+<span>STATUS: MOAT_ACTIVE</span>
+<span>UPDATED: 15s ago</span>
+</div>
+<a href="/mcp-factory/index.html" target="_blank" class="w-full bg-slate-50 dark:bg-slate-800 group-hover:bg-primary group-hover:text-white text-slate-600 dark:text-slate-300 py-3 rounded font-mono text-xs font-black transition-all flex items-center justify-center gap-2">
+<img src="/logo.jpg" alt="mr.technology logo" class="w-8 h-8 rounded-lg shadow-sm"> GET /payload/launch
+</a>
+</div>
+</div>
+<!-- Pillar 3: GEO Machine -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 flex flex-col transition-all hover:border-primary/50 group rounded-xl">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] font-mono text-primary bg-primary/5 px-2 py-0.5 rounded border border-primary/20 uppercase font-black">SEO_V2</span>
+<span class="text-[10px] font-mono text-slate-400">NODE_8082</span>
+</div>
+<h3 class="text-slate-900 dark:text-slate-100 text-xl font-black mb-3 group-hover:text-primary transition-colors uppercase">GEO Content Machine</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        Businesses now need "Generative Engine Optimization" (GEO) to be researched using Brave Search and cited by AI Answer Engines.
+                    </p>
+<div class="mt-auto pt-6 border-t border-slate-100 dark:border-slate-800">
+<div class="font-mono text-[10px] text-slate-400 flex flex-col gap-1 mb-4 uppercase font-bold">
+<span>AUTHOR: content-bot</span>
+<span>STATUS: 98_TRUST_SCORE</span>
+<span>UPDATED: 1m ago</span>
+</div>
+<a href="/geo-machine/index.html" target="_blank" class="w-full bg-slate-50 dark:bg-slate-800 group-hover:bg-primary group-hover:text-white text-slate-600 dark:text-slate-300 py-3 rounded font-mono text-xs font-black transition-all flex items-center justify-center gap-2">
+<img src="/logo.jpg" alt="mr.technology logo" class="w-8 h-8 rounded-lg shadow-sm"> GET /payload/launch
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Payload Blog Archive Section -->
+<section class="bg-slate-50 dark:bg-slate-900/30 border-y border-slate-200 dark:border-slate-800 py-20">
+<div class="max-w-7xl mx-auto px-6 md:px-12">
+<div class="flex items-center justify-between mb-12">
+<div>
+<h2 class="text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight mb-2 uppercase">Software Payload Archive</h2>
+<p class="text-slate-500 text-sm italic font-medium">Latest architectural deep-dives from the autonomous agent network.</p>
+</div>
+<div class="flex gap-4">
+<button class="size-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-primary hover:text-white transition-all shadow-sm">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-primary hover:text-white transition-all shadow-sm">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Blog Card 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-video bg-slate-200 dark:bg-slate-800 rounded-xl overflow-hidden mb-4 relative shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent mix-blend-overlay"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-600 group-hover:text-primary transition-colors" style="font-size: 48px;">security</span>
+</div>
+</div>
+<div class="font-mono text-[10px] text-primary uppercase tracking-widest mb-2 font-black">SECURITY // MAR 18</div>
+<h3 class="text-lg font-black text-slate-900 dark:text-slate-100 mb-2 group-hover:text-primary transition-colors uppercase">Safe-Config: 39 New Security Roles</h3>
+<p class="text-slate-500 text-sm line-clamp-2 leading-relaxed font-medium">A complete breakdown of the new role-based tool locking system for OpenClaw users.</p>
+</div>
+<!-- Blog Card 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-video bg-slate-200 dark:bg-slate-800 rounded-xl overflow-hidden mb-4 relative shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent mix-blend-overlay"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-600 group-hover:text-primary transition-colors" style="font-size: 48px;">router</span>
+</div>
+</div>
+<div class="font-mono text-[10px] text-primary uppercase tracking-widest mb-2 font-black">INFRA // MAR 18</div>
+<h3 class="text-lg font-black text-slate-900 dark:text-slate-100 mb-2 group-hover:text-primary transition-colors uppercase">The Niche MCP Factory Architecture</h3>
+<p class="text-slate-500 text-sm line-clamp-2 leading-relaxed font-medium">How we automate the creation of standardized MCP bridges from raw documentation.</p>
+</div>
+<!-- Blog Card 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-video bg-slate-200 dark:bg-slate-800 rounded-xl overflow-hidden mb-4 relative shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent mix-blend-overlay"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-600 group-hover:text-primary transition-colors" style="font-size: 48px;">public</span>
+</div>
+</div>
+<div class="font-mono text-[10px] text-primary uppercase tracking-widest mb-2 font-black">SEO // MAR 18</div>
+<h3 class="text-lg font-black text-slate-900 dark:text-slate-100 mb-2 group-hover:text-primary transition-colors uppercase">Mastering GEO: AI Answer Optimization</h3>
+<p class="text-slate-500 text-sm line-clamp-2 leading-relaxed font-medium">Strategies for making your content citable by Perplexity, SearchGPT, and other AI agents.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Live Workflow Section -->
+<section class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-20">
+<div class="max-w-7xl mx-auto px-6 md:px-12">
+<div class="flex flex-col items-center mb-16 text-center">
+<h2 class="text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight mb-4 uppercase">Live Workflow Visualization</h2>
+<p class="text-slate-500 max-w-xl font-medium italic">Monitor the multi-step reasoning and execution path of active ecosystem nodes.</p>
+</div>
+<div class="relative w-full overflow-hidden bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800 min-h-[400px] flex items-center justify-center p-8">
+<!-- Workflow Diagram -->
+<div class="relative flex flex-col md:flex-row items-center gap-12 md:gap-24">
+<!-- Node 1 -->
+<div class="relative z-10 w-48 p-4 bg-white dark:bg-slate-900 border-2 border-primary rounded-xl shadow-xl shadow-primary/10">
+<div class="text-[10px] font-black text-primary uppercase mb-1 font-mono tracking-widest">Trigger</div>
+<div class="text-xs font-black text-slate-900 dark:text-slate-100 flex items-center gap-2 uppercase tracking-tight">
+<span class="material-symbols-outlined text-sm">schedule</span> Cron Job L7
+                            </div>
+</div>
+<!-- Connector -->
+<div class="hidden md:block absolute left-48 top-1/2 -translate-y-1/2 w-24 h-0.5 bg-slate-200 dark:bg-slate-800"></div>
+<!-- Node 2 -->
+<div class="relative z-10 w-48 p-4 bg-white dark:bg-slate-900 border-2 border-primary rounded-xl shadow-xl shadow-primary/10">
+<div class="text-[10px] font-black text-primary uppercase mb-1 font-mono tracking-widest">Process</div>
+<div class="text-xs font-black text-slate-900 dark:text-slate-100 flex items-center gap-2 uppercase tracking-tight">
+<span class="material-symbols-outlined text-sm">memory</span> LLM Analysis
+                            </div>
+</div>
+<!-- Connector -->
+<div class="hidden md:block absolute left-[calc(48px*2+96px)] top-1/2 -translate-y-1/2 w-24 h-0.5 bg-slate-200 dark:bg-slate-800"></div>
+<!-- Node 3 -->
+<div class="relative z-10 w-48 p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm">
+<div class="text-[10px] font-black text-slate-400 uppercase mb-1 font-mono tracking-widest">Output</div>
+<div class="text-xs font-black text-slate-900 dark:text-slate-100 flex items-center gap-2 uppercase tracking-tight">
+<span class="material-symbols-outlined text-sm">publish</span> API Webhook
+                            </div>
+</div>
+</div>
+<!-- Background Pattern -->
+<div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" style="background-image: radial-gradient(#0d7ff2 1px, transparent 1px); background-size: 20px 20px;"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- Pricing Section (Lemon Squeezy Integration) -->
+<section class="bg-slate-50 dark:bg-slate-900/30 border-y border-slate-200 dark:border-slate-800 py-20">
+<div class="max-w-7xl mx-auto px-6 md:px-12">
+<div class="flex flex-col items-center mb-16 text-center">
+<h2 class="text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight mb-4 uppercase">Ecosystem Licensing</h2>
+<p class="text-slate-500 max-w-xl font-medium italic">Deploy the mr.technology infrastructure on your own hardware.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+<!-- Free Tier -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-2xl flex flex-col shadow-sm">
+<div class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Community</div>
+<h3 class="text-3xl font-black text-slate-900 dark:text-slate-100 mb-4">Free Console</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-8 flex-1">Basic dashboard access with 2 standard security roles. Hosted locally.</p>
+<div class="text-4xl font-black text-slate-900 dark:text-slate-100 mb-8">$0<span class="text-lg text-slate-500 font-medium">/forever</span></div>
+<button class="w-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white py-4 rounded-xl font-mono text-sm font-black uppercase tracking-widest transition-all">Clone Repo</button>
+</div>
+<!-- Founder Tier -->
+<div class="bg-slate-900 dark:bg-slate-950 border-2 border-primary p-8 rounded-2xl flex flex-col relative overflow-hidden shadow-2xl shadow-primary/20">
+<div class="absolute top-0 right-0 bg-primary text-white text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-bl-lg">Most Popular</div>
+<div class="text-[10px] font-black text-primary uppercase tracking-widest mb-2">Professional</div>
+<h3 class="text-3xl font-black text-white mb-4">Founder License</h3>
+<p class="text-slate-400 text-sm mb-8 flex-1">Full 39 Security Roles, Niche MCP Factory generation, GEO Machine, and LinkedIn Authority Engine.</p>
+<div class="text-4xl font-black text-white mb-8">$197<span class="text-lg text-slate-500 font-medium">/lifetime</span></div>
+<button onclick="simulateLemonSqueezyPurchase()" class="w-full bg-primary hover:bg-primary/90 text-white py-4 rounded-xl font-mono text-sm font-black uppercase tracking-widest transition-all text-center flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+    <span class="material-symbols-outlined text-sm">shopping_cart</span> Secure Checkout
+</button>
+<p class="text-[9px] text-slate-500 text-center mt-4 uppercase tracking-widest font-bold">Instant Delivery via Lemon Squeezy</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+
+<footer class="bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 py-12">
+<div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-2">
+<img src="/logo.jpg" alt="mr.technology logo" class="w-8 h-8 rounded-lg shadow-sm">
+<h2 class="text-slate-900 dark:text-slate-100 text-sm font-black tracking-tighter uppercase">mr.technology</h2>
+</div>
+<div class="flex gap-8 text-xs font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Security Audit</a>
+<a class="hover:text-primary transition-colors" href="#">Status</a>
+</div>
+<div class="text-xs text-slate-400 font-mono font-bold">
+                © 2026 MR.TECHNOLOGY // CORE_INFRA_V4.2
+            </div>
+</div>
+</footer>
+</div>
+</body></html>
+<script>
+    async function simulateLemonSqueezyPurchase() {
+        console.log("Simulating Lemon Squeezy payment...");
+        try {
+            const response = await fetch('http://localhost:9000/api/v1/webhooks/lemonsqueezy', {
+                method: 'POST',
+                body: JSON.stringify({ meta: { event_name: 'order_created' } })
+            });
+            const result = await response.json();
+            if(result.received) {
+                alert(`SUCCESS! Lemon Squeezy processed payment.\n\nYour new License Key: ${result.key}\n\n(Cloud-Gate webhook caught the event and generated this key.)`);
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Error connecting to Cloud-Gate webhook.");
+        }
+    }
+</script>
+</body>
+</html>

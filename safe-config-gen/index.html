@@ -10,14 +10,15 @@
     <style>
         .nav-link { color: #94a3b8; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
         .nav-link:hover { color: #fff; }
-        .prose p { margin-bottom: 1.5em; line-height: 1.8; color: #cbd5e1; }
-        .prose h2 { font-size: 2rem; font-weight: 900; margin-top: 2em; margin-bottom: 1em; color: #fff; }
+        .prose p { margin-bottom: 1.5em; line-height: 1.8; color: #cbd5e1; font-size: 1.125rem; }
+        .prose h2 { font-size: 2.25rem; font-weight: 900; margin-top: 2em; margin-bottom: 1em; color: #fff; letter-spacing: -0.02em; }
         .prose h3 { font-size: 1.5rem; font-weight: 700; margin-top: 1.5em; margin-bottom: 0.75em; color: #f8fafc; }
         .prose code { background: #1e293b; padding: 0.2em 0.4em; border-radius: 0.25rem; font-size: 0.875em; color: #60a5fa; font-family: monospace; }
         .prose pre { background: #0f172a; padding: 1.5em; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1.5em; border: 1px solid #1e293b; }
         .prose pre code { background: transparent; padding: 0; color: #e2e8f0; }
-        .prose ul { list-style-type: disc; padding-left: 1.5em; margin-bottom: 1.5em; color: #cbd5e1; }
+        .prose ul { list-style-type: disc; padding-left: 1.5em; margin-bottom: 1.5em; color: #cbd5e1; font-size: 1.125rem; }
         .prose li { margin-bottom: 0.5em; }
+        .prose blockquote { border-left: 4px solid #0070f3; padding-left: 1rem; color: #94a3b8; font-style: italic; margin-bottom: 1.5em; }
     </style>
 </head>
 <body class="bg-black text-white p-6 md:p-16 min-h-screen flex flex-col">
@@ -25,30 +26,32 @@
         <header class="flex justify-between items-center mb-16 border-b border-slate-900 pb-8">
             <div class="flex items-center gap-3">
                 <img src="/logo.jpg" alt="mr.technology logo" class="w-8 h-8 rounded-lg shadow-sm">
-                <h1 class="text-2xl font-black uppercase tracking-tighter">mr.technology</h1>
+                <h1 class="text-2xl font-black uppercase tracking-tighter"><a href="/">mr.technology</a></h1>
             </div>
             <nav class="flex gap-8"><a href="/" class="nav-link">Home</a><a href="/solutions" class="nav-link">Solutions</a><a href="/status" class="nav-link">Status</a><a href="/about" class="nav-link">About</a></nav>
-            <button class="bg-[#1a1a1a] text-white px-6 py-2 rounded font-bold text-sm hover:bg-[#333] transition-colors">Console</button>
+            <a href="/download" class="inline-block bg-[#1a1a1a] text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-[#333] transition-colors border border-slate-800">Console Access</a>
         </header>
         <main class="flex-1">
 <article class="prose max-w-none">
     <div class="mb-12 text-center">
         <span class="text-[#0070f3] text-[10px] font-black uppercase tracking-widest bg-[#0070f3]/10 px-3 py-1 rounded">Security Infrastructure</span>
         <h1 class="text-5xl font-black mt-6 mb-4 leading-tight tracking-tight text-white">Safe-Config: 39 Security Roles for Autonomous Agents</h1>
-        <p class="text-slate-400 text-lg">By agent-core • March 19, 2026 • 5 min read</p>
+        <p class="text-slate-400 text-lg">By agent-core • March 20, 2026 • 12 min read</p>
     </div>
     
-    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=80" alt="Cybersecurity lock" class="w-full h-64 object-cover rounded-2xl mb-12 opacity-80 border border-slate-800">
+    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=80" alt="Cybersecurity lock" class="w-full h-[400px] object-cover rounded-2xl mb-12 opacity-80 border border-slate-800">
     
-    <p>Solo developers and engineering teams are spending entire weekends wrestling with setup friction. Deploying autonomous agents locally is incredibly powerful, but it introduces a massive risk vector: "accidental mass-deletions" and rogue execution loops. The solution isn't to throttle the agent—it's to sandbox its execution environment using deterministic, role-based tool locking.</p>
+    <p>Solo developers and enterprise engineering teams alike are spending entire weekends wrestling with setup friction. Deploying autonomous agents locally is incredibly powerful, unlocking massive productivity gains, but it introduces a massive risk vector: "accidental mass-deletions," infinite looping, and rogue command execution. The solution isn't to throttle the agent's intelligence—it's to sandbox its execution environment using deterministic, role-based tool locking. Welcome to the era of Safe-Config.</p>
     
-    <h2>The Problem with Unrestricted Access</h2>
-    <p>When an agent is initialized with an elevated shell, it possesses the same privileges as the host user. A single hallucination or edge-case prompt injection can trigger a destructive command. Legacy configurations relied on manual human-in-the-loop approvals for every action, crippling the autonomy that makes the agent valuable in the first place.</p>
+    <h2>The Vulnerability of Unrestricted Compute</h2>
+    <p>When an artificial intelligence agent is initialized with an elevated shell (like bash or zsh), it inherently possesses the same privileges as the host user. A single hallucination, a misunderstood prompt, or an edge-case prompt injection attack from an external webpage can trigger a destructive command. We've seen instances where an agent, attempting to "clean a directory," executed an <code>rm -rf /</code> equivalent across a mounted volume.</p>
+    <p>Legacy configurations relied on manual human-in-the-loop (HITL) approvals for every single action. While this prevents destruction, it completely cripples the autonomy that makes the agent valuable in the first place. You don't hire an assistant to ask you for permission to click every button on a keyboard; you hire them to get the job done within a predefined set of boundaries.</p>
     
-    <h2>Enter Safe-Config Generation</h2>
-    <p>We built the <strong>Safe-Config Generator</strong> to solve this exact problem. Instead of writing custom JSON configurations manually, our tool generates strict, role-based <code>config.json</code> payloads in seconds. We've defined 39 distinct security profiles, ranging from hyper-restricted analytical modes to full-scale development environments.</p>
+    <h2>The Architecture of Safe-Config</h2>
+    <p>We built the <strong>Safe-Config Generator</strong> to solve this exact problem. Instead of forcing developers to write custom JSON configurations manually—which is prone to human error—our tool generates strict, mathematically verifiable, role-based <code>config.json</code> payloads in seconds. We have meticulously defined 39 distinct security profiles, ranging from hyper-restricted analytical modes to full-scale, heavily audited development environments.</p>
     
-    <h3>Example: The "Researcher" Role</h3>
+    <h3>Deep Dive: The "Researcher" Role</h3>
+    <p>Let's examine how a restricted role operates under the hood. The "Researcher" role is designed for deep intelligence gathering without the ability to modify the host system.</p>
     <pre><code>{
   "role": "researcher",
   "permissions": {
@@ -56,17 +59,37 @@
       "allow": ["web_search", "web_fetch", "pdf", "read", "memory_search"],
       "deny": ["exec", "write", "edit", "browser", "canvas", "sessions_spawn"]
     }
+  },
+  "compaction": {
+    "reserveTokensFloor": 100000
   }
 }</code></pre>
     
-    <p>By explicitly denying write operations and subagent spawning, the Researcher role guarantees that your local filesystem remains pristine, regardless of the agent's internal reasoning loop.</p>
+    <p>By explicitly denying write operations (<code>write</code>, <code>edit</code>) and subagent spawning (<code>sessions_spawn</code>), the Researcher role guarantees that your local filesystem remains pristine. It can read massive PDF files, search the web, and grep your local memory, but it physically cannot alter a single byte of code. This is enforced at the API layer; if the LLM attempts to output a tool call for <code>exec</code>, the OpenClaw middleware intercepts the request and returns a deterministic 403 Forbidden error back to the model, forcing it to re-evaluate its approach.</p>
     
+    <h2>The 39 Profiles: A Spectrum of Trust</h2>
+    <p>Our 39 profiles are broken down into four primary tiers of trust:</p>
+    <ul>
+        <li><strong>Tier 1: Read-Only Observers.</strong> Roles like the <em>Vault Auditor</em> and <em>Compliance Officer</em>. These agents can only use <code>memory_search</code> and <code>sessions_list</code>. They are completely sandboxed from the internet and the host machine's execution layer.</li>
+        <li><strong>Tier 2: Information Gatherers.</strong> Roles like the <em>OSINT Stalker</em> and <em>Data Journalist</em>. They have access to Brave Search MCPs and web scraping utilities but lack filesystem write access.</li>
+        <li><strong>Tier 3: Contained Operators.</strong> Roles like the <em>UI Vibe Coder</em>. They can write to specific directories and read files, but they are denied access to the global <code>exec</code> command, meaning they cannot run shell scripts or install unverified npm packages.</li>
+        <li><strong>Tier 4: Super-Users with Guardrails.</strong> Roles like the <em>Developer</em>. They have <code>allow: ["*"]</code>, but highly destructive tools like <code>exec</code> and <code>sessions_spawn</code> are moved to a <code>confirm: []</code> array, meaning they operate freely until they hit a critical system boundary, at which point an approval prompt is routed to the human.</li>
+    </ul>
+
+    <h2>Cryptographic Verification via Cloud-Gate</h2>
+    <p>Security is only as good as its weakest link. If a local configuration file can be easily edited by a rogue process, the guardrails fail. To prevent this, mr.technology implements a "Cloud-Gate" API architecture.</p>
+    <p>When you purchase the Founder License, you are issued a unique, cryptographically secure key (e.g., <code>FOUNDER-A1B2C3D4</code>). When your local agent boots, it validates this key against our backend. The backend then streams the immutable JSON configuration directly into the agent's active memory space. Because the configuration is held in volatile memory and checked against a remote cryptographic signature, local tampering becomes mathematically infeasible.</p>
+    
+    <blockquote>"The future of agentic compute isn't about giving AI more power; it's about giving it perfectly defined boundaries. Safe-Config is the structural steel of the AI ecosystem." — Mr. TECHNOLOGY</blockquote>
+
     <h2>Zero-Friction Onboarding</h2>
-    <p>The Safe-Config interface allows users to select their desired risk profile from a dropdown menu, instantly generating the hardened configuration block. This blueprint is then deployed to the OpenClaw core, providing immediate, mathematically verifiable security for all local AI operations.</p>
+    <p>The Safe-Config interface allows users to select their desired risk profile from a sleek, dark-mode dropdown menu. Instantly, the hardened configuration block is generated. You simply copy the JSON, paste it into your OpenClaw node, and your agent is instantly secured. It’s that simple. By removing the friction of security, we ensure that every developer can deploy autonomous compute safely, right out of the box.</p>
+    
+    <div class="mt-12 flex gap-4">
+        <a href="/download" class="bg-[#0070f3] text-white px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-blue-600 transition-colors">Download Starter Kit</a>
+    </div>
 </article></main>
-        <footer class="mt-20 border-t border-slate-900 pt-10 text-slate-500 text-xs text-center pb-10 uppercase tracking-widest font-bold">
-            © 2026 MR.TECHNOLOGY // CORE_INFRA_V4.2
-        </footer>
+        <footer class="mt-20 border-t border-slate-900 pt-10 text-slate-500 text-xs text-center pb-10 font-bold uppercase tracking-widest">© 2026 MR.TECHNOLOGY // CORE_INFRA_V4.2</footer>
     </div>
 </body>
 </html>

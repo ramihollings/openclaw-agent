@@ -4,14 +4,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/jpeg" href="/logo.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
     <style>
         body { background-color: #050505; color: #d1d5db; font-family: 'Inter', sans-serif; }
         .card { background: #0a0a0a; border: 1px solid #1a1a1a; transition: all 0.3s; }
         .card:hover { border-color: #0070f3; transform: translateY(-2px); box-shadow: 0 10px 30px -10px #0070f333; }
         .nav-link { color: #94a3b8; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; transition: color 0.2s; padding: 0.5rem 0; border-bottom: 2px solid transparent; }
         .nav-link:hover { color: #fff; }
-        .nav-active { color: #fff !important; border-bottom: 2px solid #0070f3; }
+        .nav-active { color: #fff !important; border-bottom: 2px solid #0070f3 !important; }
         .prose p { margin-bottom: 1.5em; line-height: 1.8; color: #cbd5e1; font-size: 1.125rem; }
         .prose h2 { font-size: 2.25rem; font-weight: 900; margin-top: 2em; margin-bottom: 1em; color: #fff; letter-spacing: -0.02em; }
         .prose h3 { font-size: 1.5rem; font-weight: 700; margin-top: 1.5em; margin-bottom: 0.75em; color: #f8fafc; }
@@ -58,7 +57,7 @@
             };
         }
     </script>
-    <main class="flex-1 px-6 py-12"><article class="prose max-w-none">
+    <main class="flex-1 px-6 py-12"><div class="py-10"><article class="prose max-w-none">
     <div class="mb-12 text-center">
         <span class="text-[#0070f3] text-[10px] font-black uppercase tracking-widest bg-[#0070f3]/10 px-3 py-1 rounded">Security Infrastructure</span>
         <h1 class="text-5xl font-black mt-6 mb-4 leading-tight tracking-tight text-white">Safe-Config: 39 Security Roles for Autonomous Agents</h1>
@@ -114,7 +113,7 @@
     <div class="mt-12 flex gap-4">
         <a href="/download" class="bg-[#0070f3] text-white px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-blue-600 transition-colors">Download Starter Kit</a>
     </div>
-</article></main>
+</article></div></main>
     <footer class="border-t border-white/5 bg-[#0a0a0a] mt-auto">
         <div class="max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row justify-between items-center gap-10">
             <div class="flex flex-col items-center md:items-start gap-4">
@@ -129,7 +128,7 @@
                 <a href="#" class="hover:text-blue-500 transition-colors">Terms</a>
                 <a href="/status" class="hover:text-blue-500 transition-colors">Status</a>
             </div>
-            <div class="text-xs text-slate-700 font-mono">© 2026 MR.TECHNOLOGY // CORE_INFRA_V4.2</div>
+            <div class="text-xs text-slate-700 font-mono font-bold uppercase tracking-widest">© 2026 CORE_INFRA_V4.2</div>
         </div>
     </footer>
 </body></html>

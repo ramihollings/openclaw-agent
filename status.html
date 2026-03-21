@@ -4,14 +4,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/jpeg" href="/logo.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
     <style>
         body { background-color: #050505; color: #d1d5db; font-family: 'Inter', sans-serif; }
         .card { background: #0a0a0a; border: 1px solid #1a1a1a; transition: all 0.3s; }
         .card:hover { border-color: #0070f3; transform: translateY(-2px); box-shadow: 0 10px 30px -10px #0070f333; }
         .nav-link { color: #94a3b8; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; transition: color 0.2s; padding: 0.5rem 0; border-bottom: 2px solid transparent; }
         .nav-link:hover { color: #fff; }
-        .nav-active { color: #fff !important; border-bottom: 2px solid #0070f3; }
+        .nav-active { color: #fff !important; border-bottom: 2px solid #0070f3 !important; }
         .prose p { margin-bottom: 1.5em; line-height: 1.8; color: #cbd5e1; font-size: 1.125rem; }
         .prose h2 { font-size: 2.25rem; font-weight: 900; margin-top: 2em; margin-bottom: 1em; color: #fff; letter-spacing: -0.02em; }
         .prose h3 { font-size: 1.5rem; font-weight: 700; margin-top: 1.5em; margin-bottom: 0.75em; color: #f8fafc; }
@@ -59,116 +58,13 @@
         }
     </script>
     <main class="flex-1 px-6 py-12">
-<div class="max-w-7xl mx-auto py-20">
-    <div class="flex flex-col gap-4 mb-12">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest w-fit">Live Telemetry</div>
-        <h1 class="text-5xl font-black tracking-tight text-white uppercase">Hardware Logs</h1>
-        <p class="text-lg text-slate-400 max-w-2xl font-medium">Real-time performance metrics and cluster telemetry from the mr.technology edge network.</p>
+<div class="max-w-7xl mx-auto py-32 text-center">
+    <div class="w-20 h-20 rounded-full bg-blue-600/10 border border-blue-600/20 flex items-center justify-center text-blue-500 mx-auto mb-10 animate-pulse">
+        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
     </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-        <div class="card p-6 rounded-xl">
-            <div class="flex justify-between items-start mb-4">
-                <span class="text-[10px] font-mono text-primary bg-primary/5 px-2 py-0.5 rounded border border-primary/20 uppercase font-black">CORE_NODE_01</span>
-                <span class="flex h-2 w-2 relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span>
-            </div>
-            <div class="space-y-4">
-                <div>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">CPU Load</div>
-                    <div class="text-2xl font-black text-white">24.2%</div>
-                </div>
-                <div>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Memory (RAM)</div>
-                    <div class="text-lg font-mono text-slate-300">1.5Gi / 2.4Gi</div>
-                </div>
-                <div>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Uptime</div>
-                    <div class="text-sm font-medium text-slate-400">99.99% (42d 12h)</div>
-                </div>
-            </div>
-        </div>
-        <div class="card p-6 rounded-xl">
-            <div class="flex justify-between items-start mb-4">
-                <span class="text-[10px] font-mono text-primary bg-primary/5 px-2 py-0.5 rounded border border-primary/20 uppercase font-black">API_GATEWAY</span>
-                <span class="flex h-2 w-2 relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span>
-            </div>
-            <div class="space-y-4">
-                <div>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Requests/Sec</div>
-                    <div class="text-2xl font-black text-white">1,402</div>
-                </div>
-                <div>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Avg Latency</div>
-                    <div class="text-lg font-mono text-slate-300">12ms</div>
-                </div>
-                <div>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Bandwidth</div>
-                    <div class="text-sm font-medium text-slate-400">4.2 TB/mo</div>
-                </div>
-            </div>
-        </div>
-        <div class="card p-6 rounded-xl">
-            <div class="flex justify-between items-start mb-4">
-                <span class="text-[10px] font-mono text-primary bg-primary/5 px-2 py-0.5 rounded border border-primary/20 uppercase font-black">GEO_WORKER</span>
-                <span class="flex h-2 w-2 relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span>
-            </div>
-            <div class="space-y-4">
-                <div>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Vector DB Ops</div>
-                    <div class="text-2xl font-black text-white">8,930</div>
-                </div>
-                <div>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Queue Depth</div>
-                    <div class="text-lg font-mono text-slate-300">0 tasks</div>
-                </div>
-                <div>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Index Size</div>
-                    <div class="text-sm font-medium text-slate-400">1.2 GB</div>
-                </div>
-            </div>
-        </div>
-        <div class="card p-6 rounded-xl">
-            <div class="flex justify-between items-start mb-4">
-                <span class="text-[10px] font-mono text-primary bg-primary/5 px-2 py-0.5 rounded border border-primary/20 uppercase font-black">SOCIAL_SYNC</span>
-                <span class="flex h-2 w-2 relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span>
-            </div>
-            <div class="space-y-4">
-                <div>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">API Calls</div>
-                    <div class="text-2xl font-black text-white">450/hr</div>
-                </div>
-                <div>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Rate Limit</div>
-                    <div class="text-lg font-mono text-slate-300">Healthy (12%)</div>
-                </div>
-                <div>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Last Sync</div>
-                    <div class="text-sm font-medium text-slate-400">Just Now</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="bg-slate-950 rounded-2xl border border-slate-800 shadow-2xl overflow-hidden">
-        <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-900">
-            <div class="flex gap-2">
-                <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-                <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
-                <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
-            </div>
-            <div class="text-xs font-mono text-slate-500 uppercase tracking-widest font-bold">tail -f /var/log/syslog</div>
-        </div>
-        <div class="p-6 font-mono text-sm text-blue-400/90 h-[400px] overflow-y-auto space-y-2">
-            <p><span class="text-slate-500">[2026-03-21 18:12:01]</span> <span class="text-emerald-400">INFO</span> core_sync: Heartbeat acknowledged from node API_GATEWAY (latency: 12ms)</p>
-            <p><span class="text-slate-500">[2026-03-21 18:12:05]</span> <span class="text-emerald-400">INFO</span> geo_worker: Successfully compacted 42 entities to JSON-LD cache.</p>
-            <p><span class="text-slate-500">[2026-03-21 18:12:18]</span> <span class="text-amber-400">WARN</span> auth_service: Rate limit threshold at 12%. Throttling dynamic scaling.</p>
-            <p><span class="text-slate-500">[2026-03-21 18:12:22]</span> <span class="text-emerald-400">INFO</span> social_sync: Draft #884 "The Post-SEO World" queued for publishing.</p>
-            <p><span class="text-slate-500">[2026-03-21 18:12:45]</span> <span class="text-emerald-400">INFO</span> system: Docker healthcheck passed. All containers reporting healthy status.</p>
-            <p class="animate-pulse mt-4">_</p>
-        </div>
-    </div>
-</div>
-</main>
+    <h1 class="text-5xl font-black uppercase tracking-tighter mb-4 text-white">All Systems Operational</h1>
+    <p class="text-slate-400 text-xl max-w-xl mx-auto">Cloud-Gate API, Webhooks, and Edge Nodes are responding with zero latency.</p>
+</div></main>
     <footer class="border-t border-white/5 bg-[#0a0a0a] mt-auto">
         <div class="max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row justify-between items-center gap-10">
             <div class="flex flex-col items-center md:items-start gap-4">
@@ -183,7 +79,7 @@
                 <a href="#" class="hover:text-blue-500 transition-colors">Terms</a>
                 <a href="/status" class="hover:text-blue-500 transition-colors">Status</a>
             </div>
-            <div class="text-xs text-slate-700 font-mono">© 2026 MR.TECHNOLOGY // CORE_INFRA_V4.2</div>
+            <div class="text-xs text-slate-700 font-mono font-bold uppercase tracking-widest">© 2026 CORE_INFRA_V4.2</div>
         </div>
     </footer>
 </body></html>

@@ -1,38 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head><title>mr.technology | MCP-FACTORY</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mr.technology | MCP Factory</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/css/master.css">
     <link rel="icon" type="image/jpeg" href="/logo.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
     <style>
-        .nav-link { color: #94a3b8; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+        body { background-color: #050505; color: #d1d5db; font-family: 'Inter', sans-serif; }
+        .card { background: #0a0a0a; border: 1px solid #1a1a1a; transition: all 0.3s; }
+        .card:hover { border-color: #0070f3; transform: translateY(-2px); box-shadow: 0 10px 30px -10px #0070f333; }
+        .nav-link { color: #94a3b8; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; transition: color 0.2s; padding: 0.5rem 0; border-bottom: 2px solid transparent; }
         .nav-link:hover { color: #fff; }
+        .nav-active { color: #fff !important; border-bottom: 2px solid #0070f3; }
         .prose p { margin-bottom: 1.5em; line-height: 1.8; color: #cbd5e1; font-size: 1.125rem; }
         .prose h2 { font-size: 2.25rem; font-weight: 900; margin-top: 2em; margin-bottom: 1em; color: #fff; letter-spacing: -0.02em; }
         .prose h3 { font-size: 1.5rem; font-weight: 700; margin-top: 1.5em; margin-bottom: 0.75em; color: #f8fafc; }
         .prose code { background: #1e293b; padding: 0.2em 0.4em; border-radius: 0.25rem; font-size: 0.875em; color: #60a5fa; font-family: monospace; }
         .prose pre { background: #0f172a; padding: 1.5em; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1.5em; border: 1px solid #1e293b; }
         .prose pre code { background: transparent; padding: 0; color: #e2e8f0; }
-        .prose ul { list-style-type: disc; padding-left: 1.5em; margin-bottom: 1.5em; color: #cbd5e1; font-size: 1.125rem; }
-        .prose li { margin-bottom: 0.5em; }
         .prose blockquote { border-left: 4px solid #0070f3; padding-left: 1rem; color: #94a3b8; font-style: italic; margin-bottom: 1.5em; }
     </style>
-</head>
-<body class="bg-black text-white p-6 md:p-16 min-h-screen flex flex-col">
-    <div class="max-w-4xl mx-auto w-full">
-        <header class="flex justify-between items-center mb-16 border-b border-slate-900 pb-8">
-            <div class="flex items-center gap-3">
-                <img src="/logo.jpg" alt="mr.technology logo" class="w-8 h-8 rounded-lg shadow-sm">
-                <h1 class="text-2xl font-black uppercase tracking-tighter"><a href="/">mr.technology</a></h1>
+</head><body class="min-h-screen flex flex-col">
+    <nav class="sticky top-0 z-50 bg-[#050505]/90 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-3 group">
+                <img src="/logo.jpg" alt="mr.technology logo" class="w-8 h-8 rounded-lg shadow-sm group-hover:ring-2 ring-[#0070f3] transition-all">
+                <span class="text-xl font-black uppercase tracking-tighter text-white">mr.technology</span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8"><a href="/" class="nav-link ">Home</a><a href="/solutions" class="nav-link nav-active">Solutions</a><a href="/status" class="nav-link ">Status</a><a href="/about" class="nav-link ">About</a></div>
+            
+            <div class="flex items-center gap-4">
+                <a href="/download" class="hidden sm:inline-block bg-white text-black px-5 py-2 rounded-lg font-bold text-xs uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all">Console</a>
+                <button id="mobile-btn" class="md:hidden text-white p-2">
+                    <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
             </div>
-            <nav class="flex gap-8"><a href="/" class="nav-link">Home</a><a href="/solutions" class="nav-link">Solutions</a><a href="/status" class="nav-link">Status</a><a href="/about" class="nav-link">About</a></nav>
-            <a href="/download" class="inline-block bg-[#1a1a1a] text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-[#333] transition-colors border border-slate-800">Console Access</a>
-        </header>
-        <main class="flex-1">
-<article class="prose max-w-none">
+        </div>
+
+        <div id="mobile-menu" class="hidden fixed inset-0 top-20 z-40 bg-[#050505] p-8 flex flex-col md:hidden">
+            <a href="/" class="text-2xl font-black uppercase tracking-tighter py-4 border-b border-white/5 text-white">Home</a><a href="/solutions" class="text-2xl font-black uppercase tracking-tighter py-4 border-b border-white/5 text-blue-500">Solutions</a><a href="/status" class="text-2xl font-black uppercase tracking-tighter py-4 border-b border-white/5 text-white">Status</a><a href="/about" class="text-2xl font-black uppercase tracking-tighter py-4 border-b border-white/5 text-white">About</a>
+            <a href="/download" class="mt-8 bg-blue-600 text-white py-4 rounded-xl text-center font-black uppercase tracking-widest">Download Console</a>
+        </div>
+    </nav>
+    <script>
+        const btn = document.getElementById('mobile-btn');
+        const menu = document.getElementById('mobile-menu');
+        const i1 = document.getElementById('menu-icon');
+        const i2 = document.getElementById('close-icon');
+        if (btn) {
+            btn.onclick = () => {
+                menu.classList.toggle('hidden');
+                i1.classList.toggle('hidden');
+                i2.classList.toggle('hidden');
+                document.body.classList.toggle('overflow-hidden');
+            };
+        }
+    </script>
+    <main class="flex-1 px-6 py-12"><article class="prose max-w-none">
     <div class="mb-12 text-center">
         <span class="text-[#0070f3] text-[10px] font-black uppercase tracking-widest bg-[#0070f3]/10 px-3 py-1 rounded">Protocol Architecture</span>
         <h1 class="text-5xl font-black mt-6 mb-4 leading-tight tracking-tight text-white">Niche MCP Server Factory: Building the Data Moat</h1>
@@ -107,7 +133,21 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         <a href="/download" class="bg-[#0070f3] text-white px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-blue-600 transition-colors">Start Building Bridges</a>
     </div>
 </article></main>
-        <footer class="mt-20 border-t border-slate-900 pt-10 text-slate-500 text-xs text-center pb-10 font-bold uppercase tracking-widest">© 2026 MR.TECHNOLOGY // CORE_INFRA_V4.2</footer>
-    </div>
-</body>
-</html>
+    <footer class="border-t border-white/5 bg-[#0a0a0a] mt-auto">
+        <div class="max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="flex flex-col items-center md:items-start gap-4">
+                <div class="flex items-center gap-3">
+                    <img src="/logo.jpg" alt="logo" class="w-6 h-6 rounded shadow-sm opacity-50">
+                    <span class="text-white font-black uppercase tracking-tighter">mr.technology</span>
+                </div>
+                <p class="text-slate-500 text-[10px] font-black uppercase tracking-widest">Autonomous Infrastructure Protocol</p>
+            </div>
+            <div class="flex gap-10 text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
+                <a href="#" class="hover:text-blue-500 transition-colors">Privacy</a>
+                <a href="#" class="hover:text-blue-500 transition-colors">Terms</a>
+                <a href="/status" class="hover:text-blue-500 transition-colors">Status</a>
+            </div>
+            <div class="text-xs text-slate-700 font-mono">© 2026 MR.TECHNOLOGY // CORE_INFRA_V4.2</div>
+        </div>
+    </footer>
+</body></html>

@@ -1,51 +1,45 @@
-<!DOCTYPE html><html lang="en"><head><title>mr.technology | About</title>
+<!DOCTYPE html><html lang="en"><head><title>About | mr.technology</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/jpeg" href="/logo.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
     <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
     <style>
-        :root { --primary: #0070f3; --bg: #000000; --card-bg: #0a0a0a; --border: #1a1a1a; --text-dim: #888888; }
+        :root { --primary: #0070f3; --bg: #000000; --card: #0a0a0a; --border: #1a1a1a; }
         body { background-color: var(--bg); color: #ffffff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
-        .grid-bg { background-image: radial-gradient(circle at 1px 1px, #111 1px, transparent 0); background-size: 40px 40px; }
-        .secure-border { border: 1px solid var(--border); }
-        .secure-card { background: var(--card-bg); border: 1px solid var(--border); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .secure-card:hover { border-color: var(--primary); box-shadow: 0 0 40px -10px rgba(0, 112, 243, 0.15); }
-        .nav-link { color: #ffffff; font-weight: 500; font-size: 0.8rem; letter-spacing: 0.05em; transition: all 0.2s; position: relative; }
-        .nav-link:hover { opacity: 0.7; }
-        .nav-active { color: #fff !important; }
-        .nav-active::after { content: ''; position: absolute; bottom: -28px; left: 0; width: 100%; height: 2px; background: var(--primary); }
-        h1, h2, h3 { letter-spacing: -0.04em; font-weight: 900; }
-        .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0; }
-        .prose { max-width: 65ch; line-height: 1.7; color: #a1a1aa; }
-        .prose h1, .prose h2 { color: #fff; margin-top: 3rem; margin-bottom: 1.5rem; }
-        .prose strong { color: #fff; font-weight: 600; }
-        .btn-primary { background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.2s; display: inline-block; cursor: pointer; }
-        .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
-        .btn-outline { border: 1px solid var(--border); color: #fff; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.2s; display: inline-block; cursor: pointer; }
-        .btn-outline:hover { background: #fff; color: #000; }
-        .tag { font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; padding: 4px 8px; border: 1px solid rgba(0, 112, 243, 0.3); color: var(--primary); border-radius: 4px; display: inline-block; }
+        .secure-card { background: var(--card); border: 1px solid var(--border); transition: all 0.3s ease; }
+        .secure-card:hover { border-color: #333; transform: translateY(-2px); }
+        .nav-link { font-size: 0.85rem; font-weight: 500; color: #a1a1aa; transition: color 0.2s; }
+        .nav-link:hover { color: #fff; }
+        .nav-active { color: #fff; position: relative; }
+        .nav-active::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 100%; height: 1px; background: var(--primary); }
+        h1, h2, h3 { letter-spacing: -0.02em; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .btn-primary { background: #ffffff; color: #000000; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; cursor: pointer; }
+        .btn-primary:hover { background: #e2e2e2; }
+        .btn-outline { border: 1px solid var(--border); color: #ffffff; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; cursor: pointer; }
+        .btn-outline:hover { background: #111; border-color: #333; }
+        .badge { background: #111; border: 1px solid #222; color: #a1a1aa; font-size: 0.7rem; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
     </style>
-</head><body class="min-h-screen flex flex-col grid-bg">
-    <nav class="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-[#1a1a1a]">
-        <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
-            <a href="/" class="flex items-center gap-4 group">
-                <img src="/logo.jpg" alt="logo" class="w-7 h-7 rounded-sm secure-border group-hover:border-primary transition-colors">
-                <span class="text-sm font-black uppercase tracking-tighter">mr.technology</span>
+</head><body class="min-h-screen flex flex-col">
+    <nav class="sticky top-0 z-50 bg-black/90 backdrop-blur-sm border-b border-[#1a1a1a]">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-3">
+                <img src="/logo.jpg" alt="logo" class="w-6 h-6 rounded-sm">
+                <span class="text-sm font-bold tracking-tight">mr.technology</span>
             </a>
-            <div class="hidden md:flex items-center gap-10"><a href="/" class="nav-link ">Home</a><a href="/solutions" class="nav-link ">Solutions</a><a href="/status" class="nav-link ">Status</a><a href="/about" class="nav-link nav-active">About</a></div>
-            <div class="flex items-center gap-6">
-                <a href="/download" class="mono text-white hover:opacity-70 transition-colors uppercase">Console_Access</a>
+            <div class="hidden md:flex items-center gap-8"><a href="/protocols" class="nav-link ">Protocols</a><a href="/pricing" class="nav-link ">Pricing</a><a href="/trust" class="nav-link ">Trust</a><a href="/about" class="nav-link nav-active">About</a></div>
+            <div class="flex items-center gap-4">
+                <a href="/pricing" class="hidden sm:block text-xs font-semibold text-white/60 hover:text-white transition-colors">Log In</a>
+                <a href="/pricing" class="btn-primary !py-1.5 !px-4 !text-xs">Get Started</a>
                 <button id="mobile-btn" class="md:hidden text-white"><span class="material-symbols-outlined">menu</span></button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden fixed inset-0 top-20 z-[100] bg-black p-8 flex flex-col md:hidden overflow-y-auto">
-            <div class="flex flex-col">
-                <a href="/" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">Home</a><a href="/solutions" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">Solutions</a><a href="/status" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">Status</a><a href="/about" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">About</a>
-                <a href="/download" class="mt-12 btn-primary text-center">Open Console</a>
-            </div>
+        <div id="mobile-menu" class="hidden fixed inset-0 top-16 z-[100] bg-black p-8 flex flex-col md:hidden overflow-y-auto">
+            <a href="/protocols" class="text-2xl font-bold py-6 border-b border-white/5 text-white">Protocols</a><a href="/pricing" class="text-2xl font-bold py-6 border-b border-white/5 text-white">Pricing</a><a href="/trust" class="text-2xl font-bold py-6 border-b border-white/5 text-white">Trust</a><a href="/about" class="text-2xl font-bold py-6 border-b border-white/5 text-white">About</a>
+            <a href="/pricing" class="mt-12 btn-primary text-center">Get Started</a>
         </div>
     </nav>
     <script>
@@ -62,48 +56,47 @@
         })();
     </script>
     <main class="flex-1">
-<div class="max-w-7xl mx-auto px-8 py-32 grid grid-cols-1 md:grid-cols-2 gap-20">
-    <div class="space-y-10">
-        <div class="tag">Protocol Origin</div>
-        <h1 class="text-7xl italic uppercase">The Mission.</h1>
-        <p class="text-xl text-white/50 leading-relaxed">mr.technology is an infrastructure hub designed for the solo asset manager. We build decentralized, secure, and highly scalable software tools that empower solopreneurs to run multiple online assets with the effort of one.</p>
-        <div class="mono text-primary uppercase">One Human. Infinite Systems.</div>
+<div class="max-w-4xl mx-auto px-6 py-24 space-y-20">
+    <div class="space-y-6">
+        <div class="badge">The Mission</div>
+        <h1 class="text-7xl font-extrabold italic uppercase tracking-tighter">One Human.<br><span class="text-white/20">Infinite Systems.</span></h1>
     </div>
-    <div class="secure-border bg-[#050505] p-12 rounded-lg space-y-8">
-        <h3 class="text-2xl uppercase tracking-tighter italic text-white/80">Founding Principles</h3>
-        <div class="space-y-6">
-            <div class="space-y-2"><span class="mono text-primary uppercase">01 / Zero Trust Automation</span><p class="text-sm text-white/40">Every agentic action must be deterministically locked via Safe-Config schemas.</p></div>
-            <div class="space-y-2"><span class="mono text-primary uppercase">02 / Structural Cohesion</span><p class="text-sm text-white/40">Universal architecture across every domain, repo, and tool to eliminate context switching.</p></div>
-            <div class="space-y-2"><span class="mono text-primary uppercase">03 / Solo Leverage</span><p class="text-sm text-white/40">Tools designed to multiply a single human's output through autonomous scaling.</p></div>
-        </div>
+    <div class="space-y-10 text-xl text-white/60 leading-relaxed">
+        <p>mr.technology is an infrastructure hub designed for the solo asset manager. We build decentralized, secure, and highly scalable software tools that empower solopreneurs to run multiple online assets with the effort of one.</p>
+        <p>Our core philosophy is <b>Structural Cohesion</b>. By unifying every agentic operation under the same deterministic protocols, we eliminate technical debt and allow you to own your time while building your empire.</p>
     </div>
 </div>
 </main>
-    <footer class="border-t border-[#1a1a1a] bg-black mt-auto py-20">
-        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-start gap-12">
-            <div class="space-y-6">
-                <div class="flex items-center gap-4">
-                    <img src="/logo.jpg" alt="logo" class="w-6 h-6 rounded-sm opacity-40">
-                    <span class="text-xs font-black uppercase tracking-widest text-white/40">mr.technology</span>
+    <footer class="border-t border-[#1a1a1a] bg-black py-20 px-6">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2 space-y-6">
+                <div class="flex items-center gap-3">
+                    <img src="/logo.jpg" alt="logo" class="w-5 h-5 rounded-sm grayscale">
+                    <span class="text-sm font-bold text-white/80">mr.technology</span>
                 </div>
-                <p class="text-xs text-white/30 mono max-w-xs">Autonomous Infrastructure Protocol. Licensed for Solopreneur Asset Management. v4.2.0-STABLE</p>
+                <p class="text-sm text-white/40 max-w-xs leading-relaxed">The secure infrastructure standard for autonomous solopreneurs. Build, protect, and scale your digital assets with deterministic protocols.</p>
             </div>
-            <div class="grid grid-cols-2 gap-20">
-                <div class="space-y-4">
-                    <span class="mono text-white/20 uppercase">Network</span>
-                    <div class="flex flex-col gap-2 text-xs font-bold text-white/50 uppercase tracking-widest">
-                        <a href="/status" class="hover:text-primary transition-colors">Uptime</a>
-                        <a href="/about" class="hover:text-primary transition-colors">Mission</a>
-                    </div>
-                </div>
-                <div class="space-y-4">
-                    <span class="mono text-white/20 uppercase">Governance</span>
-                    <div class="flex flex-col gap-2 text-xs font-bold text-white/50 uppercase tracking-widest">
-                        <a href="#" class="hover:text-primary transition-colors">Security</a>
-                        <a href="#" class="hover:text-primary transition-colors">Terms</a>
-                    </div>
+            <div class="space-y-4">
+                <h4 class="text-xs font-bold text-white/20 uppercase tracking-widest">Protocols</h4>
+                <div class="flex flex-col gap-2 text-sm text-white/50">
+                    <a href="/guard" class="hover:text-white transition-colors">Guard Protocol</a>
+                    <a href="/bridge" class="hover:text-white transition-colors">Bridge Protocol</a>
+                    <a href="/search" class="hover:text-white transition-colors">Search Protocol</a>
+                    <a href="/authority" class="hover:text-white transition-colors">Authority Protocol</a>
                 </div>
             </div>
+            <div class="space-y-4">
+                <h4 class="text-xs font-bold text-white/20 uppercase tracking-widest">Governance</h4>
+                <div class="flex flex-col gap-2 text-sm text-white/50">
+                    <a href="/trust" class="hover:text-white transition-colors">Security Status</a>
+                    <a href="/trust" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="/trust" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-[10px] text-white/20 font-mono">SYSTEM_VERSION: 4.2.0-STABLE // REPOSITORY: mr.technology/core</div>
+            <div class="text-[10px] text-white/20 font-mono">© 2026 MR.TECHNOLOGY. ALL RIGHTS RESERVED.</div>
         </div>
     </footer>
 </body></html>

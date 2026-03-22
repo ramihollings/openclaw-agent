@@ -7,157 +7,161 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
     <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
     <style>
-        :root { --primary: #0070f3; --bg: #000000; --card: #0a0a0a; --border: #1a1a1a; }
-        body { background-color: var(--bg); color: #ffffff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
-        .secure-card { background: var(--card); border: 1px solid var(--border); transition: all 0.3s ease; }
-        .secure-card:hover { border-color: #333; transform: translateY(-2px); }
-        .nav-link { font-size: 0.85rem; font-weight: 500; color: #a1a1aa; transition: color 0.2s; }
-        .nav-link:hover { color: #fff; }
-        .nav-active { color: #fff; position: relative; }
-        .nav-active::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 100%; height: 1px; background: var(--primary); }
-        h1, h2, h3 { letter-spacing: -0.02em; }
-        .mono { font-family: 'JetBrains Mono', monospace; }
-        .btn-primary { background: #ffffff; color: #000000; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; cursor: pointer; display: inline-block; }
-        .btn-primary:hover { background: #e2e2e2; }
-        .btn-outline { border: 1px solid var(--border); color: #ffffff; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; cursor: pointer; display: inline-block; }
-        .btn-outline:hover { background: #111; border-color: #333; }
-        .badge { background: #111; border: 1px solid #222; color: #a1a1aa; font-size: 0.7rem; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+        :root { --primary: #0070f3; --bg: #000000; --card: #0a0a0a; --border: rgba(255,255,255,0.1); }
+        body { background-color: var(--bg); color: #ffffff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        
+        /* Layout */
+        .max-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Elements */
+        .secure-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; transition: all 0.3s ease; }
+        .secure-card:hover { border-color: rgba(255,255,255,0.2); }
+        
+        /* Navigation (Basedash + Atompoint Style) */
+        .nav-link { font-size: 0.8rem; font-weight: 500; color: #a1a1aa; transition: all 0.2s; padding: 6px 12px; border-radius: 6px; }
+        .nav-link:hover { color: #fff; background: rgba(255,255,255,0.05); }
+        .nav-active { color: #fff; background: rgba(255,255,255,0.08); }
+        
+        /* Buttons */
+        .btn-primary { background: #ffffff; color: #000000; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.85rem; transition: all 0.2s; cursor: pointer; display: inline-block; }
+        .btn-primary:hover { transform: scale(1.02); }
+        .btn-outline { border: 1px solid var(--border); color: #ffffff; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.85rem; transition: all 0.2s; cursor: pointer; display: inline-block; }
+        .btn-outline:hover { background: rgba(255,255,255,0.05); }
+        
+        /* Typography */
+        .h-xl { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1.1; font-weight: 800; letter-spacing: -0.04em; }
+        .badge { background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: #a1a1aa; font-size: 0.7rem; font-weight: 600; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; }
+        
+        /* Mobile Menu (Atompoint Overlay style) */
+        #mobile-menu {
+            transition: opacity 0.3s ease, visibility 0.3s;
+            opacity: 0;
+            visibility: hidden;
+        }
+        #mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
-</head><body class="min-h-screen flex flex-col">
-    <nav class="sticky top-0 z-[100] bg-[#000000] border-b border-[#1a1a1a]">
-        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="/" class="flex items-center gap-3">
-                <img src="/logo.jpg" alt="logo" class="w-6 h-6 rounded-sm">
-                <span class="text-sm font-bold tracking-tight">mr.technology</span>
-            </a>
-            <div class="hidden md:flex items-center gap-8"><a href="/protocols" class="nav-link ">Protocols</a><a href="/pricing" class="nav-link nav-active">Pricing</a><a href="/trust" class="nav-link ">Trust</a><a href="/about" class="nav-link ">About</a></div>
+</head><body class="pt-20">
+    <nav class="fixed top-0 inset-x-0 z-[200] border-b border-white/5 bg-black/50 backdrop-blur-xl">
+        <div class="max-container h-20 flex items-center justify-between">
+            <div class="flex items-center gap-10">
+                <a href="/" class="flex items-center gap-3">
+                    <img src="/logo.jpg" alt="logo" class="w-6 h-6 rounded-sm">
+                    <span class="text-sm font-bold tracking-tight uppercase">mr.technology</span>
+                </a>
+                <div class="hidden md:flex items-center gap-2"><a href="/protocols" class="nav-link ">Protocols</a><a href="/pricing" class="nav-link nav-active">Pricing</a><a href="/trust" class="nav-link ">Trust</a><a href="/about" class="nav-link ">About</a></div>
+            </div>
             <div class="flex items-center gap-4">
-                <a href="/pricing" class="hidden sm:block text-xs font-semibold text-white/60 hover:text-white transition-colors">Log In</a>
-                <a href="/pricing" class="btn-primary !py-1.5 !px-4 !text-xs">Get Started</a>
-                <button id="mobile-btn" class="md:hidden text-white flex items-center justify-center p-2">
+                <a href="/pricing" class="hidden sm:block text-xs font-semibold text-white/50 hover:text-white transition-colors">Login</a>
+                <a href="/pricing" class="btn-primary">Start Project</a>
+                <button id="mobile-btn" class="md:hidden text-white flex items-center justify-center w-10 h-10 rounded-lg hover:bg-white/5 transition-all">
                     <span id="menu-icon" class="material-symbols-outlined">menu</span>
-                    <span id="close-icon" class="material-symbols-outlined hidden">close</span>
                 </button>
             </div>
         </div>
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="hidden fixed inset-x-0 bottom-0 top-20 bg-[#000000] z-[101] p-8 flex flex-col md:hidden overflow-y-auto border-t border-white/5">
-            <div class="flex flex-col gap-2">
-                <a href="/protocols" class="text-4xl font-extrabold py-6 border-b border-white/5 text-white active:bg-white/5 transition-all">Protocols</a><a href="/pricing" class="text-4xl font-extrabold py-6 border-b border-white/5 text-white active:bg-white/5 transition-all">Pricing</a><a href="/trust" class="text-4xl font-extrabold py-6 border-b border-white/5 text-white active:bg-white/5 transition-all">Trust</a><a href="/about" class="text-4xl font-extrabold py-6 border-b border-white/5 text-white active:bg-white/5 transition-all">About</a>
-                <a href="/pricing" class="mt-12 btn-primary text-center !py-5 !text-lg">Get Started</a>
-            </div>
-            <div class="mt-auto py-10 text-[10px] text-white/20 font-mono text-center uppercase tracking-widest">
-                SYSTEM_NODE: MR.TECHNOLOGY // CORE_V4.2
-            </div>
-        </div>
     </nav>
+
+    <!-- Mobile Menu: Basedash/Atompoint Blend -->
+    <div id="mobile-menu" class="fixed inset-0 z-[190] bg-black flex flex-col p-8 pt-32">
+        <div class="flex flex-col gap-6">
+            <a href="/protocols" class="text-5xl font-bold tracking-tighter text-white hover:text-blue-500 transition-colors">Protocols</a><a href="/pricing" class="text-5xl font-bold tracking-tighter text-white hover:text-blue-500 transition-colors">Pricing</a><a href="/trust" class="text-5xl font-bold tracking-tighter text-white hover:text-blue-500 transition-colors">Trust</a><a href="/about" class="text-5xl font-bold tracking-tighter text-white hover:text-blue-500 transition-colors">About</a>
+        </div>
+        <div class="mt-auto flex flex-col gap-4">
+            <a href="/pricing" class="btn-primary text-center !py-4 !text-lg">Get Started</a>
+            <div class="text-[10px] text-white/20 font-mono uppercase tracking-widest text-center py-4">Node_Core: v4.2 // Autonomous Infrastructure</div>
+        </div>
+    </div>
+
     <script>
         (function() {
             const btn = document.getElementById('mobile-btn');
             const menu = document.getElementById('mobile-menu');
-            const iconMenu = document.getElementById('menu-icon');
-            const iconClose = document.getElementById('close-icon');
+            const icon = document.getElementById('menu-icon');
             if (btn && menu) {
                 btn.onclick = () => {
-                    const isShowing = !menu.classList.contains('hidden');
-                    if (isShowing) {
-                        menu.classList.add('hidden');
-                        iconMenu.classList.remove('hidden');
-                        iconClose.classList.add('hidden');
-                        document.body.style.overflow = '';
-                    } else {
-                        menu.classList.remove('hidden');
-                        iconMenu.classList.add('hidden');
-                        iconClose.classList.remove('hidden');
-                        document.body.style.overflow = 'hidden';
-                    }
+                    const isActive = menu.classList.toggle('active');
+                    icon.innerText = isActive ? 'close' : 'menu';
+                    document.body.style.overflow = isActive ? 'hidden' : '';
                 };
             }
         })();
     </script>
-    <main class="flex-1">
-<div class="max-w-5xl mx-auto px-6 py-24 space-y-24">
-    <div class="text-center space-y-6">
-        <div class="badge">Simple Pricing</div>
-        <h1 class="text-6xl font-bold tracking-tight">Access the Hub.</h1>
-        <p class="text-xl text-white/50 max-w-xl mx-auto">No hidden fees. No complex credits. Just two ways to power your ecosystem.</p>
+    <main>
+<div class="max-container py-32 space-y-32">
+    <div class="max-w-3xl space-y-8">
+        <div class="badge">Transparency</div>
+        <h1 class="h-xl italic">Pricing.</h1>
+        <p class="text-2xl text-white/40">Choose the level of control that matches your asset portfolio.</p>
     </div>
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="secure-card p-12 space-y-10 relative overflow-hidden">
+        <!-- Architect -->
+        <div class="secure-card p-16 space-y-12 relative overflow-hidden">
             <div class="space-y-4">
-                <h3 class="text-3xl font-bold italic">Architect License</h3>
-                <p class="text-sm text-white/40">Foundation & Security for the individual builder.</p>
+                <h3 class="text-4xl font-bold italic">Architect License</h3>
+                <p class="text-white/40">Infrastructure & Security for individual builders.</p>
             </div>
-            <div class="text-5xl font-black">$197 <span class="text-sm text-white/20 font-normal">One-time</span></div>
-            <ul class="space-y-4 text-sm text-white/60">
-                <li class="flex gap-3"><span class="material-symbols-outlined text-blue-500 text-sm">check</span> Guard Protocol (39 Roles)</li>
-                <li class="flex gap-3"><span class="material-symbols-outlined text-blue-500 text-sm">check</span> Bridge Protocol (MCP Factory)</li>
-                <li class="flex gap-3"><span class="material-symbols-outlined text-blue-500 text-sm">check</span> Private GitHub Vault Access</li>
-                <li class="flex gap-3"><span class="material-symbols-outlined text-blue-500 text-sm">check</span> Perpetual Lifetime License</li>
+            <div class="text-6xl font-black">$197 <span class="text-sm text-white/20 font-normal">USD / Life</span></div>
+            <ul class="space-y-5 text-white/60 font-medium">
+                <li class="flex gap-4"><span class="material-symbols-outlined text-blue-500">check</span> Guard Protocol (39 Roles)</li>
+                <li class="flex gap-4"><span class="material-symbols-outlined text-blue-500">check</span> Bridge Protocol (MCP Factory)</li>
+                <li class="flex gap-4"><span class="material-symbols-outlined text-blue-500">check</span> Private GitHub Vault Access</li>
+                <li class="flex gap-4"><span class="material-symbols-outlined text-blue-500">check</span> Perpetual Lifetime License</li>
             </ul>
-            <a href="https://pinesentry.lemonsqueezy.com/checkout/buy/1431586?embed=1" class="lemonsqueezy-button btn-outline w-full text-center block">Get the Blueprints</a>
+            <a href="https://pinesentry.lemonsqueezy.com/checkout/buy/1431586?embed=1" class="lemonsqueezy-button btn-outline w-full text-center block !py-5 !text-lg">Get the Blueprints</a>
         </div>
-        <div class="secure-card p-12 space-y-10 border-blue-600/50 bg-blue-600/5 relative overflow-hidden">
-            <div class="absolute top-0 right-0 bg-blue-600 text-white text-[10px] px-4 py-2 font-bold uppercase tracking-widest">Recommended</div>
+
+        <!-- Empire -->
+        <div class="secure-card p-16 space-y-12 border-blue-600/30 bg-blue-600/5 relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-blue-600 text-white text-[10px] px-6 py-2 font-black uppercase tracking-widest">Recommended</div>
             <div class="space-y-4">
-                <h3 class="text-3xl font-bold italic">Empire Protocol</h3>
-                <p class="text-sm text-white/40 text-blue-200/50">Automation & Authority for multi-asset founders.</p>
+                <h3 class="text-4xl font-bold italic">Empire Protocol</h3>
+                <p class="text-white/40">Automation & Authority for multi-asset founders.</p>
             </div>
-            <div class="text-5xl font-black">$49 <span class="text-sm text-white/20 font-normal">Per Month</span></div>
-            <ul class="space-y-4 text-sm text-white/80">
-                <li class="flex gap-3"><span class="material-symbols-outlined text-blue-500 text-sm">check</span> Everything in Architect</li>
-                <li class="flex gap-3"><span class="material-symbols-outlined text-blue-500 text-sm">check</span> Search Protocol (GEO SEO)</li>
-                <li class="flex gap-3"><span class="material-symbols-outlined text-blue-500 text-sm">check</span> Authority Protocol (LinkedIn Agent)</li>
-                <li class="flex gap-3"><span class="material-symbols-outlined text-blue-500 text-sm">check</span> Unlimited Domain Scaling</li>
+            <div class="text-6xl font-black">$49 <span class="text-sm text-white/20 font-normal">USD / Month</span></div>
+            <ul class="space-y-5 text-white/80 font-medium">
+                <li class="flex gap-4"><span class="material-symbols-outlined text-blue-500">check</span> Everything in Architect</li>
+                <li class="flex gap-4"><span class="material-symbols-outlined text-blue-500">check</span> Search Protocol (GEO SEO)</li>
+                <li class="flex gap-4"><span class="material-symbols-outlined text-blue-500">check</span> Authority Protocol (LinkedIn)</li>
+                <li class="flex gap-4"><span class="material-symbols-outlined text-blue-500">check</span> Unlimited Domain Scaling</li>
             </ul>
-            <a href="https://pinesentry.lemonsqueezy.com/checkout/buy/1431594?embed=1" class="lemonsqueezy-button btn-primary w-full text-center block">Start Building Authority</a>
+            <a href="https://pinesentry.lemonsqueezy.com/checkout/buy/1431594?embed=1" class="lemonsqueezy-button btn-primary w-full text-center block !py-5 !text-lg">Start Building Authority</a>
         </div>
-    </div>
-    <div class="max-w-2xl mx-auto space-y-12 pt-12">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center md:text-left">
-            <div class="space-y-2">
-                <h4 class="text-sm font-bold">Secure Transactions</h4>
-                <p class="text-xs text-white/30">All payments are encrypted and processed by Lemon Squeezy (Merchant of Record).</p>
-            </div>
-            <div class="space-y-2">
-                <h4 class="text-sm font-bold">Instant Fulfillment</h4>
-                <p class="text-xs text-white/30">Access to software payloads and GitHub vault invitations are dispatched immediately.</p>
-            </div>
-        </div>
-        <div class="text-center"><a href="/trust" class="text-[10px] text-white/20 uppercase tracking-widest hover:text-white underline">Refund Policy, Security Standards & Terms of Service</a></div>
     </div>
 </div>
 </main>
-    <footer class="border-t border-[#1a1a1a] bg-black py-20 px-6">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div class="col-span-1 md:col-span-2 space-y-6">
+    <footer class="bg-black py-32 px-6 border-t border-white/5">
+        <div class="max-container grid grid-cols-1 md:grid-cols-4 gap-16">
+            <div class="col-span-1 md:col-span-2 space-y-8">
                 <div class="flex items-center gap-3">
-                    <img src="/logo.jpg" alt="logo" class="w-5 h-5 rounded-sm grayscale">
-                    <span class="text-sm font-bold text-white/80">mr.technology</span>
+                    <img src="/logo.jpg" alt="logo" class="w-6 h-6 rounded-sm opacity-50">
+                    <span class="text-sm font-bold text-white/80 uppercase tracking-widest">mr.technology</span>
                 </div>
-                <p class="text-sm text-white/40 max-w-xs leading-relaxed">The secure infrastructure standard for autonomous solopreneurs. Build, protect, and scale your digital assets with deterministic protocols.</p>
+                <p class="text-lg text-white/40 max-w-sm leading-relaxed">Infrastructure designed for the solo founder. Deploy agents, secure data, and architect your empire with zero trust protocols.</p>
             </div>
-            <div class="space-y-4">
-                <h4 class="text-xs font-bold text-white/20 uppercase tracking-widest">Protocols</h4>
-                <div class="flex flex-col gap-2 text-sm text-white/50">
-                    <a href="/guard" class="hover:text-white transition-colors">Guard Protocol</a>
-                    <a href="/bridge" class="hover:text-white transition-colors">Bridge Protocol</a>
-                    <a href="/search" class="hover:text-white transition-colors">Search Protocol</a>
-                    <a href="/authority" class="hover:text-white transition-colors">Authority Protocol</a>
+            <div class="space-y-6">
+                <h4 class="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em]">Protocols</h4>
+                <div class="flex flex-col gap-4 text-sm text-white/50 font-medium">
+                    <a href="/guard" class="hover:text-white transition-colors">Guard</a>
+                    <a href="/bridge" class="hover:text-white transition-colors">Bridge</a>
+                    <a href="/search" class="hover:text-white transition-colors">Search</a>
+                    <a href="/authority" class="hover:text-white transition-colors">Authority</a>
                 </div>
             </div>
-            <div class="space-y-4">
-                <h4 class="text-xs font-bold text-white/20 uppercase tracking-widest">Governance</h4>
-                <div class="flex flex-col gap-2 text-sm text-white/50">
-                    <a href="/trust" class="hover:text-white transition-colors">Security Status</a>
-                    <a href="/trust" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="/trust" class="hover:text-white transition-colors">Terms of Service</a>
+            <div class="space-y-6">
+                <h4 class="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em]">Trust</h4>
+                <div class="flex flex-col gap-4 text-sm text-white/50 font-medium">
+                    <a href="/trust" class="hover:text-white transition-colors">System Status</a>
+                    <a href="/trust" class="hover:text-white transition-colors">Terms</a>
+                    <a href="/about" class="hover:text-white transition-colors">Mission</a>
                 </div>
             </div>
         </div>
-        <div class="max-w-6xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-[10px] text-white/20 font-mono">SYSTEM_VERSION: 4.2.0-STABLE // REPOSITORY: mr.technology/core</div>
-            <div class="text-[10px] text-white/20 font-mono">© 2026 MR.TECHNOLOGY. ALL RIGHTS RESERVED.</div>
+        <div class="max-container mt-32 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-[10px] text-white/20 font-mono">v4.2.0_STABLE</div>
+            <div class="text-[10px] text-white/20 font-mono uppercase tracking-widest">© 2026 mr.technology architecture</div>
         </div>
     </footer>
 </body></html>

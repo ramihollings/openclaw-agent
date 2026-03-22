@@ -4,6 +4,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/jpeg" href="/logo.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
     <style>
         body { background-color: #050505; color: #d1d5db; font-family: 'Inter', sans-serif; }
         .card { background: #0a0a0a; border: 1px solid #1a1a1a; transition: all 0.3s; }
@@ -26,9 +27,7 @@
                 <img src="/logo.jpg" alt="mr.technology logo" class="w-8 h-8 rounded-lg shadow-sm group-hover:ring-2 ring-[#0070f3] transition-all">
                 <span class="text-xl font-black uppercase tracking-tighter text-white">mr.technology</span>
             </a>
-            
             <div class="hidden md:flex items-center gap-8"><a href="/" class="nav-link ">Home</a><a href="/solutions" class="nav-link ">Solutions</a><a href="/status" class="nav-link ">Status</a><a href="/about" class="nav-link nav-active">About</a></div>
-            
             <div class="flex items-center gap-4">
                 <a href="/download" class="hidden sm:inline-block bg-white text-black px-5 py-2 rounded-lg font-bold text-xs uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all">Console</a>
                 <button id="mobile-btn" class="md:hidden text-white p-2">
@@ -37,32 +36,28 @@
                 </button>
             </div>
         </div>
-
         <div id="mobile-menu" class="hidden fixed inset-0 top-20 z-40 bg-[#050505] p-8 flex flex-col md:hidden">
             <a href="/" class="text-2xl font-black uppercase tracking-tighter py-4 border-b border-white/5 text-white">Home</a><a href="/solutions" class="text-2xl font-black uppercase tracking-tighter py-4 border-b border-white/5 text-white">Solutions</a><a href="/status" class="text-2xl font-black uppercase tracking-tighter py-4 border-b border-white/5 text-white">Status</a><a href="/about" class="text-2xl font-black uppercase tracking-tighter py-4 border-b border-white/5 text-blue-500">About</a>
             <a href="/download" class="mt-8 bg-blue-600 text-white py-4 rounded-xl text-center font-black uppercase tracking-widest">Download Console</a>
         </div>
     </nav>
     <script>
-        const btn = document.getElementById('mobile-btn');
-        const menu = document.getElementById('mobile-menu');
-        const i1 = document.getElementById('menu-icon');
-        const i2 = document.getElementById('close-icon');
-        if (btn) {
-            btn.onclick = () => {
-                menu.classList.toggle('hidden');
-                i1.classList.toggle('hidden');
-                i2.classList.toggle('hidden');
-                document.body.classList.toggle('overflow-hidden');
-            };
-        }
+        (function() {
+            const btn = document.getElementById('mobile-btn');
+            const menu = document.getElementById('mobile-menu');
+            const i1 = document.getElementById('menu-icon');
+            const i2 = document.getElementById('close-icon');
+            if (btn && menu) {
+                btn.onclick = () => {
+                    menu.classList.toggle('hidden');
+                    i1.classList.toggle('hidden');
+                    i2.classList.toggle('hidden');
+                    document.body.classList.toggle('overflow-hidden');
+                };
+            }
+        })();
     </script>
-    <main class="flex-1 px-6 py-12">
-<div class="max-w-3xl mx-auto py-20">
-    <h1 class="text-6xl font-black uppercase tracking-tighter mb-12 text-white">Our Mission</h1>
-    <p class="text-xl text-slate-300 leading-relaxed mb-10">Building the primitives for autonomous compute. We believe the future belongs to developers who own their intelligence infrastructure, not to closed-source aggregators.</p>
-    <p class="text-xl text-slate-300 leading-relaxed">Mr. TECHNOLOGY builds tools that let agents orchestrate payments, secure their environments, and expand their capabilities autonomously.</p>
-</div></main>
+    <main class="flex-1 px-6 py-12"><div class="max-w-3xl mx-auto py-20 text-center md:text-left"><h1 class="text-6xl font-black uppercase tracking-tighter mb-12 text-white italic">The Solopreneur Mission</h1><p class="text-xl text-slate-300 leading-relaxed mb-10">mr.technology is an infrastructure hub designed for the solo asset manager. We build decentralized, secure, and highly scalable software tools that empower solopreneurs to run multiple online assets with the effort of one.</p></div></main>
     <footer class="border-t border-white/5 bg-[#0a0a0a] mt-auto">
         <div class="max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row justify-between items-center gap-10">
             <div class="flex flex-col items-center md:items-start gap-4">
@@ -77,7 +72,7 @@
                 <a href="#" class="hover:text-blue-500 transition-colors">Terms</a>
                 <a href="/status" class="hover:text-blue-500 transition-colors">Status</a>
             </div>
-            <div class="text-xs text-slate-700 font-mono font-bold uppercase tracking-widest">© 2026 CORE_INFRA_V4.2</div>
+            <div class="text-xs text-slate-700 font-mono">© 2026 MR.TECHNOLOGY // CORE_INFRA_V4.2</div>
         </div>
     </footer>
 </body></html>

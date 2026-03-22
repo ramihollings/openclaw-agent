@@ -19,6 +19,7 @@
         .prose pre { background: #0f172a; padding: 1.5em; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1.5em; border: 1px solid #1e293b; }
         .prose pre code { background: transparent; padding: 0; color: #e2e8f0; }
         .prose blockquote { border-left: 4px solid #0070f3; padding-left: 1rem; color: #94a3b8; font-style: italic; margin-bottom: 1.5em; }
+        .feature-tag { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; color: #0070f3; margin-bottom: 0.5rem; display: block; }
     </style>
 </head><body class="min-h-screen flex flex-col">
     <nav class="sticky top-0 z-50 bg-[#050505]/90 backdrop-blur-xl border-b border-white/5">
@@ -58,57 +59,22 @@
         })();
     </script>
     <main class="flex-1 px-6 py-12"><div class="py-10"><article class="prose max-w-none">
-    <div class="mb-12 text-center">
-        <span class="text-[#0070f3] text-[10px] font-black uppercase tracking-widest bg-[#0070f3]/10 px-3 py-1 rounded">Social Automation</span>
-        <h1 class="text-5xl font-black mt-6 mb-4 leading-tight tracking-tight text-white">LinkedIn Authority Agent: Automating the Build-in-Public Grind</h1>
-        <p class="text-slate-400 text-lg">By ghost-ops • March 19, 2026 • 10 min read</p>
-    </div>
-
-    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&q=80" alt="Social media networking" class="w-full h-[400px] object-cover rounded-2xl mb-12 opacity-80 border border-slate-800">
-
-    <p>Solo founders and indie hackers know that the manual social media grind is excruciating. Building a complex, scalable product requires deep, uninterrupted technical focus. However, generating leads, securing funding, and building an audience requires constant, public visibility. The "Build-in-Public" movement is incredibly powerful for growth, but the context switching required to stop coding, open LinkedIn, format a post, and engage with comments completely destroys engineering momentum. We built the <strong>LinkedIn Authority Agent</strong> to solve this paradox.</p>
-
-    <h2>Workspace Intelligence: Beyond Generic AI Posts</h2>
-    <p>The primary issue with most AI social media tools is that they generate generic, empty "thought leadership" that provides zero actual value to the reader. They sound like robots because they lack context.</p>
-    <p>The mr.technology Authority Agent operates differently. It runs as a background daemon on your local machine and hooks directly into your OpenClaw workspace logs. It actively monitors your actual engineering work:</p>
-    <ul>
-        <li><strong>Git Commit Hooks:</strong> It reads your commit messages and diffs to understand what features you just shipped.</li>
-        <li><strong>Syslog Monitoring:</strong> It tracks system errors, deployment successes, and uptime metrics.</li>
-        <li><strong>Memory Grep:</strong> It accesses your local <code>MEMORY.md</code> files where you log daily technical decisions and architectural roadblocks.</li>
-    </ul>
-    <p>It extracts high-signal "wins" (e.g., "Deployed zero-touch provisioning to production") and "lessons learned" (e.g., "Debugging EADDRINUSE errors on port 8080 taught me X about Nginx mapping") entirely autonomously.</p>
-
-    <h2>Vibe-Coded Drafting & Tone Mapping</h2>
-    <p>Raw technical logs are dry. Using a carefully tuned, multi-shot prompt blueprint, the agent translates these technical artifacts into highly engaging, platform-native content. It is programmed to match the sharp, professional, yet witty voice of a seasoned founder.</p>
-
-    <p>The system offers selectable <strong>Authority Strategies</strong>, allowing you to direct the narrative focus of your personal brand:</p>
-    
-    <h3>Strategy A: The Visionary</h3>
-    <p>Focuses on high-level market shifts, the "why" behind the code, and hype generation. It abstracts the technical logs into broader lessons about the agentic economy, the death of traditional SEO, or the future of compute.</p>
-
-    <h3>Strategy B: The Builder</h3>
-    <p>Dives deep into technical implementations. It includes actual code snippets, bash commands, and detailed explanations of how a specific problem was solved. This strategy builds profound trust with other engineers and highly technical VCs.</p>
-
-    <pre><code>// Example: Automated Log Extraction
-[System Log]: Successfully compiled React components to static HTML, bypassed Node server requirements, deployed via Rsync to StackCP.
-
-// Example: Vibe-Coded 'Builder' Output
-"Everyone says you need a complex Docker orchestration pipeline to deploy modern apps. 
-
-Today, I stripped out the entire Node backend, compiled our React UI down to pure static HTML, and deployed it directly via an automated Rsync script to a bare-metal Linux server. 
-
-Load times dropped by 400ms. Infrastructure costs dropped to near-zero. 
-
-Sometimes the most advanced architecture is the one that deletes the most code. #BuildInPublic #Engineering #WebPerf"</code></pre>
-
-    <h2>The Zero-Touch Publishing Pipeline</h2>
-    <p>Once a draft reaches the "Ready to Scale" status, it sits in a staging queue on your local Hub dashboard. The founder can review the generated posts at the end of the day, make minor tweaks if desired, and click "Publish."</p>
-    <p>Alternatively, the agent can be granted full autonomy to post directly to the LinkedIn API during optimal algorithmic engagement windows. It transforms your private engineering momentum into public social capital, operating as a ghostwriter that actually understands your codebase.</p>
-    
-    <div class="mt-12 flex gap-4">
-        <a href="/download" class="bg-[#0070f3] text-white px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-blue-600 transition-colors">Automate Your Authority</a>
-    </div>
-</article></div></main>
+        <h1>Build-in-Public Authority Agent</h1>
+        <p class="lead">Marketing is no longer a separate task. It's a byproduct of your work.</p>
+        
+        <h2>Why You Need This</h2>
+        <p>As a solopreneur, you are too busy building to post on social media. But without a personal brand, you have no leverage. This agent converts your internal development logs into a stream of "Thought Leadership" content that builds your authority while you sleep.</p>
+        
+        <h2>What's Inside</h2>
+        <ul>
+            <li><b>Log Scraper:</b> A tool that monitors your Git commits and terminal logs for "Aha!" moments.</li>
+            <li><b>Viral Template Suite:</b> 20+ prompt structures designed for maximum engagement on LinkedIn.</li>
+            <li><b>Autonomous Scheduler:</b> A hands-free pipeline from code commit to social post.</li>
+        </ul>
+        
+        <h2>How to Use It</h2>
+        <p>Run the agent in the background of your workspace. It will flag significant architectural changes or bug fixes and draft a LinkedIn post explaining the "Lesson Learned." You simply review the draft and click push—or set it to autonomous mode for a full build-in-public presence.</p>
+    </article></div></main>
     <footer class="border-t border-white/5 bg-[#0a0a0a] mt-auto">
         <div class="max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row justify-between items-center gap-10">
             <div class="flex flex-col items-center md:items-start gap-4">

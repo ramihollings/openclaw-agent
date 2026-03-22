@@ -41,18 +41,25 @@
                 <button id="mobile-btn" class="md:hidden text-white"><span class="material-symbols-outlined">menu</span></button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden fixed inset-0 top-20 z-[100] bg-black p-8 flex flex-col md:hidden">
-            <a href="/" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">Home</a><a href="/solutions" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">Solutions</a><a href="/status" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">Status</a><a href="/about" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">About</a>
-            <a href="/download" class="mt-12 btn-primary text-center">Open Console</a>
+        <div id="mobile-menu" class="hidden fixed inset-0 top-20 z-[100] bg-black p-8 flex flex-col md:hidden overflow-y-auto">
+            <div class="flex flex-col">
+                <a href="/" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">Home</a><a href="/solutions" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">Solutions</a><a href="/status" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">Status</a><a href="/about" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">About</a>
+                <a href="/download" class="mt-12 btn-primary text-center">Open Console</a>
+            </div>
         </div>
     </nav>
     <script>
-        const btn = document.getElementById('mobile-btn');
-        const menu = document.getElementById('mobile-menu');
-        if (btn) btn.onclick = () => {
-            menu.classList.toggle('hidden');
-            document.body.classList.toggle('overflow-hidden');
-        };
+        (function() {
+            const btn = document.getElementById('mobile-btn');
+            const menu = document.getElementById('mobile-menu');
+            if (btn && menu) {
+                btn.onclick = () => {
+                    const isHidden = menu.classList.contains('hidden');
+                    menu.classList.toggle('hidden');
+                    document.body.style.overflow = isHidden ? 'hidden' : '';
+                };
+            }
+        })();
     </script>
     <main class="flex-1">
 <div class="max-w-7xl mx-auto px-8 py-40 flex flex-col items-center justify-center text-center space-y-12">

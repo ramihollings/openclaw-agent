@@ -9,39 +9,26 @@
     <style>
         :root { --primary: #0070f3; --bg: #000000; --card: #0a0a0a; --border: rgba(255,255,255,0.1); }
         body { background-color: var(--bg); color: #ffffff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-        
-        /* Layout */
         .max-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        
-        /* Elements */
         .secure-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; transition: all 0.3s ease; }
         .secure-card:hover { border-color: rgba(255,255,255,0.2); }
-        
-        /* Navigation (Basedash + Atompoint Style) */
         .nav-link { font-size: 0.8rem; font-weight: 500; color: #a1a1aa; transition: all 0.2s; padding: 6px 12px; border-radius: 6px; }
         .nav-link:hover { color: #fff; background: rgba(255,255,255,0.05); }
         .nav-active { color: #fff; background: rgba(255,255,255,0.08); }
-        
-        /* Buttons */
         .btn-primary { background: #ffffff; color: #000000; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.85rem; transition: all 0.2s; cursor: pointer; display: inline-block; }
         .btn-primary:hover { transform: scale(1.02); }
         .btn-outline { border: 1px solid var(--border); color: #ffffff; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.85rem; transition: all 0.2s; cursor: pointer; display: inline-block; }
         .btn-outline:hover { background: rgba(255,255,255,0.05); }
-        
-        /* Typography */
         .h-xl { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1.1; font-weight: 800; letter-spacing: -0.04em; }
         .badge { background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: #a1a1aa; font-size: 0.7rem; font-weight: 600; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; }
-        
-        /* Mobile Menu (Atompoint Overlay style) */
-        #mobile-menu {
-            transition: opacity 0.3s ease, visibility 0.3s;
-            opacity: 0;
-            visibility: hidden;
-        }
-        #mobile-menu.active {
-            opacity: 1;
-            visibility: visible;
-        }
+        #mobile-menu { transition: opacity 0.3s ease, visibility 0.3s; opacity: 0; visibility: hidden; }
+        #mobile-menu.active { opacity: 1; visibility: visible; }
+        .prose h1 { font-size: 3rem; font-weight: 800; margin-bottom: 2rem; }
+        .prose h2 { font-size: 2rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1.5rem; }
+        .prose p { font-size: 1.25rem; color: #a1a1aa; line-height: 1.7; margin-bottom: 1.5rem; }
+        .prose ul { list-style: disc; margin-left: 1.5rem; color: #a1a1aa; font-size: 1.25rem; }
+        .prose li { margin-bottom: 0.75rem; }
+        .prose strong { color: #fff; }
     </style>
 </head><body class="pt-20">
     <nav class="fixed top-0 inset-x-0 z-[200] border-b border-white/5 bg-black/50 backdrop-blur-xl">
@@ -62,8 +49,6 @@
             </div>
         </div>
     </nav>
-
-    <!-- Mobile Menu: Basedash/Atompoint Blend -->
     <div id="mobile-menu" class="fixed inset-0 z-[190] bg-black flex flex-col p-8 pt-32">
         <div class="flex flex-col gap-6">
             <a href="/protocols" class="text-5xl font-bold tracking-tighter text-white hover:text-blue-500 transition-colors">Protocols</a><a href="/pricing" class="text-5xl font-bold tracking-tighter text-white hover:text-blue-500 transition-colors">Pricing</a><a href="/trust" class="text-5xl font-bold tracking-tighter text-white hover:text-blue-500 transition-colors">Trust</a><a href="/about" class="text-5xl font-bold tracking-tighter text-white hover:text-blue-500 transition-colors">About</a>
@@ -73,7 +58,6 @@
             <div class="text-[10px] text-white/20 font-mono uppercase tracking-widest text-center py-4">Node_Core: v4.2 // Autonomous Infrastructure</div>
         </div>
     </div>
-
     <script>
         (function() {
             const btn = document.getElementById('mobile-btn');
@@ -88,9 +72,7 @@
             }
         })();
     </script>
-    <main>
-<div class="max-container py-24 md:py-48 space-y-48">
-    <!-- Hero (Basedash Inspired) -->
+    <main><div class="max-container py-24 md:py-48 space-y-48">
     <section class="max-w-4xl space-y-12">
         <div class="badge">Autonomous Intelligence Infrastructure</div>
         <h1 class="h-xl">One Human.<br><span class="text-white/30">Infinite Systems.</span></h1>
@@ -100,8 +82,6 @@
             <a href="/about" class="btn-outline !py-4 !px-8 !text-lg">Our Philosophy</a>
         </div>
     </section>
-
-    <!-- Protocols (Atompoint Bento Style) -->
     <section class="space-y-20">
         <div class="flex flex-col md:flex-row justify-between items-end gap-8">
             <h2 class="text-4xl md:text-6xl font-bold tracking-tight">The Core Protocols.</h2>
@@ -126,32 +106,29 @@
             </a>
         </div>
     </section>
-
-    <!-- Pricing Block -->
     <section class="secure-card p-16 space-y-12 bg-white/5 border-white/10">
         <div class="max-w-2xl space-y-4">
             <h2 class="text-4xl font-bold tracking-tight italic">Access Tiers.</h2>
-            <p class="text-white/40 text-lg leading-relaxed">Transparent infrastructure licensing. No hidden fees or complex seat-based pricing.</p>
+            <p class="text-white/40 text-lg leading-relaxed">Transparent infrastructure licensing.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16 pt-8">
             <div class="space-y-6">
                 <div class="badge !text-white">One-Time License</div>
                 <h3 class="text-3xl font-bold italic">Architect</h3>
-                <p class="text-white/40 leading-relaxed">Own the foundation. Perpetual access to Guard and Bridge protocols for self-hosted deployments.</p>
+                <p class="text-white/40 leading-relaxed">Own the foundation.</p>
                 <div class="text-5xl font-black">$197</div>
                 <a href="/pricing" class="btn-outline w-full text-center">Get Blueprints</a>
             </div>
             <div class="space-y-6 border-l border-white/5 pl-0 md:pl-16">
                 <div class="badge !text-blue-500 border-blue-500/30">Subscription</div>
                 <h3 class="text-3xl font-bold italic">Empire</h3>
-                <p class="text-white/40 leading-relaxed">Continuous scaling. Unlocks Search and Authority protocols for unlimited domain growth.</p>
+                <p class="text-white/40 leading-relaxed">Continuous scaling.</p>
                 <div class="text-5xl font-black">$49<span class="text-sm text-white/20">/mo</span></div>
                 <a href="/pricing" class="btn-primary w-full text-center">Deploy Empire</a>
             </div>
         </div>
     </section>
-</div>
-</main>
+</div></main>
     <footer class="bg-black py-32 px-6 border-t border-white/5">
         <div class="max-container grid grid-cols-1 md:grid-cols-4 gap-16">
             <div class="col-span-1 md:col-span-2 space-y-8">
@@ -159,7 +136,7 @@
                     <img src="/logo.jpg" alt="logo" class="w-6 h-6 rounded-sm opacity-50">
                     <span class="text-sm font-bold text-white/80 uppercase tracking-widest">mr.technology</span>
                 </div>
-                <p class="text-lg text-white/40 max-w-sm leading-relaxed">Infrastructure designed for the solo founder. Deploy agents, secure data, and architect your empire with zero trust protocols.</p>
+                <p class="text-lg text-white/40 max-sm leading-relaxed">Infrastructure designed for the solo founder. Deploy agents, secure data, and architect your empire with zero trust protocols.</p>
             </div>
             <div class="space-y-6">
                 <h4 class="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em]">Protocols</h4>
@@ -174,8 +151,9 @@
                 <h4 class="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em]">Trust</h4>
                 <div class="flex flex-col gap-4 text-sm text-white/50 font-medium">
                     <a href="/trust" class="hover:text-white transition-colors">System Status</a>
-                    <a href="/trust" class="hover:text-white transition-colors">Terms</a>
-                    <a href="/about" class="hover:text-white transition-colors">Mission</a>
+                    <a href="/terms" class="hover:text-white transition-colors">Terms</a>
+                    <a href="/privacy" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="/refunds" class="hover:text-white transition-colors">Refunds</a>
                 </div>
             </div>
         </div>

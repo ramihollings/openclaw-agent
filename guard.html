@@ -9,39 +9,26 @@
     <style>
         :root { --primary: #0070f3; --bg: #000000; --card: #0a0a0a; --border: rgba(255,255,255,0.1); }
         body { background-color: var(--bg); color: #ffffff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-        
-        /* Layout */
         .max-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        
-        /* Elements */
         .secure-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; transition: all 0.3s ease; }
         .secure-card:hover { border-color: rgba(255,255,255,0.2); }
-        
-        /* Navigation (Basedash + Atompoint Style) */
         .nav-link { font-size: 0.8rem; font-weight: 500; color: #a1a1aa; transition: all 0.2s; padding: 6px 12px; border-radius: 6px; }
         .nav-link:hover { color: #fff; background: rgba(255,255,255,0.05); }
         .nav-active { color: #fff; background: rgba(255,255,255,0.08); }
-        
-        /* Buttons */
         .btn-primary { background: #ffffff; color: #000000; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.85rem; transition: all 0.2s; cursor: pointer; display: inline-block; }
         .btn-primary:hover { transform: scale(1.02); }
         .btn-outline { border: 1px solid var(--border); color: #ffffff; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.85rem; transition: all 0.2s; cursor: pointer; display: inline-block; }
         .btn-outline:hover { background: rgba(255,255,255,0.05); }
-        
-        /* Typography */
         .h-xl { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1.1; font-weight: 800; letter-spacing: -0.04em; }
         .badge { background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: #a1a1aa; font-size: 0.7rem; font-weight: 600; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; }
-        
-        /* Mobile Menu (Atompoint Overlay style) */
-        #mobile-menu {
-            transition: opacity 0.3s ease, visibility 0.3s;
-            opacity: 0;
-            visibility: hidden;
-        }
-        #mobile-menu.active {
-            opacity: 1;
-            visibility: visible;
-        }
+        #mobile-menu { transition: opacity 0.3s ease, visibility 0.3s; opacity: 0; visibility: hidden; }
+        #mobile-menu.active { opacity: 1; visibility: visible; }
+        .prose h1 { font-size: 3rem; font-weight: 800; margin-bottom: 2rem; }
+        .prose h2 { font-size: 2rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1.5rem; }
+        .prose p { font-size: 1.25rem; color: #a1a1aa; line-height: 1.7; margin-bottom: 1.5rem; }
+        .prose ul { list-style: disc; margin-left: 1.5rem; color: #a1a1aa; font-size: 1.25rem; }
+        .prose li { margin-bottom: 0.75rem; }
+        .prose strong { color: #fff; }
     </style>
 </head><body class="pt-20">
     <nav class="fixed top-0 inset-x-0 z-[200] border-b border-white/5 bg-black/50 backdrop-blur-xl">
@@ -62,8 +49,6 @@
             </div>
         </div>
     </nav>
-
-    <!-- Mobile Menu: Basedash/Atompoint Blend -->
     <div id="mobile-menu" class="fixed inset-0 z-[190] bg-black flex flex-col p-8 pt-32">
         <div class="flex flex-col gap-6">
             <a href="/protocols" class="text-5xl font-bold tracking-tighter text-white hover:text-blue-500 transition-colors">Protocols</a><a href="/pricing" class="text-5xl font-bold tracking-tighter text-white hover:text-blue-500 transition-colors">Pricing</a><a href="/trust" class="text-5xl font-bold tracking-tighter text-white hover:text-blue-500 transition-colors">Trust</a><a href="/about" class="text-5xl font-bold tracking-tighter text-white hover:text-blue-500 transition-colors">About</a>
@@ -73,7 +58,6 @@
             <div class="text-[10px] text-white/20 font-mono uppercase tracking-widest text-center py-4">Node_Core: v4.2 // Autonomous Infrastructure</div>
         </div>
     </div>
-
     <script>
         (function() {
             const btn = document.getElementById('mobile-btn');
@@ -88,34 +72,18 @@
             }
         })();
     </script>
-    <main>
-        <div class="max-container py-32 space-y-32">
-            <div class="max-w-4xl space-y-8">
-                <div class="badge">Architect Tier</div>
-                <h1 class="h-xl italic">Guard.</h1>
-                <p class="text-3xl text-white/40 leading-tight">Security Enforcement for LLM Agents.</p>
-            </div>
-            <article class="prose prose-invert max-w-4xl space-y-12 text-white/60 text-xl leading-relaxed">
-                
-            <h2>Security-First Autonomy</h2>
-            <p>The Guard Protocol is the deterministic firewall for your agent's intent. Large Language Models are non-deterministic; without strict boundaries, an agent can perform unauthorized actions.</p>
-            <h3>What you get:</h3>
-            <ul>
-                <li>The Role Vault: 39 pre-vetted security profiles.</li>
-                <li>Tool Whitelisting: Hardened tool-call schemas.</li>
-                <li>Access Control: Regex-based file path sanitization.</li>
-            </ul>
-        
-                <div class="pt-24">
-                    <div class="secure-card p-16 space-y-8 bg-white/5">
-                        <h3 class="text-4xl font-bold italic text-white">Initialize Protocol.</h3>
-                        <p class="text-white/40">This protocol is included in the <b>Architect License</b> tier. Secure your infrastructure today.</p>
-                        <a href="https://pinesentry.lemonsqueezy.com/checkout/buy/1431586?embed=1" class="lemonsqueezy-button btn-primary !py-5 !px-12 !text-lg">Get the Blueprints</a>
-                    </div>
-                </div>
-            </article>
+    <main><div class="max-container py-32 space-y-32">
+        <div class="max-w-4xl space-y-8">
+            <div class="badge">Architect Tier</div>
+            <h1 class="h-xl italic">Guard.</h1>
+            <p class="text-3xl text-white/40">Security Enforcement.</p>
         </div>
-    </main>
+        <article class="prose prose-invert max-w-4xl"><h2>Security-First Autonomy</h2><p>Deterministic firewall for agents.</p></article>
+        <div class="secure-card p-16 space-y-8 bg-white/5 max-w-4xl">
+            <h3 class="text-4xl font-bold italic">Initialize Protocol.</h3>
+            <a href="https://pinesentry.lemonsqueezy.com/checkout/buy/1431586?embed=1" class="lemonsqueezy-button btn-primary !py-5 !px-12 !text-lg">Get the Blueprints</a>
+        </div>
+    </div></main>
     <footer class="bg-black py-32 px-6 border-t border-white/5">
         <div class="max-container grid grid-cols-1 md:grid-cols-4 gap-16">
             <div class="col-span-1 md:col-span-2 space-y-8">
@@ -123,7 +91,7 @@
                     <img src="/logo.jpg" alt="logo" class="w-6 h-6 rounded-sm opacity-50">
                     <span class="text-sm font-bold text-white/80 uppercase tracking-widest">mr.technology</span>
                 </div>
-                <p class="text-lg text-white/40 max-w-sm leading-relaxed">Infrastructure designed for the solo founder. Deploy agents, secure data, and architect your empire with zero trust protocols.</p>
+                <p class="text-lg text-white/40 max-sm leading-relaxed">Infrastructure designed for the solo founder. Deploy agents, secure data, and architect your empire with zero trust protocols.</p>
             </div>
             <div class="space-y-6">
                 <h4 class="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em]">Protocols</h4>
@@ -138,8 +106,9 @@
                 <h4 class="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em]">Trust</h4>
                 <div class="flex flex-col gap-4 text-sm text-white/50 font-medium">
                     <a href="/trust" class="hover:text-white transition-colors">System Status</a>
-                    <a href="/trust" class="hover:text-white transition-colors">Terms</a>
-                    <a href="/about" class="hover:text-white transition-colors">Mission</a>
+                    <a href="/terms" class="hover:text-white transition-colors">Terms</a>
+                    <a href="/privacy" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="/refunds" class="hover:text-white transition-colors">Refunds</a>
                 </div>
             </div>
         </div>

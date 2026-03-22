@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><title>Hardware | mr.technology Lab</title>
+<!DOCTYPE html><html lang="en"><head><title>Smart_Home | mr.technology Lab</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -44,10 +44,10 @@
             </a><a href="/automation" class="flex items-center gap-3 px-8 py-3 text-xs text-white/40 hover:text-white hover:bg-white/5 transition-all ">
                 <span class="material-symbols-outlined text-lg opacity-40">account_tree</span>
                 Automation
-            </a><a href="/hardware" class="flex items-center gap-3 px-8 py-3 text-xs text-white/40 hover:text-white hover:bg-white/5 transition-all text-blue-500 border-l-2 border-blue-500 bg-blue-500/5">
+            </a><a href="/hardware" class="flex items-center gap-3 px-8 py-3 text-xs text-white/40 hover:text-white hover:bg-white/5 transition-all ">
                 <span class="material-symbols-outlined text-lg opacity-40">settings_input_component</span>
                 Hardware
-            </a><a href="/smarthome" class="flex items-center gap-3 px-8 py-3 text-xs text-white/40 hover:text-white hover:bg-white/5 transition-all ">
+            </a><a href="/smarthome" class="flex items-center gap-3 px-8 py-3 text-xs text-white/40 hover:text-white hover:bg-white/5 transition-all text-blue-500 border-l-2 border-blue-500 bg-blue-500/5">
                 <span class="material-symbols-outlined text-lg opacity-40">home_iot_device</span>
                 Smart_Home
             </a><a href="/protocols" class="flex items-center gap-3 px-8 py-3 text-xs text-white/40 hover:text-white hover:bg-white/5 transition-all ">
@@ -70,19 +70,23 @@
         <button onclick="document.getElementById('sidebar').classList.toggle('active'); document.getElementById('sidebar').classList.toggle('hidden');" class="text-white"><span class="material-symbols-outlined">menu</span></button>
     </nav>
     <div class="content-area">
-<div class="p-10 md:p-24 max-w-4xl space-y-16">
-    <div class="badge">Payload: Review // Hardware</div><h1 class="text-6xl font-bold tracking-tighter italic">Hardware_Verdict.</h1>
-    <div class="glass-panel p-10 flex flex-col md:flex-row items-center gap-12 border-blue-500/20">
-        <div class="verdict-circle" data-score="94" style="--score: 94"></div>
-        <div class="flex-1 grid grid-cols-2 gap-8">
-            <div class="space-y-3"><h4 class="text-[10px] font-bold text-blue-500 uppercase tracking-widest">Architect Pros</h4><ul class="text-xs text-white/50 space-y-2 font-mono"><li>+ Edge Processing Capacity</li><li>+ Biometric Hardening</li></ul></div>
-            <div class="space-y-3"><h4 class="text-[10px] font-bold text-red-500 uppercase tracking-widest">Architect Cons</h4><ul class="text-xs text-white/50 space-y-2 font-mono"><li>- Proprietary Data Ports</li></ul></div>
+<div class="p-10 md:p-24 space-y-16">
+    <div class="badge">Directory: /dir/smart-home/</div>
+    <h1 class="text-6xl font-bold tracking-tighter italic">Interactive_Map.</h1>
+    <div class="glass-panel aspect-video w-full max-w-4xl mx-auto flex items-center justify-center relative overflow-hidden group">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558002038-1055907df827?w=1200')] bg-cover opacity-20 grayscale"></div>
+        <!-- Interaction Point 1 -->
+        <div class="absolute top-[40%] left-[30%] z-20 group-hover:scale-110 transition-transform cursor-pointer" onclick="alert('Smart Lock: Operational. Firmware v2.1')">
+            <div class="w-6 h-6 rounded-full bg-blue-500/50 flex items-center justify-center animate-pulse"><div class="w-2 h-2 rounded-full bg-blue-500"></div></div>
+            <div class="hidden md:block absolute top-8 left-0 glass-panel px-4 py-2 text-[9px] font-mono w-32">ENTRY_NODE: SECURE</div>
         </div>
+        <!-- Interaction Point 2 -->
+        <div class="absolute top-[60%] left-[70%] z-20 group-hover:scale-110 transition-transform cursor-pointer" onclick="alert('Lighting Engine: 42% Intensity.')">
+            <div class="w-6 h-6 rounded-full bg-blue-500/50 flex items-center justify-center animate-pulse"><div class="w-2 h-2 rounded-full bg-blue-500"></div></div>
+            <div class="hidden md:block absolute top-8 left-0 glass-panel px-4 py-2 text-[9px] font-mono w-32">AMBIENT_LIGHT_SENSORS</div>
+        </div>
+        <p class="text-[10px] font-mono text-white/20 absolute bottom-6">HOVER_COORDINATES: ENABLED // TOUCH_ACTIVE: TRUE</p>
     </div>
-    <article class="prose max-w-none text-white/60 text-xl leading-relaxed">
-        <p>SYSTEM_PREAMBLE: Hardware review data released. Architect note: Superior reliability in edge environments.</p>
-        <h2>Node Integration Test</h2><p>During our soak tests, the hardware demonstrated 99.9% uptime in distributed edge clusters...</p>
-    </article>
 </div></div>
     <div id="ai-chat" class="fixed bottom-8 right-8 z-[200] flex flex-col items-end">
         <div id="chat-window" class="hidden glass-panel w-80 h-96 mb-4 flex flex-col overflow-hidden shadow-2xl border-blue-500/30">

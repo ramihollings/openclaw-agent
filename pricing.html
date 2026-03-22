@@ -1,128 +1,82 @@
-<!DOCTYPE html><html lang="en"><head><title>Licenses | mr.technology Laboratory</title>
+<!DOCTYPE html><html lang="en"><head><title>Pricing | mr.technology Lab</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/jpeg" href="/logo.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
     <style>
-        :root { --primary: #0070f3; --bg: #050505; --term-text: #00ff41; --dim: rgba(255,255,255,0.1); }
+        :root { --primary: #0070f3; --bg: #050505; --term-text: #00ff41; --dim: rgba(255,255,255,0.05); --glass: rgba(255,255,255,0.03); }
         body { background-color: var(--bg); color: #ffffff; font-family: 'Fira Code', monospace; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         
-        .term-green { color: #00ff41; text-shadow: 0 0 5px rgba(0,255,65,0.5); }
-        .term-dim { color: rgba(255,255,255,0.3); }
-        
-        /* Sidebar Navigation */
         .sidebar { width: 280px; border-right: 1px solid var(--dim); position: fixed; height: 100vh; background: #000; z-index: 50; }
-        .nav-item { padding: 12px 24px; font-size: 0.8rem; color: rgba(255,255,255,0.5); transition: all 0.2s; border-left: 2px solid transparent; cursor: pointer; }
-        .nav-item:hover { color: #fff; background: rgba(255,255,255,0.05); }
-        .nav-active { color: var(--primary); border-left-color: var(--primary); background: rgba(0,112,243,0.05); }
-        
-        /* Content Wrapper */
         .content-area { margin-left: 280px; min-height: 100vh; position: relative; }
         
-        /* Readability Toggle (IDE Mode) */
+        .glass-panel { background: var(--glass); backdrop-blur: 10px; border: 1px solid var(--dim); border-radius: 12px; }
+        .neon-blue { color: #00d2ff; text-shadow: 0 0 10px rgba(0,210,255,0.5); }
+        
+        /* Verdict Console Chart */
+        .verdict-circle { width: 80px; height: 80px; border-radius: 50%; background: conic-gradient(var(--primary) calc(var(--score) * 1%), #222 0); display: flex; items-center: center; justify-content: center; position: relative; }
+        .verdict-circle::after { content: attr(data-score); position: absolute; inset: 4px; background: #000; border-radius: 50%; display: flex; items-center: center; justify-content: center; font-weight: 800; font-size: 1.2rem; }
+
+        /* Animation Node */
+        @keyframes pulse-blue { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; box-shadow: 0 0 15px var(--primary); } }
+        .node-pulse { animation: pulse-blue 2s infinite; }
+        
         body.ide-mode { background: #1a1b26; font-family: 'Inter', sans-serif; color: #cfc9c2; }
-        .ide-mode .prose { color: #a9b1d6; }
-        .ide-mode .content-area { max-width: 900px; margin: 0 auto; padding: 0 40px; }
         .ide-mode .sidebar { display: none; }
-        
-        /* Typing Animation */
-        @keyframes blink { 50% { opacity: 0; } }
-        .cursor { display: inline-block; width: 8px; height: 1.2em; background: var(--term-text); animation: blink 1s step-end infinite; vertical-align: middle; }
-        
-        .prose h1, .prose h2, .prose h3 { font-family: 'Fira Code', monospace; color: #fff; letter-spacing: -0.02em; }
-        .prose p { line-height: 1.8; margin-bottom: 1.5rem; }
+        .ide-mode .content-area { margin: 0 auto; max-width: 900px; padding: 40px; }
     </style>
 </head><body>
     <aside class="sidebar flex flex-col hidden md:flex">
         <div class="p-8 border-b border-white/5 flex items-center gap-3">
-            <img src="/logo.jpg" class="w-8 h-8 rounded">
-            <span class="text-xs font-bold uppercase tracking-widest text-white/80">MR. TECHNOLOGY</span>
+            <img src="/logo.jpg" class="w-8 h-8 rounded shadow-lg">
+            <span class="text-xs font-bold uppercase tracking-widest text-white/80">SYSTEM_ARCHITECT</span>
         </div>
-        <div class="flex-1 py-6">
-            <div class="px-8 pb-4 text-[10px] uppercase tracking-[0.2em] text-white/20 font-bold">Directories</div>
-            <a href="/" class="nav-item flex items-center gap-3 ">
-                <span class="material-symbols-outlined text-sm opacity-50">folder</span>
+        <div class="flex-1 py-6 overflow-y-auto">
+            <div class="px-8 pb-4 text-[9px] uppercase tracking-[0.3em] text-white/20 font-bold">Filesystem</div>
+            <a href="/" class="flex items-center gap-3 px-8 py-3 text-xs text-white/40 hover:text-white hover:bg-white/5 transition-all ">
+                <span class="material-symbols-outlined text-lg opacity-40">terminal</span>
                 Core_System
-            </a><a href="/protocols" class="nav-item flex items-center gap-3 ">
-                <span class="material-symbols-outlined text-sm opacity-50">folder</span>
-                Protocols
-            </a><a href="/pricing" class="nav-item flex items-center gap-3 nav-active text-white">
-                <span class="material-symbols-outlined text-sm opacity-50">folder_open</span>
-                Pricing_Tiers
-            </a><a href="/trust" class="nav-item flex items-center gap-3 ">
-                <span class="material-symbols-outlined text-sm opacity-50">folder</span>
-                Security_Trust
-            </a><a href="/about" class="nav-item flex items-center gap-3 ">
-                <span class="material-symbols-outlined text-sm opacity-50">folder</span>
-                Architect_Bio
+            </a><a href="/intelligence" class="flex items-center gap-3 px-8 py-3 text-xs text-white/40 hover:text-white hover:bg-white/5 transition-all ">
+                <span class="material-symbols-outlined text-lg opacity-40">psychology</span>
+                Intelligence
+            </a><a href="/automation" class="flex items-center gap-3 px-8 py-3 text-xs text-white/40 hover:text-white hover:bg-white/5 transition-all ">
+                <span class="material-symbols-outlined text-lg opacity-40">account_tree</span>
+                Automation
+            </a><a href="/hardware" class="flex items-center gap-3 px-8 py-3 text-xs text-white/40 hover:text-white hover:bg-white/5 transition-all ">
+                <span class="material-symbols-outlined text-lg opacity-40">settings_input_component</span>
+                Hardware
+            </a><a href="/trust" class="flex items-center gap-3 px-8 py-3 text-xs text-white/40 hover:text-white hover:bg-white/5 transition-all ">
+                <span class="material-symbols-outlined text-lg opacity-40">verified_user</span>
+                Trust_Vault
             </a>
-            
-            <div class="px-8 pt-10 pb-4 text-[10px] uppercase tracking-[0.2em] text-white/20 font-bold">Protocols</div>
-            <a href="/guard" class="nav-item flex items-center gap-3"><span class="material-symbols-outlined text-sm opacity-50">shield</span>Guard</a>
-            <a href="/bridge" class="nav-item flex items-center gap-3"><span class="material-symbols-outlined text-sm opacity-50">hub</span>Bridge</a>
-            <a href="/search" class="nav-item flex items-center gap-3"><span class="material-symbols-outlined text-sm opacity-50">radar</span>Search</a>
-            <a href="/authority" class="nav-item flex items-center gap-3"><span class="material-symbols-outlined text-sm opacity-50">history_edu</span>Authority</a>
         </div>
         <div class="p-8 border-t border-white/5 space-y-4">
-            <button onclick="document.body.classList.toggle('ide-mode')" class="w-full text-left text-[10px] uppercase font-bold text-blue-500 hover:text-white transition-colors flex items-center gap-2">
-                <span class="material-symbols-outlined text-sm">visibility</span>
-                Toggle_Reading_Mode
+            <button onclick="document.body.classList.toggle('ide-mode')" class="w-full text-left text-[9px] uppercase font-bold text-blue-500 hover:text-white flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">visibility</span> READ_MODE_TOGGLE
             </button>
-            <div class="text-[9px] font-mono text-white/20">SYSTEM_UPTIME: 99.9%<br>STATUS: OPERATIONAL</div>
+            <div class="text-[8px] font-mono text-white/20 uppercase tracking-tighter">Node_Status: Secure<br>Uptime: 100.0%</div>
         </div>
     </aside>
-    <!-- Mobile Nav Overlay -->
-    <nav class="md:hidden fixed top-0 inset-x-0 h-16 bg-black border-b border-white/5 z-[60] flex items-center justify-between px-6">
-         <a href="/" class="flex items-center gap-2">
-            <img src="/logo.jpg" class="w-6 h-6 rounded">
-            <span class="text-xs font-bold uppercase tracking-widest text-white/80">MR. TECH</span>
-        </a>
-        <button id="mob-btn" class="text-white"><span class="material-symbols-outlined">menu</span></button>
-    </nav>
-    <div id="mob-menu" class="fixed inset-0 bg-black z-[100] hidden flex flex-col p-8 pt-24">
-        <a href="/" class="text-4xl font-bold py-6 border-b border-white/5 text-white">Core_System</a><a href="/protocols" class="text-4xl font-bold py-6 border-b border-white/5 text-white">Protocols</a><a href="/pricing" class="text-4xl font-bold py-6 border-b border-white/5 text-white">Pricing_Tiers</a><a href="/trust" class="text-4xl font-bold py-6 border-b border-white/5 text-white">Security_Trust</a><a href="/about" class="text-4xl font-bold py-6 border-b border-white/5 text-white">Architect_Bio</a>
-        <button onclick="location.reload()" class="mt-auto text-sm uppercase text-white/20 font-bold">Close_Terminal</button>
-    </div>
-    <script>
-        const btn = document.getElementById('mob-btn');
-        const menu = document.getElementById('mob-menu');
-        if (btn) btn.onclick = () => { menu.classList.toggle('hidden'); document.body.style.overflow = menu.classList.contains('hidden') ? '' : 'hidden'; };
-    </script>
-    <div class="content-area">
-<div class="max-w-4xl p-10 md:p-24 space-y-24">
-    <div class="space-y-4">
-        <div class="text-xs term-green font-bold">DIRECTORY: /DIR/LICENSES</div>
-        <h1 class="text-6xl font-bold tracking-tighter italic">Access_Tiers.</h1>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="border border-white/10 p-12 space-y-8 hover:border-blue-500 transition-colors">
-            <h3 class="text-3xl font-bold uppercase italic text-white/40">Architect</h3>
-            <div class="text-5xl font-black text-white">$197</div>
-            <p class="text-sm text-white/40 leading-relaxed font-mono">ONE_TIME_PAYMENT // INFRASTRUCTURE_LICENSE</p>
-            <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-white/60">
-                <li>• Guard Protocol Core</li>
-                <li>• Bridge Protocol Core</li>
-                <li>• Private GitHub Vault</li>
-                <li>• Lifetime Source Access</li>
-            </ul>
-            <a href="https://pinesentry.lemonsqueezy.com/checkout/buy/1431586?embed=1" class="block w-full text-center py-4 bg-white text-black font-bold uppercase text-[10px] tracking-widest hover:bg-blue-500 hover:text-white transition-all">Secure_Blueprints</a>
+    <div class="content-area"><div class="p-24"><div class="badge">Directory: /dir/licenses/</div><h1 class="text-6xl font-bold italic mt-8">Access_Tiers.</h1></div></div>
+    <div id="ai-chat" class="fixed bottom-8 right-8 z-[200] flex flex-col items-end">
+        <div id="chat-window" class="hidden glass-panel w-80 h-96 mb-4 flex flex-col overflow-hidden shadow-2xl border-blue-500/30">
+            <div class="p-4 border-b border-white/5 bg-blue-500/10 flex justify-between items-center">
+                <span class="text-[10px] font-bold uppercase tracking-widest">Mr. Technology AI</span>
+                <button onclick="document.getElementById('chat-window').classList.toggle('hidden')" class="text-white/40 hover:text-white"><span class="material-symbols-outlined text-sm">close</span></button>
+            </div>
+            <div id="chat-history" class="flex-1 p-4 overflow-y-auto text-[11px] font-mono space-y-4">
+                <div class="text-blue-400">> Initializing Architect Assistant... Ready.</div>
+                <div class="text-white/60">Greeting, User. I am the System Architect. How can I assist with your infrastructure today?</div>
+            </div>
+            <div class="p-3 border-t border-white/5">
+                <input type="text" placeholder="Type command..." class="w-full bg-black/40 border border-white/10 rounded px-3 py-2 text-[11px] focus:outline-none focus:border-blue-500 transition-all">
+            </div>
         </div>
-        <div class="border border-blue-500/50 bg-blue-500/5 p-12 space-y-8 relative overflow-hidden">
-            <div class="absolute top-0 right-0 bg-blue-500 text-white text-[9px] font-bold px-4 py-2 uppercase tracking-widest">Recommended</div>
-            <h3 class="text-3xl font-bold uppercase italic text-blue-500">Empire</h3>
-            <div class="text-5xl font-black text-white">$49<span class="text-sm opacity-20">/mo</span></div>
-            <p class="text-sm text-white/40 leading-relaxed font-mono">RECURRING_SUBSCRIPTION // GROWTH_PROTOCOL</p>
-            <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-white/80">
-                <li>• Search Protocol (GEO)</li>
-                <li>• Authority Protocol (AI)</li>
-                <li>• Unlimited Scaling</li>
-                <li>• Real-time Agent Updates</li>
-            </ul>
-            <a href="https://pinesentry.lemonsqueezy.com/checkout/buy/1431594?embed=1" class="block w-full text-center py-4 bg-blue-500 text-white font-bold uppercase text-[10px] tracking-widest hover:brightness-125 transition-all">Deploy_Empire</a>
-        </div>
+        <button onclick="document.getElementById('chat-window').classList.toggle('hidden')" class="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center shadow-xl shadow-blue-600/20 hover:scale-105 transition-all">
+            <span class="material-symbols-outlined text-white">smart_toy</span>
+        </button>
     </div>
-</div>
-</div></body></html>
+    </body></html>

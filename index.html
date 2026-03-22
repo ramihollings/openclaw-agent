@@ -3,77 +3,174 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/jpeg" href="/logo.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
     <style>
-        body { background-color: #050505; color: #d1d5db; font-family: 'Inter', sans-serif; }
-        .card { background: #0a0a0a; border: 1px solid #1a1a1a; transition: all 0.3s; }
-        .card:hover { border-color: #0070f3; transform: translateY(-2px); box-shadow: 0 10px 30px -10px #0070f333; }
-        .nav-link { color: #94a3b8; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; transition: color 0.2s; padding: 0.5rem 0; border-bottom: 2px solid transparent; }
+        :root { --primary: #0070f3; --bg: #000000; --card-bg: #0a0a0a; --border: #1a1a1a; --text-dim: #888888; }
+        body { background-color: var(--bg); color: #ffffff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .grid-bg { background-image: radial-gradient(circle at 1px 1px, #111 1px, transparent 0); background-size: 40px 40px; }
+        
+        /* Structured Borders & Layouts */
+        .secure-border { border: 1px solid var(--border); }
+        .secure-card { background: var(--card-bg); border: 1px solid var(--border); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .secure-card:hover { border-color: var(--primary); box-shadow: 0 0 40px -10px rgba(0, 112, 243, 0.15); }
+        
+        /* Navigation Refinement */
+        .nav-link { color: var(--text-dim); font-weight: 500; font-size: 0.8rem; letter-spacing: 0.05em; transition: all 0.2s; position: relative; }
         .nav-link:hover { color: #fff; }
-        .nav-active { color: #fff !important; border-bottom: 2px solid #0070f3 !important; }
-        .prose p { margin-bottom: 1.5em; line-height: 1.8; color: #cbd5e1; font-size: 1.125rem; }
-        .prose h2 { font-size: 2.25rem; font-weight: 900; margin-top: 2em; margin-bottom: 1em; color: #fff; letter-spacing: -0.02em; }
-        .prose h3 { font-size: 1.5rem; font-weight: 700; margin-top: 1.5em; margin-bottom: 0.75em; color: #f8fafc; }
-        .prose code { background: #1e293b; padding: 0.2em 0.4em; border-radius: 0.25rem; font-size: 0.875em; color: #60a5fa; font-family: monospace; }
-        .prose pre { background: #0f172a; padding: 1.5em; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1.5em; border: 1px solid #1e293b; }
-        .prose pre code { background: transparent; padding: 0; color: #e2e8f0; }
-        .prose blockquote { border-left: 4px solid #0070f3; padding-left: 1rem; color: #94a3b8; font-style: italic; margin-bottom: 1.5em; }
-        .feature-tag { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; color: #0070f3; margin-bottom: 0.5rem; display: block; }
+        .nav-active { color: #fff !important; }
+        .nav-active::after { content: ''; position: absolute; bottom: -28px; left: 0; width: 100%; height: 2px; background: var(--primary); }
+        
+        /* Typography */
+        h1, h2, h3 { letter-spacing: -0.04em; font-weight: 900; }
+        .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0; }
+        .prose { max-width: 65ch; line-height: 1.7; color: #a1a1aa; }
+        .prose h1, .prose h2 { color: #fff; margin-top: 3rem; margin-bottom: 1.5rem; }
+        .prose strong { color: #fff; font-weight: 600; }
+        
+        /* UI Components */
+        .btn-primary { background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.2s; }
+        .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+        .btn-outline { border: 1px solid var(--border); color: #fff; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.2s; }
+        .btn-outline:hover { background: #fff; color: #000; }
+        
+        .tag { font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; padding: 4px 8px; border: 1px solid rgba(0, 112, 243, 0.3); color: var(--primary); border-radius: 4px; display: inline-block; }
     </style>
-</head><body class="min-h-screen flex flex-col">
-    <nav class="sticky top-0 z-50 bg-[#050505]/90 backdrop-blur-xl border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="/" class="flex items-center gap-3 group">
-                <img src="/logo.jpg" alt="mr.technology logo" class="w-8 h-8 rounded-lg shadow-sm group-hover:ring-2 ring-[#0070f3] transition-all">
-                <span class="text-xl font-black uppercase tracking-tighter text-white">mr.technology</span>
+</head><body class="min-h-screen flex flex-col grid-bg">
+    <nav class="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-[#1a1a1a]">
+        <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-4 group">
+                <img src="/logo.jpg" alt="logo" class="w-7 h-7 rounded-sm secure-border group-hover:border-primary transition-colors">
+                <span class="text-sm font-black uppercase tracking-tighter">mr.technology</span>
             </a>
-            <div class="hidden md:flex items-center gap-8"><a href="/" class="nav-link nav-active">Home</a><a href="/solutions" class="nav-link ">Solutions</a><a href="/status" class="nav-link ">Status</a><a href="/about" class="nav-link ">About</a></div>
-            <div class="flex items-center gap-4">
-                <a href="/download" class="hidden sm:inline-block bg-white text-black px-5 py-2 rounded-lg font-bold text-xs uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all">Console</a>
-                <button id="mobile-btn" class="md:hidden text-white p-2">
-                    <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                    <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
+            <div class="hidden md:flex items-center gap-10"><a href="/" class="nav-link nav-active">Home</a><a href="/solutions" class="nav-link ">Solutions</a><a href="/status" class="nav-link ">Status</a><a href="/about" class="nav-link ">About</a></div>
+            <div class="flex items-center gap-6">
+                <a href="/download" class="mono text-white/50 hover:text-white transition-colors uppercase">Console_Access</a>
+                <button id="mobile-btn" class="md:hidden text-white"><span class="material-symbols-outlined">menu</span></button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden fixed inset-0 top-20 z-40 bg-[#050505] p-8 flex flex-col md:hidden">
-            <a href="/" class="text-2xl font-black uppercase tracking-tighter py-4 border-b border-white/5 text-blue-500">Home</a><a href="/solutions" class="text-2xl font-black uppercase tracking-tighter py-4 border-b border-white/5 text-white">Solutions</a><a href="/status" class="text-2xl font-black uppercase tracking-tighter py-4 border-b border-white/5 text-white">Status</a><a href="/about" class="text-2xl font-black uppercase tracking-tighter py-4 border-b border-white/5 text-white">About</a>
-            <a href="/download" class="mt-8 bg-blue-600 text-white py-4 rounded-xl text-center font-black uppercase tracking-widest">Download Console</a>
+        <div id="mobile-menu" class="hidden fixed inset-0 top-20 z-40 bg-black p-8 flex flex-col md:hidden">
+            <a href="/" class="text-3xl font-black uppercase py-6 border-b border-white/5">Home</a><a href="/solutions" class="text-3xl font-black uppercase py-6 border-b border-white/5">Solutions</a><a href="/status" class="text-3xl font-black uppercase py-6 border-b border-white/5">Status</a><a href="/about" class="text-3xl font-black uppercase py-6 border-b border-white/5">About</a>
         </div>
     </nav>
     <script>
-        (function() {
-            const btn = document.getElementById('mobile-btn');
-            const menu = document.getElementById('mobile-menu');
-            const i1 = document.getElementById('menu-icon');
-            const i2 = document.getElementById('close-icon');
-            if (btn && menu) {
-                btn.onclick = () => {
-                    menu.classList.toggle('hidden');
-                    i1.classList.toggle('hidden');
-                    i2.classList.toggle('hidden');
-                    document.body.classList.toggle('overflow-hidden');
-                };
-            }
-        })();
+        const btn = document.getElementById('mobile-btn');
+        const menu = document.getElementById('mobile-menu');
+        if (btn) btn.onclick = () => menu.classList.toggle('hidden');
     </script>
-    <main class="flex-1 px-6 py-12"><div class="max-w-7xl mx-auto space-y-24 py-10"><section class="text-center space-y-8 pt-10"><span class="inline-block text-blue-500 text-[10px] font-black uppercase tracking-[0.3em] border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 rounded-full">Solopreneur Leverage Engine</span><h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] text-white italic">Own Your Time.<br><span class="text-blue-600 not-italic uppercase">Architect Your Empire.</span></h1><p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">Infrastructure designed for the solo asset manager. Deploy agents once, automate authority across every domain you own. Stop managing tasks. Start managing systems.</p><div class="flex justify-center gap-4 pt-4"><a href="/download" class="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest transition-all shadow-xl shadow-blue-600/20">Get The Blueprints</a><a href="/solutions" class="bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest transition-all border border-white/10">Explore Solutions</a></div></section><section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-32"><a href="/safe-config-gen/index" class="card p-10 rounded-[2.5rem] block group"><span class="feature-tag">Infrastructure Protection</span><h3 class="text-3xl font-black text-white group-hover:text-blue-500 transition-colors uppercase tracking-tight">Safe-Config</h3><p class="text-slate-400 text-lg">Deterministic tool locking for autonomous agents. Hardening the bridge between LLM logic and your private data moats.</p></a><a href="/mcp-factory/index" class="card p-10 rounded-[2.5rem] block group"><span class="feature-tag">Rapid Integration</span><h3 class="text-3xl font-black text-white group-hover:text-blue-500 transition-colors uppercase tracking-tight">MCP Factory</h3><p class="text-slate-400 text-lg">Instant Model Context Protocol generation. Convert any API documentation into an agent-ready tool in under 60 seconds.</p></a></section><section class="card p-12 rounded-[3rem] relative overflow-hidden border-blue-500/20"><div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/5 blur-3xl rounded-full -mr-20 -mt-20"></div><h2 class="text-4xl font-black mb-10 uppercase tracking-tighter text-white leading-none">Cohesion-First Architecture</h2><p class="text-slate-400 text-xl max-w-3xl mb-12">The primary challenge for a solopreneur is <b>context switching</b>. mr.technology eliminates this by unifying your entire tech stack under a single architectural protocol. Whether you are automating a niche blog or managing a private GitHub vault, the tools remain identical.</p><div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl"><div class="p-8 border border-white/5 rounded-3xl bg-white/5 flex flex-col hover:border-slate-700 transition-colors"><p class="text-slate-500 font-bold uppercase tracking-widest text-[10px] mb-2">The Individual</p><h3 class="text-white font-black text-3xl mb-4 uppercase italic">Architect License</h3><p class="text-slate-400 mb-8 flex-1 text-base leading-relaxed"><b>Own the Foundation.</b> Perpetual access to Safe-Config (39 Roles) and the MCP Factory. Perfect for the builder who wants to host their own secure node.</p><div class="flex items-end gap-2 mb-8"><span class="text-white font-black text-4xl">$197</span><span class="text-slate-600 font-bold uppercase tracking-widest text-[10px] pb-1">One-Time Payment</span></div><a href="/download" class="w-full text-center bg-white/5 text-white py-4 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-white/10 transition-all border border-white/10">Secure Blueprints</a></div><div class="p-8 border-2 border-blue-600 rounded-[2.5rem] bg-blue-600/10 flex flex-col relative overflow-hidden shadow-2xl shadow-blue-600/20 transform md:-translate-y-2"><div class="absolute top-0 right-0 bg-blue-600 text-white text-[8px] font-black px-4 py-2 rounded-bl-2xl uppercase tracking-widest">Scaling</div><p class="text-blue-500 font-bold uppercase tracking-widest text-[10px] mb-2">Multi-Asset Solopreneur</p><h3 class="text-white font-black text-3xl mb-4 uppercase italic">Empire Protocol</h3><p class="text-white/80 mb-8 flex-1 text-base leading-relaxed font-medium"><b>Multiply Authority.</b> Unlocks the GEO Content Machine and LinkedIn Authority Agent. Automated social growth and SEO citeability for unlimited domains.</p><div class="flex items-end gap-2 mb-8"><span class="text-white font-black text-4xl">$49</span><span class="text-blue-500 font-bold uppercase tracking-widest text-[10px] pb-1">Per Month</span></div><button onclick="alert('Proceeding to secure Empire checkout...')" class="w-full text-center bg-blue-600 text-white py-4 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/40">Deploy Empire</button></div></div></section></div></main>
-    <footer class="border-t border-white/5 bg-[#0a0a0a] mt-auto">
-        <div class="max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row justify-between items-center gap-10">
-            <div class="flex flex-col items-center md:items-start gap-4">
-                <div class="flex items-center gap-3">
-                    <img src="/logo.jpg" alt="logo" class="w-6 h-6 rounded shadow-sm opacity-50">
-                    <span class="text-white font-black uppercase tracking-tighter">mr.technology</span>
+    <main class="flex-1">
+<div class="max-w-7xl mx-auto px-8 py-24 space-y-32">
+    <!-- Hero Section: Structured & Authoritative -->
+    <section class="max-w-4xl space-y-10">
+        <div class="tag">Security Enforcement Hub</div>
+        <h1 class="text-7xl md:text-8xl leading-[0.9] text-white italic">Hardened Infrastructure.<br><span class="text-white not-italic opacity-40">Zero Trust Automation.</span></h1>
+        <p class="text-xl text-white/60 max-w-2xl leading-relaxed font-medium">The definitive operating system for the solo asset manager. Secure your agents, build your data moats, and automate authority across every domain you own.</p>
+        <div class="flex gap-4 pt-4">
+            <a href="/download" class="btn-primary">Initialize Core</a>
+            <a href="/solutions" class="btn-outline">Browse Payloads</a>
+        </div>
+    </section>
+
+    <!-- Product Grid: Card Refinement -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="secure-card p-12 space-y-8 group">
+            <div class="flex justify-between items-start">
+                <span class="mono text-white/20">MODULE_01</span>
+                <span class="material-symbols-outlined text-primary">shield</span>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-4xl text-white uppercase tracking-tighter">Safe-Config</h3>
+                <p class="text-white/50 text-lg leading-relaxed">Deterministic tool locking for autonomous agents. Harden the bridge between LLM logic and your private data moats with 39+ pre-vetted security profiles.</p>
+            </div>
+            <a href="/safe-config-gen/index" class="inline-block mono text-primary hover:text-white transition-colors uppercase tracking-widest pt-4">Documentation_v4.2</a>
+        </div>
+
+        <div class="secure-card p-12 space-y-8 group">
+            <div class="flex justify-between items-start">
+                <span class="mono text-white/20">MODULE_02</span>
+                <span class="material-symbols-outlined text-primary">dynamic_form</span>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-4xl text-white uppercase tracking-tighter">MCP Factory</h3>
+                <p class="text-white/50 text-lg leading-relaxed">Instant Model Context Protocol generation. Convert any external API documentation into a production-ready agent tool in under 60 seconds.</p>
+            </div>
+            <a href="/mcp-factory/index" class="inline-block mono text-primary hover:text-white transition-colors uppercase tracking-widest pt-4">Build_Bridge</a>
+        </div>
+    </section>
+
+    <!-- Pricing Section: Authority & Professionalism -->
+    <section class="space-y-16">
+        <div class="text-center space-y-4">
+            <h2 class="text-5xl uppercase tracking-tighter">System Access Tiers</h2>
+            <p class="mono text-white/30 uppercase tracking-widest">Select Control Level</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border border-[#1a1a1a] rounded-lg overflow-hidden max-w-5xl mx-auto bg-[#050505]">
+            <!-- Tier 1 -->
+            <div class="p-16 border-b md:border-b-0 md:border-r border-[#1a1a1a] space-y-10">
+                <div class="space-y-2">
+                    <span class="tag">Perpetual</span>
+                    <h3 class="text-4xl italic uppercase">Architect</h3>
                 </div>
-                <p class="text-slate-500 text-[10px] font-black uppercase tracking-widest">Autonomous Infrastructure Protocol</p>
+                <p class="text-white/50 leading-relaxed font-medium">Own the foundation. Full lifetime access to Safe-Config and MCP Factory. Designed for the builder hosting secure local infrastructure.</p>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-5xl font-black">$197</span>
+                    <span class="mono text-white/20 uppercase">One_Time</span>
+                </div>
+                <ul class="space-y-3 text-xs font-bold uppercase tracking-widest text-white/40">
+                    <li class="flex items-center gap-3"><span class="material-symbols-outlined text-[14px] text-primary">check</span> 39+ Security Roles</li>
+                    <li class="flex items-center gap-3"><span class="material-symbols-outlined text-[14px] text-primary">check</span> Standard MCP Factory</li>
+                    <li class="flex items-center gap-3"><span class="material-symbols-outlined text-[14px] text-primary">check</span> Self-Hosted License</li>
+                </ul>
+                <a href="/download" class="block w-full text-center btn-outline">Purchase Blueprints</a>
             </div>
-            <div class="flex gap-10 text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
-                <a href="#" class="hover:text-blue-500 transition-colors">Privacy</a>
-                <a href="#" class="hover:text-blue-500 transition-colors">Terms</a>
-                <a href="/status" class="hover:text-blue-500 transition-colors">Status</a>
+            <!-- Tier 2 -->
+            <div class="p-16 space-y-10 bg-[#080808] relative">
+                <div class="absolute top-0 right-0 bg-primary text-white mono text-[10px] px-4 py-2 uppercase font-bold">Recommended</div>
+                <div class="space-y-2">
+                    <span class="tag">Scalable</span>
+                    <h3 class="text-4xl italic uppercase">Empire</h3>
+                </div>
+                <p class="text-white/50 leading-relaxed font-medium">Multiply Authority. Automated social growth and GEO SEO citeability for unlimited domains. Designed for the multi-asset solopreneur.</p>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-5xl font-black">$49</span>
+                    <span class="mono text-white/20 uppercase">Per_Month</span>
+                </div>
+                <ul class="space-y-3 text-xs font-bold uppercase tracking-widest text-white/40">
+                    <li class="flex items-center gap-3"><span class="material-symbols-outlined text-[14px] text-primary">check</span> GEO Content Machine</li>
+                    <li class="flex items-center gap-3"><span class="material-symbols-outlined text-[14px] text-primary">check</span> LinkedIn Authority Agent</li>
+                    <li class="flex items-center gap-3"><span class="material-symbols-outlined text-[14px] text-primary">check</span> Unlimited Domain Scaling</li>
+                </ul>
+                <button class="w-full btn-primary">Deploy Empire</button>
             </div>
-            <div class="text-xs text-slate-700 font-mono">© 2026 MR.TECHNOLOGY // CORE_INFRA_V4.2</div>
+        </div>
+    </section>
+</div>
+</main>
+    <footer class="border-t border-[#1a1a1a] bg-black mt-auto py-20">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-start gap-12">
+            <div class="space-y-6">
+                <div class="flex items-center gap-4">
+                    <img src="/logo.jpg" alt="logo" class="w-6 h-6 rounded-sm opacity-40">
+                    <span class="text-xs font-black uppercase tracking-widest text-white/40">mr.technology</span>
+                </div>
+                <p class="text-xs text-white/30 mono max-w-xs">Autonomous Infrastructure Protocol. Licensed for Solopreneur Asset Management. v4.2.0-STABLE</p>
+            </div>
+            <div class="grid grid-cols-2 gap-20">
+                <div class="space-y-4">
+                    <span class="mono text-white/20 uppercase">Network</span>
+                    <div class="flex flex-col gap-2 text-xs font-bold text-white/50 uppercase tracking-widest">
+                        <a href="/status" class="hover:text-primary transition-colors">Uptime</a>
+                        <a href="/about" class="hover:text-primary transition-colors">Mission</a>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <span class="mono text-white/20 uppercase">Governance</span>
+                    <div class="flex flex-col gap-2 text-xs font-bold text-white/50 uppercase tracking-widest">
+                        <a href="#" class="hover:text-primary transition-colors">Security</a>
+                        <a href="#" class="hover:text-primary transition-colors">Terms</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 </body></html>

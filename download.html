@@ -9,31 +9,22 @@
         :root { --primary: #0070f3; --bg: #000000; --card-bg: #0a0a0a; --border: #1a1a1a; --text-dim: #888888; }
         body { background-color: var(--bg); color: #ffffff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
         .grid-bg { background-image: radial-gradient(circle at 1px 1px, #111 1px, transparent 0); background-size: 40px 40px; }
-        
-        /* Structured Borders & Layouts */
         .secure-border { border: 1px solid var(--border); }
         .secure-card { background: var(--card-bg); border: 1px solid var(--border); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .secure-card:hover { border-color: var(--primary); box-shadow: 0 0 40px -10px rgba(0, 112, 243, 0.15); }
-        
-        /* Navigation Refinement */
         .nav-link { color: var(--text-dim); font-weight: 500; font-size: 0.8rem; letter-spacing: 0.05em; transition: all 0.2s; position: relative; }
         .nav-link:hover { color: #fff; }
         .nav-active { color: #fff !important; }
         .nav-active::after { content: ''; position: absolute; bottom: -28px; left: 0; width: 100%; height: 2px; background: var(--primary); }
-        
-        /* Typography */
         h1, h2, h3 { letter-spacing: -0.04em; font-weight: 900; }
         .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0; }
         .prose { max-width: 65ch; line-height: 1.7; color: #a1a1aa; }
         .prose h1, .prose h2 { color: #fff; margin-top: 3rem; margin-bottom: 1.5rem; }
         .prose strong { color: #fff; font-weight: 600; }
-        
-        /* UI Components */
         .btn-primary { background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.2s; }
         .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
         .btn-outline { border: 1px solid var(--border); color: #fff; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.2s; }
         .btn-outline:hover { background: #fff; color: #000; }
-        
         .tag { font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; padding: 4px 8px; border: 1px solid rgba(0, 112, 243, 0.3); color: var(--primary); border-radius: 4px; display: inline-block; }
     </style>
 </head><body class="min-h-screen flex flex-col grid-bg">
@@ -49,14 +40,18 @@
                 <button id="mobile-btn" class="md:hidden text-white"><span class="material-symbols-outlined">menu</span></button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden fixed inset-0 top-20 z-40 bg-black p-8 flex flex-col md:hidden">
-            <a href="/" class="text-3xl font-black uppercase py-6 border-b border-white/5">Home</a><a href="/solutions" class="text-3xl font-black uppercase py-6 border-b border-white/5">Solutions</a><a href="/status" class="text-3xl font-black uppercase py-6 border-b border-white/5">Status</a><a href="/about" class="text-3xl font-black uppercase py-6 border-b border-white/5">About</a>
+        <div id="mobile-menu" class="hidden fixed inset-0 top-20 z-[100] bg-black p-8 flex flex-col md:hidden">
+            <a href="/" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">Home</a><a href="/solutions" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">Solutions</a><a href="/status" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">Status</a><a href="/about" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">About</a>
+            <a href="/download" class="mt-12 btn-primary text-center">Open Console</a>
         </div>
     </nav>
     <script>
         const btn = document.getElementById('mobile-btn');
         const menu = document.getElementById('mobile-menu');
-        if (btn) btn.onclick = () => menu.classList.toggle('hidden');
+        if (btn) btn.onclick = () => {
+            menu.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+        };
     </script>
     <main class="flex-1">
 <div class="max-w-3xl mx-auto px-8 py-24 space-y-20">

@@ -9,31 +9,22 @@
         :root { --primary: #0070f3; --bg: #000000; --card-bg: #0a0a0a; --border: #1a1a1a; --text-dim: #888888; }
         body { background-color: var(--bg); color: #ffffff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
         .grid-bg { background-image: radial-gradient(circle at 1px 1px, #111 1px, transparent 0); background-size: 40px 40px; }
-        
-        /* Structured Borders & Layouts */
         .secure-border { border: 1px solid var(--border); }
         .secure-card { background: var(--card-bg); border: 1px solid var(--border); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .secure-card:hover { border-color: var(--primary); box-shadow: 0 0 40px -10px rgba(0, 112, 243, 0.15); }
-        
-        /* Navigation Refinement */
         .nav-link { color: var(--text-dim); font-weight: 500; font-size: 0.8rem; letter-spacing: 0.05em; transition: all 0.2s; position: relative; }
         .nav-link:hover { color: #fff; }
         .nav-active { color: #fff !important; }
         .nav-active::after { content: ''; position: absolute; bottom: -28px; left: 0; width: 100%; height: 2px; background: var(--primary); }
-        
-        /* Typography */
         h1, h2, h3 { letter-spacing: -0.04em; font-weight: 900; }
         .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0; }
         .prose { max-width: 65ch; line-height: 1.7; color: #a1a1aa; }
         .prose h1, .prose h2 { color: #fff; margin-top: 3rem; margin-bottom: 1.5rem; }
         .prose strong { color: #fff; font-weight: 600; }
-        
-        /* UI Components */
         .btn-primary { background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.2s; }
         .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
         .btn-outline { border: 1px solid var(--border); color: #fff; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.2s; }
         .btn-outline:hover { background: #fff; color: #000; }
-        
         .tag { font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; padding: 4px 8px; border: 1px solid rgba(0, 112, 243, 0.3); color: var(--primary); border-radius: 4px; display: inline-block; }
     </style>
 </head><body class="min-h-screen flex flex-col grid-bg">
@@ -49,18 +40,21 @@
                 <button id="mobile-btn" class="md:hidden text-white"><span class="material-symbols-outlined">menu</span></button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden fixed inset-0 top-20 z-40 bg-black p-8 flex flex-col md:hidden">
-            <a href="/" class="text-3xl font-black uppercase py-6 border-b border-white/5">Home</a><a href="/solutions" class="text-3xl font-black uppercase py-6 border-b border-white/5">Solutions</a><a href="/status" class="text-3xl font-black uppercase py-6 border-b border-white/5">Status</a><a href="/about" class="text-3xl font-black uppercase py-6 border-b border-white/5">About</a>
+        <div id="mobile-menu" class="hidden fixed inset-0 top-20 z-[100] bg-black p-8 flex flex-col md:hidden">
+            <a href="/" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">Home</a><a href="/solutions" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">Solutions</a><a href="/status" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">Status</a><a href="/about" class="text-3xl font-black uppercase py-6 border-b border-white/5 text-white">About</a>
+            <a href="/download" class="mt-12 btn-primary text-center">Open Console</a>
         </div>
     </nav>
     <script>
         const btn = document.getElementById('mobile-btn');
         const menu = document.getElementById('mobile-menu');
-        if (btn) btn.onclick = () => menu.classList.toggle('hidden');
+        if (btn) btn.onclick = () => {
+            menu.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+        };
     </script>
     <main class="flex-1">
 <div class="max-w-7xl mx-auto px-8 py-24 space-y-32">
-    <!-- Hero Section: Structured & Authoritative -->
     <section class="max-w-4xl space-y-10">
         <div class="tag">Security Enforcement Hub</div>
         <h1 class="text-7xl md:text-8xl leading-[0.9] text-white italic">Hardened Infrastructure.<br><span class="text-white not-italic opacity-40">Zero Trust Automation.</span></h1>
@@ -71,7 +65,6 @@
         </div>
     </section>
 
-    <!-- Product Grid: Card Refinement -->
     <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="secure-card p-12 space-y-8 group">
             <div class="flex justify-between items-start">
@@ -80,9 +73,9 @@
             </div>
             <div class="space-y-4">
                 <h3 class="text-4xl text-white uppercase tracking-tighter">Safe-Config</h3>
-                <p class="text-white/50 text-lg leading-relaxed">Deterministic tool locking for autonomous agents. Harden the bridge between LLM logic and your private data moats with 39+ pre-vetted security profiles.</p>
+                <p class="text-white/50 text-lg leading-relaxed">Deterministic tool locking for autonomous agents. Harden the bridge between LLM logic and your private data moats.</p>
             </div>
-            <a href="/safe-config-gen/index" class="inline-block mono text-primary hover:text-white transition-colors uppercase tracking-widest pt-4">Documentation_v4.2</a>
+            <a href="/safe-config" class="inline-block mono text-primary hover:text-white transition-colors uppercase tracking-widest pt-4">Open_Documentation</a>
         </div>
 
         <div class="secure-card p-12 space-y-8 group">
@@ -92,20 +85,18 @@
             </div>
             <div class="space-y-4">
                 <h3 class="text-4xl text-white uppercase tracking-tighter">MCP Factory</h3>
-                <p class="text-white/50 text-lg leading-relaxed">Instant Model Context Protocol generation. Convert any external API documentation into a production-ready agent tool in under 60 seconds.</p>
+                <p class="text-white/50 text-lg leading-relaxed">Instant Model Context Protocol generation. Convert any external API documentation into a production-ready agent tool.</p>
             </div>
-            <a href="/mcp-factory/index" class="inline-block mono text-primary hover:text-white transition-colors uppercase tracking-widest pt-4">Build_Bridge</a>
+            <a href="/mcp-factory" class="inline-block mono text-primary hover:text-white transition-colors uppercase tracking-widest pt-4">Build_Bridge</a>
         </div>
     </section>
 
-    <!-- Pricing Section: Authority & Professionalism -->
     <section class="space-y-16">
         <div class="text-center space-y-4">
             <h2 class="text-5xl uppercase tracking-tighter">System Access Tiers</h2>
             <p class="mono text-white/30 uppercase tracking-widest">Select Control Level</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border border-[#1a1a1a] rounded-lg overflow-hidden max-w-5xl mx-auto bg-[#050505]">
-            <!-- Tier 1 -->
             <div class="p-16 border-b md:border-b-0 md:border-r border-[#1a1a1a] space-y-10">
                 <div class="space-y-2">
                     <span class="tag">Perpetual</span>
@@ -123,7 +114,6 @@
                 </ul>
                 <a href="/download" class="block w-full text-center btn-outline">Purchase Blueprints</a>
             </div>
-            <!-- Tier 2 -->
             <div class="p-16 space-y-10 bg-[#080808] relative">
                 <div class="absolute top-0 right-0 bg-primary text-white mono text-[10px] px-4 py-2 uppercase font-bold">Recommended</div>
                 <div class="space-y-2">
@@ -136,8 +126,8 @@
                     <span class="mono text-white/20 uppercase">Per_Month</span>
                 </div>
                 <ul class="space-y-3 text-xs font-bold uppercase tracking-widest text-white/40">
-                    <li class="flex items-center gap-3"><span class="material-symbols-outlined text-[14px] text-primary">check</span> GEO Content Machine</li>
-                    <li class="flex items-center gap-3"><span class="material-symbols-outlined text-[14px] text-primary">check</span> LinkedIn Authority Agent</li>
+                    <li class="flex items-center gap-3"><span class="material-symbols-outlined text-[14px] text-primary">check</span> GEO Machine</li>
+                    <li class="flex items-center gap-3"><span class="material-symbols-outlined text-[14px] text-primary">check</span> LinkedIn Agent</li>
                     <li class="flex items-center gap-3"><span class="material-symbols-outlined text-[14px] text-primary">check</span> Unlimited Domain Scaling</li>
                 </ul>
                 <button class="w-full btn-primary">Deploy Empire</button>

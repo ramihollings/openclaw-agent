@@ -1,137 +1,46 @@
-<!DOCTYPE html><html lang="en"><head><title>SQLite at the Edge | mr.technology</title>
+<!DOCTYPE html><html lang="en"><head><title>PAYLOAD // Mar 17 SQLite at the Edge | mr.technology</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Architecting persistent storage for edge workers using distributed SQLite patterns. Why we migrated away from centralized PostgreSQL clusters.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/jpeg" href="/logo.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"PAYLOAD // Mar 17 SQLite at the Edge","description":"Architecting persistent storage for edge workers using distributed SQLite patterns. Why we migrated away from centralized PostgreSQL clusters.","author":{"@type":"Organization","name":"mr.technology"},"publisher":{"@type":"Organization","name":"mr.technology","logo":{"@type":"ImageObject","url":"https://mr.technology/logo.jpg"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mr.technology/payload-sqlite-edge"}}</script>
     <style>
-        :root { 
-            --blue: #1A73E8; 
-            --red: #EA4335;
-            --bg: #000000; 
-            --glass-bg: rgba(255, 255, 255, 0.02); 
-            --glass-border: rgba(255, 255, 255, 0.08); 
-            --ease-google: cubic-bezier(0.2, 0, 0, 1);
-        }
-        
-        body { 
-            background-color: var(--bg); 
-            color: #ffffff; 
-            font-family: 'Inter', sans-serif; 
-            -webkit-font-smoothing: antialiased; 
-            overflow-x: hidden; 
-        }
-        
+        :root { --blue: #1A73E8; --red: #EA4335; --bg: #000000; --glass-bg: rgba(255, 255, 255, 0.02); --glass-border: rgba(255, 255, 255, 0.08); --ease-google: cubic-bezier(0.2, 0, 0, 1); }
+        body { background-color: var(--bg); color: #ffffff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         .mono { font-family: 'JetBrains Mono', monospace; }
-        
-        /* Glassmorphism Primitives */
-        .glass-panel {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            transition: all 0.3s var(--ease-google);
-            position: relative;
-        }
-        
-        .glass-pill {
-            background: var(--glass-bg);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid var(--glass-border);
-            border-radius: 100px;
-        }
-
-        /* Sequential Loading Animations */
+        .glass-panel { background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 24px; transition: all 0.3s var(--ease-google); position: relative; }
+        .glass-pill { background: var(--glass-bg); backdrop-filter: blur(24px); border: 1px solid var(--glass-border); border-radius: 100px; }
         .stagger-1 { animation: slideUp 0.6s var(--ease-google) 0.05s both; opacity: 0; }
         .stagger-2 { animation: slideUp 0.6s var(--ease-google) 0.10s both; opacity: 0; }
         .stagger-3 { animation: slideUp 0.6s var(--ease-google) 0.15s both; opacity: 0; }
         .stagger-4 { animation: slideUp 0.6s var(--ease-google) 0.20s both; opacity: 0; }
-        .stagger-5 { animation: slideUp 0.6s var(--ease-google) 0.25s both; opacity: 0; }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Agentic Motion & Indicators */
-        .pulse-dot {
-            width: 8px; height: 8px; border-radius: 50%;
-            background-color: var(--blue);
-            box-shadow: 0 0 10px var(--blue);
-            animation: pulse 2s infinite var(--ease-google);
-            display: inline-block;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.7); }
-            70% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 6px rgba(26, 115, 232, 0); }
-            100% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(26, 115, 232, 0); }
-        }
-
-        /* Data Routing Animation (SVG Path) */
-        .data-path {
-            stroke: rgba(255,255,255,0.1); stroke-width: 2; fill: none; stroke-dasharray: 6 6; animation: dash 20s linear infinite;
-        }
-        
-        .data-packet {
-            fill: var(--blue); filter: drop-shadow(0 0 8px var(--blue)); opacity: 0; transition: opacity 0.3s;
-        }
-
-        .routing-active .data-packet {
-            opacity: 1; offset-path: path("M0,0 Q50,100 100,0"); animation: movePacket 1.5s var(--ease-google) infinite;
-        }
-
+        @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background-color: var(--blue); box-shadow: 0 0 10px var(--blue); animation: pulse 2s infinite var(--ease-google); display: inline-block; }
+        @keyframes pulse { 0% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.7); } 70% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 6px rgba(26, 115, 232, 0); } 100% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(26, 115, 232, 0); } }
+        .data-path { stroke: rgba(255,255,255,0.1); stroke-width: 2; fill: none; stroke-dasharray: 6 6; animation: dash 20s linear infinite; }
+        .data-packet { fill: var(--blue); filter: drop-shadow(0 0 8px var(--blue)); opacity: 0; transition: opacity 0.3s; }
+        .routing-active .data-packet { opacity: 1; offset-path: path("M0,0 Q50,100 100,0"); animation: movePacket 1.5s var(--ease-google) infinite; }
         @keyframes dash { to { stroke-dashoffset: -100; } }
-        @keyframes movePacket {
-            0% { offset-distance: 0%; opacity: 0; }
-            20% { opacity: 1; }
-            80% { opacity: 1; }
-            100% { offset-distance: 100%; opacity: 0; }
-        }
-
-        /* Terminal Scroller */
+        @keyframes movePacket { 0% { offset-distance: 0%; opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
         .terminal-scroll { height: 120px; overflow: hidden; position: relative; }
-        .terminal-scroll::after {
-            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px;
-            background: linear-gradient(to bottom, transparent, var(--bg));
-        }
+        .terminal-scroll::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(to bottom, transparent, var(--bg)); }
         .log-lines { animation: scrollLogs 10s linear infinite; }
         @keyframes scrollLogs { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
-
-        /* Background Orbs */
         .bg-orbs { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
-        .orb {
-            position: absolute; border-radius: 50%;
-            background: radial-gradient(circle, rgba(26,115,232,0.15) 0%, transparent 70%);
-            filter: blur(60px); animation: floatOrb 20s ease-in-out infinite alternate;
-        }
-        @keyframes floatOrb {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(100px, -50px) scale(1.2); }
-        }
-
-        /* Buttons */
+        .orb { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(26,115,232,0.15) 0%, transparent 70%); filter: blur(60px); animation: floatOrb 20s ease-in-out infinite alternate; }
+        @keyframes floatOrb { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(100px, -50px) scale(1.2); } }
         .btn-primary { background: var(--blue); color: #fff; border-radius: 100px; padding: 8px 24px; font-weight: 600; font-size: 14px; transition: all 0.2s var(--ease-google); border: 1px solid transparent; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;}
         .btn-primary:hover { box-shadow: 0 0 20px rgba(26,115,232,0.4); transform: translateY(-1px); }
-        
         .btn-outline { background: transparent; color: #fff; border-radius: 100px; padding: 8px 24px; font-weight: 600; font-size: 14px; transition: all 0.2s var(--ease-google); border: 1px solid rgba(255,255,255,0.2); cursor: pointer; display: inline-flex; align-items: center; justify-content: center;}
         .btn-outline:hover { border-color: var(--blue); color: var(--blue); background: rgba(26,115,232,0.05); }
-
-        /* Custom Prose for Payload Pages */
         .prose-custom p { margin-bottom: 1.5rem; }
-        .prose-custom h3 { color: #fff; font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+        .prose-custom h3 { color: #fff; font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; }
         .prose-custom pre { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 16px; margin: 1.5rem 0; overflow-x: auto; }
         .prose-custom code { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--blue); }
         .prose-custom pre code { color: #fff; }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
     </style>
 </head><body>
     <nav class="fixed top-6 inset-x-0 z-[100] flex justify-center pointer-events-none">
@@ -142,52 +51,27 @@
             </div>
             <div class="hidden sm:block w-[1px] h-4 bg-white/20"></div>
             <div class="flex items-center gap-2">
-                <a href="/" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all ${active === 'hub' ? 'bg-[#1A73E8] text-white shadow-[0_0_15px_rgba(26,115,232,0.3)]' : 'text-white/60 hover:text-white hover:bg-white/10'}">[ Hub ]</a>
-                <a href="/payloads" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all ${active === 'payloads' ? 'bg-[#1A73E8] text-white shadow-[0_0_15px_rgba(26,115,232,0.3)]' : 'text-white/60 hover:text-white hover:bg-white/10'}">[ Payloads ]</a>
-                <a href="/acquire" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all ${active === 'acquire' ? 'bg-[#1A73E8] text-white shadow-[0_0_15px_rgba(26,115,232,0.3)]' : 'text-white/60 hover:text-white hover:bg-white/10'}">[ Acquire ]</a>
-                <a href="/trust" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all ${active === 'trust' ? 'bg-[#1A73E8] text-white shadow-[0_0_15px_rgba(26,115,232,0.3)]' : 'text-white/60 hover:text-white hover:bg-white/10'}">[ Trust ]</a>
+                <a href="/" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all text-white/60 hover:text-white hover:bg-white/10">[ Hub ]</a>
+                <a href="/payloads" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-[#1A73E8] text-white shadow-[0_0_15px_rgba(26,115,232,0.3)]">[ Payloads ]</a>
+                <a href="/acquire" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all text-white/60 hover:text-white hover:bg-white/10">[ Acquire ]</a>
+                <a href="/trust" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all text-white/60 hover:text-white hover:bg-white/10">[ Trust ]</a>
             </div>
         </div>
     </nav>
     
-    <div class="bg-orbs">
-        <div class="orb w-[600px] h-[600px] top-[-20%] left-[-10%]"></div>
-    </div>
     <div class="max-w-[800px] mx-auto px-6 pt-40 pb-32 min-h-screen relative z-10 flex flex-col gap-8">
-        <a href="/payloads" class="text-[#1A73E8] mono text-sm flex items-center gap-2 hover:text-white transition-colors w-fit"><span class="mono"><-</span> Back to Archive</a>
-        
+        <a href="/payloads" class="text-[#1A73E8] mono text-sm flex items-center gap-2 hover:text-white transition-colors w-fit font-bold"><- Back to Archive</a>
         <div class="glass-panel p-10 md:p-14 stagger-1">
-            <div class="flex items-center gap-3 mb-6">
-                <span class="mono text-[10px] font-bold uppercase tracking-widest text-[#1A73E8] border border-[#1A73E8]/30 px-2 py-1 rounded bg-[#1A73E8]/10">Compute</span>
-                <span class="mono text-[10px] text-white/40">MAR 17, 2026</span>
-            </div>
+            <div class="flex items-center gap-3 mb-6"><span class="mono text-[10px] font-bold uppercase text-[#1A73E8] border border-[#1A73E8]/30 px-2 py-1 rounded bg-[#1A73E8]/10">Compute</span><span class="mono text-[10px] text-white/40">MAR 17, 2026</span></div>
             <h1 class="text-3xl md:text-4xl mono text-white mb-8 font-bold">PAYLOAD // Mar 17 SQLite at the Edge</h1>
-            
-            <div class="w-full aspect-video rounded-xl border border-white/10 mb-10 overflow-hidden relative bg-black">
-                <div class="absolute inset-0 bg-[#1A73E8]/20 mix-blend-overlay z-10 pointer-events-none"></div>
-                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80" class="w-full h-full object-cover grayscale opacity-70" alt="Payload Hero">
-            </div>
-
-            <div class="text-white/70 leading-relaxed font-light text-lg space-y-6 prose-custom">
-                
-<p>Architecting persistent storage for edge workers using distributed SQLite patterns. Why we migrated away from centralized PostgreSQL clusters.</p>
-<h3>LiteFS Replication</h3>
-<p>Using LiteFS, we replicate our SQLite databases to all 14 edge nodes in milliseconds. Read operations are entirely local, while writes are seamlessly proxied to the primary node, ensuring maximum throughput for read-heavy agent operations.</p>
-<pre><code>// Edge Node Read Configuration
+            <div class="w-full aspect-video rounded-xl border border-white/10 mb-10 overflow-hidden relative bg-black"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80" class="w-full h-full object-cover grayscale opacity-70" alt="Hero"></div>
+            <div class="text-white/70 leading-relaxed font-light text-lg space-y-6 prose-custom"><p>Architecting persistent storage for edge workers using distributed SQLite patterns. Why we migrated away from centralized PostgreSQL clusters.</p><h3>LiteFS Replication</h3><p>Using LiteFS, we replicate our SQLite databases to all 14 edge nodes in milliseconds. Read operations are entirely local, while writes are seamlessly proxied to the primary node, ensuring maximum throughput for read-heavy agent operations.</p><pre><code>// Edge Node Read Configuration
 const db = new Database('/var/lib/litefs/db.sqlite');
 db.pragma('journal_mode = WAL');
 db.pragma('synchronous = NORMAL');
 
 const statement = db.prepare('SELECT * FROM agent_states WHERE id = ?');
-const result = statement.get(agentId);</code></pre>
-<p>This architecture guarantees that edge agents can query state securely with sub-millisecond latency.</p>
-
-            </div>
-            
-            <div class="mt-12 pt-8 border-t border-white/10 flex justify-between items-center">
-                <div class="mono text-[10px] text-white/40 uppercase tracking-widest">End of Payload // Executed</div>
-                <a href="/acquire" class="btn-primary text-xs hidden sm:flex">[ Initialize Core Infrastructure ]</a>
-            </div>
+const result = statement.get(agentId);</code></pre><p>This architecture guarantees that edge agents can query state securely with sub-millisecond latency.</p></div>
+            <div class="mt-12 pt-8 border-t border-white/10 flex justify-between items-center"><div class="mono text-[10px] text-white/40 uppercase tracking-widest">End of Payload</div><a href="/acquire" class="btn-primary text-xs">[ Initialize Core ]</a></div>
         </div>
-    </div>
-    </body></html>
+    </div></body></html>

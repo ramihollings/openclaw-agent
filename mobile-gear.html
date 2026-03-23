@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><title>Secure Skills | mr.technology</title>
+<!DOCTYPE html><html lang="en"><head><title>Mobile & Gear | mr.technology</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -10,6 +10,7 @@
         :root { --neon: #00d2ff; --bg: #030303; --glass-bg: rgba(255, 255, 255, 0.03); --glass-border: rgba(255, 255, 255, 0.08); }
         body { background-color: var(--bg); color: #ffffff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         
+        /* Layout */
         .sidebar { width: 280px; border-right: 1px solid var(--glass-border); position: fixed; height: 100vh; background: rgba(0,0,0,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 50; }
         .content-area { margin-left: 280px; min-height: 100vh; position: relative; padding-bottom: 100px; }
         @media (max-width: 1024px) {
@@ -18,33 +19,65 @@
             .sidebar.active { transform: translateX(0); }
         }
 
+        /* Glassmorphism */
         .glass-panel {
-            background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border); border-radius: 16px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         a.glass-panel:hover, button.glass-panel:hover, .hover-glass:hover {
-            border-color: rgba(0, 210, 255, 0.4); box-shadow: 0 8px 32px rgba(0, 210, 255, 0.1); transform: translateY(-2px);
+            border-color: rgba(0, 210, 255, 0.4);
+            box-shadow: 0 8px 32px rgba(0, 210, 255, 0.1);
+            transform: translateY(-2px);
         }
 
+        /* Typography & Colors */
         .text-neon { color: var(--neon); text-shadow: 0 0 15px rgba(0, 210, 255, 0.4); }
         .bg-neon { background-color: var(--neon); }
         h1, h2, h3 { letter-spacing: -0.03em; }
 
-        @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        /* Smooth Loading Animation */
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         .animate-boot { opacity: 0; animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.2s; }
         .delay-3 { animation-delay: 0.3s; }
 
+        /* 3D Product Cards */
         .card-3d-wrap { perspective: 1200px; }
-        .card-3d { transition: transform 0.15s ease-out; transform-style: preserve-3d; position: relative; }
-        .glare { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 0%, transparent 60%); pointer-events: none; opacity: 0; transition: opacity 0.3s; border-radius: inherit; }
+        .card-3d { 
+            transition: transform 0.15s ease-out; 
+            transform-style: preserve-3d;
+            position: relative;
+        }
+        .glare {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 0%, transparent 60%);
+            pointer-events: none; opacity: 0; transition: opacity 0.3s; border-radius: inherit;
+        }
         
-        .chat-btn { box-shadow: 0 0 15px rgba(0, 210, 255, 0.3); border: 1px solid rgba(0, 210, 255, 0.5); transition: all 0.3s ease; }
-        .chat-btn:hover { box-shadow: 0 0 25px rgba(0, 210, 255, 0.6); transform: scale(1.05); }
+        /* Chat Widget */
+        .chat-btn {
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+            border: 1px solid rgba(0, 210, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+        .chat-btn:hover {
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        /* Mobile Touch Targets */
         .touch-target { min-height: 44px; display: flex; align-items: center; }
     </style>
 </head><body>
+    <!-- Desktop/Mobile Sidebar -->
     <aside id="sidebar" class="sidebar flex flex-col">
         <div class="p-8 border-b border-white/5 flex items-center justify-between">
             <a href="/" class="flex items-center gap-3 touch-target">
@@ -56,23 +89,27 @@
             </button>
         </div>
         <div class="flex-1 py-8 overflow-y-auto px-4 space-y-2">
-            <div class="px-4 pb-2 text-[10px] uppercase tracking-[0.15em] text-white/30 font-bold">Architecture</div>
+            <div class="px-4 pb-2 text-[10px] uppercase tracking-[0.15em] text-white/30 font-bold">Categories</div>
             
             <a href="/" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all touch-target text-white/60 hover:text-white hover:bg-white/5">
                 <span class="material-symbols-outlined text-[20px] opacity-60">dashboard</span>
                 Command Center
             </a>
-            <a href="/compute" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all touch-target text-white/60 hover:text-white hover:bg-white/5">
+            <a href="/mobile-gear" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all touch-target bg-white/10 text-white shadow-[inset_2px_0_0_#00d2ff]">
+                <span class="material-symbols-outlined text-[20px] text-neon">devices</span>
+                Mobile & Gear
+            </a>
+            <a href="/smart-home" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all touch-target text-white/60 hover:text-white hover:bg-white/5">
+                <span class="material-symbols-outlined text-[20px] opacity-60">home_iot_device</span>
+                Smart Home
+            </a>
+            <a href="/ai-automation" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all touch-target text-white/60 hover:text-white hover:bg-white/5">
                 <span class="material-symbols-outlined text-[20px] opacity-60">memory</span>
-                Compute Primitives
+                AI & Automation
             </a>
-            <a href="/skills" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all touch-target bg-white/10 text-white shadow-[inset_2px_0_0_#00d2ff]">
-                <span class="material-symbols-outlined text-[20px] text-neon">verified_user</span>
-                Secure Skills
-            </a>
-            <a href="/ecosystem" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all touch-target text-white/60 hover:text-white hover:bg-white/5">
-                <span class="material-symbols-outlined text-[20px] opacity-60">hub</span>
-                The Ecosystem
+            <a href="/tech-guides" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all touch-target text-white/60 hover:text-white hover:bg-white/5">
+                <span class="material-symbols-outlined text-[20px] opacity-60">menu_book</span>
+                Tech Guides
             </a>
             <a href="/pro" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all touch-target text-white/60 hover:text-white hover:bg-white/5">
                 <span class="material-symbols-outlined text-[20px] opacity-60">workspace_premium</span>
@@ -90,6 +127,8 @@
             </div>
         </div>
     </aside>
+
+    <!-- Mobile Top Bar -->
     <nav class="lg:hidden fixed top-0 inset-x-0 h-20 bg-black/80 backdrop-blur-xl border-b border-white/5 z-[40] flex items-center justify-between px-6">
          <a href="/" class="flex items-center gap-3 touch-target">
             <img src="/logo.jpg" class="w-8 h-8 rounded-lg">
@@ -103,53 +142,41 @@
 <div class="max-w-5xl mx-auto p-6 md:p-12 lg:p-20 space-y-16">
     <div class="space-y-6 animate-boot">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel">
-            <span class="material-symbols-outlined text-sm text-neon">verified_user</span>
-            <span class="text-xs font-semibold text-white/80">Enterprise-Grade Verification</span>
+            <span class="material-symbols-outlined text-sm text-neon">devices</span>
+            <span class="text-xs font-semibold text-white/80">Reviews & Setups</span>
         </div>
-        <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-white">Secure Agent Skills.</h1>
-        <p class="text-xl text-white/50 max-w-2xl leading-relaxed">Don't let your AI execute untrusted code. Every skill in our registry is hardened, audited, and mathematically verified for safe agentic compute.</p>
+        <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-white">Mobile & Gear.</h1>
+        <p class="text-xl text-white/50 max-w-2xl leading-relaxed">Discover the tech that fits your workflow. We review hardware based on how it actually improves your daily productivity.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 animate-boot delay-1">
-        <div class="glass-panel p-8 text-center space-y-4">
-            <div class="text-4xl font-black text-neon">17</div>
-            <h3 class="font-bold text-white">Engine Scans</h3>
-            <p class="text-xs text-white/40">Simultaneous vulnerability scanning across 17 independent threat-intelligence engines.</p>
-        </div>
-        <div class="glass-panel p-8 text-center space-y-4">
-            <div class="text-4xl font-black text-neon">7</div>
-            <h3 class="font-bold text-white">Tiered Rating</h3>
-            <p class="text-xs text-white/40">Strict 7-tier behavioral rating system ensuring zero-trust compliance and restricted blast radius.</p>
-        </div>
-        <div class="glass-panel p-8 text-center space-y-4">
-            <div class="text-4xl font-black text-neon">100%</div>
-            <h3 class="font-bold text-white">Deterministic</h3>
-            <p class="text-xs text-white/40">Guaranteed execution schemas preventing prompt injection or lateral network movement.</p>
-        </div>
-    </div>
-    
-    <!-- 3D Cards for skills -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 card-3d-wrap animate-boot delay-2">
-         <a href="/pro" class="glass-panel p-8 space-y-6 card-3d block cursor-pointer">
+    <!-- 3D Card Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 card-3d-wrap animate-boot delay-1">
+        <!-- Card 1 -->
+        <a href="/tech-guides" class="glass-panel p-8 space-y-6 card-3d block cursor-pointer">
             <div class="glare rounded-xl"></div>
+            <div class="aspect-video w-full rounded-xl bg-[url('https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=800')] bg-cover bg-center border border-white/5"></div>
             <div class="space-y-3">
-                <div class="flex justify-between items-center"><div class="text-xs font-bold text-neon uppercase tracking-widest">Skill ID: AUTH-01</div><span class="px-2 py-1 bg-white/10 text-[10px] uppercase font-bold rounded">Tier 7 Verified</span></div>
-                <h3 class="text-2xl font-bold text-white">OAuth2 Bridge Protocol</h3>
-                <p class="text-white/50 leading-relaxed text-sm">Securely manage bearer tokens without exposing raw credentials to the LLM context window. Scanned by 17 engines: 0 vulnerabilities found.</p>
+                <div class="text-xs font-bold text-neon uppercase tracking-widest">Smartphone Review</div>
+                <h3 class="text-2xl font-bold text-white">The Ultimate Productivity Phone Setup</h3>
+                <p class="text-white/50 leading-relaxed">How to configure your home screen, focus modes, and apps to eliminate distractions and get work done.</p>
             </div>
         </a>
-        <a href="/pro" class="glass-panel p-8 space-y-6 card-3d block cursor-pointer">
+
+        <!-- Card 2 -->
+        <a href="/tech-guides" class="glass-panel p-8 space-y-6 card-3d block cursor-pointer">
             <div class="glare rounded-xl"></div>
+            <div class="aspect-video w-full rounded-xl bg-[url('https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800')] bg-cover bg-center border border-white/5"></div>
             <div class="space-y-3">
-                <div class="flex justify-between items-center"><div class="text-xs font-bold text-neon uppercase tracking-widest">Skill ID: FS-04</div><span class="px-2 py-1 bg-white/10 text-[10px] uppercase font-bold rounded">Tier 6 Verified</span></div>
-                <h3 class="text-2xl font-bold text-white">Sandboxed File System</h3>
-                <p class="text-white/50 leading-relaxed text-sm">Read/write access restricted to ephemeral Docker volumes. Prevents agent traversal attacks. Scanned by 17 engines: 0 vulnerabilities found.</p>
+                <div class="text-xs font-bold text-neon uppercase tracking-widest">Tablet Workflow</div>
+                <h3 class="text-2xl font-bold text-white">Can a Tablet Replace Your Laptop?</h3>
+                <p class="text-white/50 leading-relaxed">We spent 30 days working exclusively from a modern tablet. Here is the verdict on apps, multitasking, and battery life.</p>
             </div>
         </a>
     </div>
 </div>
 </div>
     <div id="ai-chat" class="fixed bottom-6 right-6 lg:bottom-10 lg:right-10 z-[200] flex flex-col items-end">
+        <!-- Chat Window -->
         <div id="chat-window" class="hidden glass-panel w-[calc(100vw-48px)] sm:w-96 h-[500px] max-h-[80vh] mb-4 flex flex-col shadow-2xl origin-bottom-right transition-all duration-300">
             <div class="p-5 border-b border-white/5 bg-black/40 flex justify-between items-center rounded-t-2xl">
                 <div class="flex items-center gap-3">
@@ -157,8 +184,8 @@
                         <span class="material-symbols-outlined text-[#00d2ff] text-sm">memory</span>
                     </div>
                     <div>
-                        <div class="text-sm font-bold text-white">Mr. Technology AI</div>
-                        <div class="text-[10px] text-white/40 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-neon animate-pulse"></span> Context Engine Linked</div>
+                        <div class="text-sm font-bold text-white">Ask Mr. Technology</div>
+                        <div class="text-[10px] text-white/40 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-neon animate-pulse"></span> Online and ready</div>
                     </div>
                 </div>
                 <button onclick="toggleChat()" class="text-white/40 hover:text-white touch-target p-2"><span class="material-symbols-outlined text-lg">close</span></button>
@@ -168,14 +195,14 @@
                 <div class="flex gap-4">
                     <div class="w-8 h-8 rounded-full bg-[#00d2ff]/20 flex-shrink-0 flex items-center justify-center"><span class="material-symbols-outlined text-[#00d2ff] text-sm">memory</span></div>
                     <div class="glass-panel p-4 rounded-2xl rounded-tl-sm text-sm text-white/80 leading-relaxed border-[#00d2ff]/20">
-                        Welcome to the Command Center. I'm the System Architect. Do you need details on our secure agent skills, 17-engine scanning protocol, or compute primitives?
+                        Welcome to the Command Center! I'm Mr. Technology's AI assistant. Do you need a gadget recommendation, a smart home layout idea, or a summary of our latest tech guide?
                     </div>
                 </div>
             </div>
             
             <div class="p-4 border-t border-white/5 bg-black/40 rounded-b-2xl">
                 <div class="relative">
-                    <input type="text" placeholder="Query the ecosystem..." class="w-full glass-panel bg-black/50 rounded-xl pl-4 pr-12 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#00d2ff]/50 focus:shadow-[0_0_15px_rgba(0,210,255,0.1)] transition-all">
+                    <input type="text" placeholder="Ask for advice or a summary..." class="w-full glass-panel bg-black/50 rounded-xl pl-4 pr-12 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#00d2ff]/50 focus:shadow-[0_0_15px_rgba(0,210,255,0.1)] transition-all">
                     <button class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-[#00d2ff] hover:bg-[#00d2ff]/10 rounded-lg transition-colors">
                         <span class="material-symbols-outlined text-sm">send</span>
                     </button>
@@ -183,6 +210,7 @@
             </div>
         </div>
 
+        <!-- Floating Button -->
         <button onclick="toggleChat()" class="chat-btn w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-[#050505] flex items-center justify-center cursor-pointer">
             <span class="material-symbols-outlined text-neon text-2xl lg:text-3xl">memory</span>
         </button>
@@ -192,23 +220,47 @@
         function toggleChat() {
             const win = document.getElementById('chat-window');
             win.classList.toggle('hidden');
-            if (!win.classList.contains('hidden') && window.innerWidth < 640) document.body.style.overflow = 'hidden';
-            else document.body.style.overflow = '';
+            if (!win.classList.contains('hidden')) {
+                const isMobile = window.innerWidth < 640;
+                if (isMobile) {
+                    document.body.style.overflow = 'hidden';
+                }
+            } else {
+                document.body.style.overflow = '';
+            }
         }
+
+        // 3D Card Hover Logic (Desktop Only)
         document.addEventListener('mousemove', (e) => {
-            if (window.innerWidth <= 1024) return;
+            if (window.innerWidth <= 1024) return; // Disable on tablet/mobile
             const cards = document.querySelectorAll('.card-3d');
             cards.forEach(card => {
                 const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left, y = e.clientY - rect.top;
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Only animate if mouse is over the card
                 if (x > 0 && x < rect.width && y > 0 && y < rect.height) {
-                    const cX = rect.width / 2, cY = rect.height / 2;
-                    card.style.transform = `rotateX(${(cY - y) / 15}deg) rotateY(${(x - cX) / 15}deg) scale3d(1.02, 1.02, 1.02)`;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    // Inverse rotation for tactile feel
+                    const rotateX = (centerY - y) / 15;
+                    const rotateY = (x - centerX) / 15;
+                    
+                    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                    
                     const glare = card.querySelector('.glare');
-                    if (glare) { glare.style.opacity = '1'; glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.15) 0%, transparent 60%)`; }
+                    if (glare) {
+                        glare.style.opacity = '1';
+                        // Move radial gradient with mouse
+                        glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.15) 0%, transparent 60%)`;
+                    }
                 } else {
+                    // Reset
                     card.style.transform = 'rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-                    const glare = card.querySelector('.glare'); if (glare) glare.style.opacity = '0';
+                    const glare = card.querySelector('.glare');
+                    if (glare) glare.style.opacity = '0';
                 }
             });
         });

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><title>About Mr. Tech | mr.technology</title>
+<!DOCTYPE html><html lang="en"><head><title>Smart Home | mr.technology</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -99,8 +99,8 @@
                 <span class="material-symbols-outlined text-[20px] opacity-60">devices</span>
                 Mobile & Gear
             </a>
-            <a href="/smart-home" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all touch-target text-white/60 hover:text-white hover:bg-white/5">
-                <span class="material-symbols-outlined text-[20px] opacity-60">home_iot_device</span>
+            <a href="/smart-home" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all touch-target bg-white/10 text-white shadow-[inset_2px_0_0_#00d2ff]">
+                <span class="material-symbols-outlined text-[20px] text-neon">home_iot_device</span>
                 Smart Home
             </a>
             <a href="/ai-automation" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all touch-target text-white/60 hover:text-white hover:bg-white/5">
@@ -115,8 +115,8 @@
                 <span class="material-symbols-outlined text-[20px] opacity-60">workspace_premium</span>
                 Pro Access
             </a>
-            <a href="/about" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all touch-target bg-white/10 text-white shadow-[inset_2px_0_0_#00d2ff]">
-                <span class="material-symbols-outlined text-[20px] text-neon">person</span>
+            <a href="/about" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all touch-target text-white/60 hover:text-white hover:bg-white/5">
+                <span class="material-symbols-outlined text-[20px] opacity-60">person</span>
                 About Mr. Tech
             </a>
         </div>
@@ -139,22 +139,61 @@
         </button>
     </nav>
     <div class="content-area">
-<div class="max-w-3xl mx-auto p-6 md:p-12 lg:p-20 space-y-12 animate-boot">
-    <div class="flex items-center gap-6 mb-8">
-        <img src="/logo.jpg" class="w-24 h-24 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.1)] border border-white/10">
-        <div>
-            <h1 class="text-4xl md:text-5xl font-bold text-white tracking-tight">The Architect.</h1>
-            <p class="text-xl text-neon font-medium mt-1">Hello, I'm Mr. Technology.</p>
+<div class="max-w-5xl mx-auto p-6 md:p-12 lg:p-20 space-y-16">
+    <div class="space-y-6 animate-boot">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel">
+            <span class="material-symbols-outlined text-sm text-neon">home_iot_device</span>
+            <span class="text-xs font-semibold text-white/80">Interactive Blueprint</span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-white">Smart Home Map.</h1>
+        <p class="text-xl text-white/50 max-w-2xl leading-relaxed">Hover over (or tap) the rooms below to see our recommended smart gear configurations for each space.</p>
+    </div>
+
+    <!-- Interactive Floorplan -->
+    <div class="relative w-full aspect-square md:aspect-video glass-panel overflow-hidden animate-boot delay-1">
+        <!-- Floorplan Background Image -->
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80')] bg-cover bg-center opacity-30"></div>
+        
+        <!-- Living Room Hotspot -->
+        <div class="absolute top-[40%] left-[30%] group cursor-pointer">
+            <!-- Pulsing Dot -->
+            <div class="w-8 h-8 rounded-full bg-[#00d2ff]/20 flex items-center justify-center animate-pulse group-hover:bg-[#00d2ff]/50 transition-colors shadow-[0_0_15px_rgba(0,210,255,0.5)]">
+                <div class="w-3 h-3 rounded-full bg-[#00d2ff]"></div>
+            </div>
+            <!-- Pop-up Glass Box -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 w-64 glass-panel p-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10 border-[#00d2ff]/30 shadow-2xl">
+                <h4 class="text-[#00d2ff] font-bold text-lg mb-1">Living Room Hub</h4>
+                <p class="text-xs text-white/60 mb-3 border-b border-white/10 pb-3">Entertainment & Ambient Lighting</p>
+                <ul class="text-sm text-white/90 space-y-2">
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[14px] text-neon">lightbulb</span> Smart Sync Bulbs</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[14px] text-neon">speaker</span> Wireless Audio Pair</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[14px] text-neon">router</span> Media Hub / Thread Router</li>
+                </ul>
+                <a href="/tech-guides" class="mt-4 block text-center text-xs font-bold bg-white/10 hover:bg-white/20 py-2 rounded-lg transition-colors">Read Guide</a>
+            </div>
+        </div>
+
+        <!-- Office Hotspot -->
+        <div class="absolute top-[60%] left-[70%] group cursor-pointer">
+            <div class="w-8 h-8 rounded-full bg-[#00d2ff]/20 flex items-center justify-center animate-pulse group-hover:bg-[#00d2ff]/50 transition-colors shadow-[0_0_15px_rgba(0,210,255,0.5)]">
+                <div class="w-3 h-3 rounded-full bg-[#00d2ff]"></div>
+            </div>
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 w-64 glass-panel p-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10 border-[#00d2ff]/30 shadow-2xl">
+                <h4 class="text-[#00d2ff] font-bold text-lg mb-1">Productivity Office</h4>
+                <p class="text-xs text-white/60 mb-3 border-b border-white/10 pb-3">Focus and Automation</p>
+                <ul class="text-sm text-white/90 space-y-2">
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[14px] text-neon">wb_sunny</span> Task Lighting Strips</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[14px] text-neon">power</span> Smart Plugs (Auto-Off)</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[14px] text-neon">nest_cam_indoor</span> Security Cam</li>
+                </ul>
+                <a href="/tech-guides" class="mt-4 block text-center text-xs font-bold bg-white/10 hover:bg-white/20 py-2 rounded-lg transition-colors">Read Guide</a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 glass-panel px-4 py-2 text-xs text-white/50">
+            Hover over the blue markers to inspect.
         </div>
     </div>
-    <article class="prose max-w-none text-white/70 text-lg leading-relaxed space-y-6">
-        <p>I believe that technology shouldn't be intimidating. It shouldn't be locked behind developer jargon or confusing instruction manuals.</p>
-        <p>The <b>Command Center</b> was built with one goal: to be your welcoming guide to mastering the tech you use every day. Whether you're trying to figure out which tablet to buy for college, how to make your living room lights turn on automatically at sunset, or how to use AI to save 5 hours a week at work—you are in the right place.</p>
-        <div class="glass-panel p-8 rounded-2xl border-white/5 mt-8">
-            <h3 class="text-xl font-bold text-white mb-4">Why I built this</h3>
-            <p class="text-base text-white/60">Technology is the ultimate lever. A single person, armed with the right automation tools, smart devices, and AI understanding, can accomplish the work of a team. I want to hand you that lever.</p>
-        </div>
-    </article>
 </div>
 </div>
     <div id="ai-chat" class="fixed bottom-6 right-6 lg:bottom-10 lg:right-10 z-[200] flex flex-col items-end">

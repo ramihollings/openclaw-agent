@@ -1,0 +1,204 @@
+<!DOCTYPE html><html lang="en"><head><title>Acquire Licenses | mr.technology</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/jpeg" href="/logo.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
+    <style>
+        :root { 
+            --blue: #1A73E8; 
+            --red: #EA4335;
+            --bg: #000000; 
+            --glass-bg: rgba(255, 255, 255, 0.02); 
+            --glass-border: rgba(255, 255, 255, 0.08); 
+            --ease-google: cubic-bezier(0.2, 0, 0, 1);
+        }
+        
+        body { 
+            background-color: var(--bg); 
+            color: #ffffff; 
+            font-family: 'Inter', sans-serif; 
+            -webkit-font-smoothing: antialiased; 
+            overflow-x: hidden; 
+        }
+        
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        
+        /* Glassmorphism Primitives */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            transition: all 0.3s var(--ease-google);
+            position: relative;
+        }
+        
+        .glass-pill {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+        }
+
+        /* Sequential Loading Animations */
+        .stagger-1 { animation: slideUp 0.6s var(--ease-google) 0.05s both; opacity: 0; }
+        .stagger-2 { animation: slideUp 0.6s var(--ease-google) 0.10s both; opacity: 0; }
+        .stagger-3 { animation: slideUp 0.6s var(--ease-google) 0.15s both; opacity: 0; }
+        .stagger-4 { animation: slideUp 0.6s var(--ease-google) 0.20s both; opacity: 0; }
+        .stagger-5 { animation: slideUp 0.6s var(--ease-google) 0.25s both; opacity: 0; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Agentic Motion & Indicators */
+        .pulse-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background-color: var(--blue);
+            box-shadow: 0 0 10px var(--blue);
+            animation: pulse 2s infinite var(--ease-google);
+            display: inline-block;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.7); }
+            70% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 6px rgba(26, 115, 232, 0); }
+            100% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(26, 115, 232, 0); }
+        }
+
+        /* Data Routing Animation (SVG Path) */
+        .data-path {
+            stroke: rgba(255,255,255,0.1); stroke-width: 2; fill: none; stroke-dasharray: 6 6; animation: dash 20s linear infinite;
+        }
+        
+        .data-packet {
+            fill: var(--blue); filter: drop-shadow(0 0 8px var(--blue)); opacity: 0; transition: opacity 0.3s;
+        }
+
+        .routing-active .data-packet {
+            opacity: 1; offset-path: path("M0,0 Q50,100 100,0"); animation: movePacket 1.5s var(--ease-google) infinite;
+        }
+
+        @keyframes dash { to { stroke-dashoffset: -100; } }
+        @keyframes movePacket {
+            0% { offset-distance: 0%; opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { offset-distance: 100%; opacity: 0; }
+        }
+
+        /* Terminal Scroller */
+        .terminal-scroll { height: 120px; overflow: hidden; position: relative; }
+        .terminal-scroll::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px;
+            background: linear-gradient(to bottom, transparent, var(--bg));
+        }
+        .log-lines { animation: scrollLogs 10s linear infinite; }
+        @keyframes scrollLogs { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+
+        /* Background Orbs */
+        .bg-orbs { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+        .orb {
+            position: absolute; border-radius: 50%;
+            background: radial-gradient(circle, rgba(26,115,232,0.15) 0%, transparent 70%);
+            filter: blur(60px); animation: floatOrb 20s ease-in-out infinite alternate;
+        }
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(100px, -50px) scale(1.2); }
+        }
+
+        /* Buttons */
+        .btn-primary { background: var(--blue); color: #fff; border-radius: 100px; padding: 8px 24px; font-weight: 600; font-size: 14px; transition: all 0.2s var(--ease-google); border: 1px solid transparent; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;}
+        .btn-primary:hover { box-shadow: 0 0 20px rgba(26,115,232,0.4); transform: translateY(-1px); }
+        
+        .btn-outline { background: transparent; color: #fff; border-radius: 100px; padding: 8px 24px; font-weight: 600; font-size: 14px; transition: all 0.2s var(--ease-google); border: 1px solid rgba(255,255,255,0.2); cursor: pointer; display: inline-flex; align-items: center; justify-content: center;}
+        .btn-outline:hover { border-color: var(--blue); color: var(--blue); background: rgba(26,115,232,0.05); }
+
+        /* Custom Prose for Payload Pages */
+        .prose-custom p { margin-bottom: 1.5rem; }
+        .prose-custom h3 { color: #fff; font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+        .prose-custom pre { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 16px; margin: 1.5rem 0; overflow-x: auto; }
+        .prose-custom code { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--blue); }
+        .prose-custom pre code { color: #fff; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+    </style>
+</head><body>
+    <nav class="fixed top-6 inset-x-0 z-[100] flex justify-center pointer-events-none">
+        <div class="glass-pill px-6 py-3 flex items-center gap-6 pointer-events-auto shadow-2xl flex-wrap justify-center">
+            <div class="flex items-center gap-3">
+                <img src="/logo.jpg" class="w-6 h-6 rounded-full grayscale opacity-80 border border-white/20">
+                <span class="mono text-[11px] tracking-widest uppercase font-bold text-white hidden sm:inline">mr.technology // sys.root</span>
+            </div>
+            <div class="hidden sm:block w-[1px] h-4 bg-white/20"></div>
+            <div class="flex items-center gap-2">
+                <a href="/" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all ${active === 'hub' ? 'bg-[#1A73E8] text-white shadow-[0_0_15px_rgba(26,115,232,0.3)]' : 'text-white/60 hover:text-white hover:bg-white/10'}">[ Hub ]</a>
+                <a href="/payloads" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all ${active === 'payloads' ? 'bg-[#1A73E8] text-white shadow-[0_0_15px_rgba(26,115,232,0.3)]' : 'text-white/60 hover:text-white hover:bg-white/10'}">[ Payloads ]</a>
+                <a href="/acquire" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all ${active === 'acquire' ? 'bg-[#1A73E8] text-white shadow-[0_0_15px_rgba(26,115,232,0.3)]' : 'text-white/60 hover:text-white hover:bg-white/10'}">[ Acquire ]</a>
+                <a href="/trust" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all ${active === 'trust' ? 'bg-[#1A73E8] text-white shadow-[0_0_15px_rgba(26,115,232,0.3)]' : 'text-white/60 hover:text-white hover:bg-white/10'}">[ Trust ]</a>
+            </div>
+        </div>
+    </nav>
+    
+<div class="bg-orbs">
+    <div class="orb w-[500px] h-[500px] top-[10%] right-[10%] opacity-40"></div>
+</div>
+<div class="max-w-[1200px] mx-auto px-6 pt-40 pb-32 min-h-screen relative z-10 flex flex-col gap-12">
+    <div class="text-center space-y-4 stagger-1 mb-8">
+        <h1 class="text-5xl font-bold tracking-tight">Infrastructure Licensing</h1>
+        <p class="text-lg text-white/50 font-light max-w-2xl mx-auto">Acquire the primitives to build, deploy, and scale your autonomous agent ecosystem.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="glass-panel p-12 flex flex-col stagger-2">
+            <div class="mb-8">
+                <h3 class="text-3xl font-bold mb-2">Architect</h3>
+                <p class="text-white/50 font-light">Perpetual core infrastructure license.</p>
+            </div>
+            <div class="mb-8">
+                <span class="text-5xl font-bold">$197</span>
+                <span class="mono text-white/40 text-xs ml-2">ONE_TIME</span>
+            </div>
+            <div class="flex-1 space-y-4 mb-10 mono text-sm text-white/70">
+                <div class="flex items-start gap-3"><span class="text-[#1A73E8]">></span> Guard Protocol (39 Roles)</div>
+                <div class="flex items-start gap-3"><span class="text-[#1A73E8]">></span> Bridge Protocol (MCP Factory)</div>
+                <div class="flex items-start gap-3"><span class="text-[#1A73E8]">></span> Private GitHub Vault Access</div>
+                <div class="flex items-start gap-3"><span class="text-[#1A73E8]">></span> Perpetual Self-Hosted Use</div>
+            </div>
+            <a href="https://pinesentry.lemonsqueezy.com/checkout/buy/1431586?embed=1" class="lemonsqueezy-button btn-outline w-full">[ Initialize License ]</a>
+        </div>
+
+        <div class="glass-panel p-12 flex flex-col border-[#1A73E8] shadow-[0_0_40px_rgba(26,115,232,0.15)] stagger-3 relative overflow-hidden">
+            <div class="absolute top-6 right-8 flex items-center gap-2">
+                <span class="pulse-dot"></span>
+                <span class="mono text-[10px] text-[#1A73E8] tracking-widest uppercase">Active</span>
+            </div>
+            <div class="mb-8">
+                <h3 class="text-3xl font-bold text-[#1A73E8]">Empire Protocol</h3>
+                <p class="text-white/50 font-light">Continuous scaling and optimization.</p>
+            </div>
+            <div class="mb-8">
+                <span class="text-5xl font-bold">$49</span>
+                <span class="mono text-white/40 text-xs ml-2">/MONTH</span>
+            </div>
+            <div class="flex-1 space-y-4 mb-10 mono text-sm text-white/70">
+                <div class="flex items-start gap-3"><span class="text-[#1A73E8]">></span> Includes Architect License</div>
+                <div class="flex items-start gap-3"><span class="text-[#1A73E8]">></span> Search Protocol (GEO)</div>
+                <div class="flex items-start gap-3"><span class="text-[#1A73E8]">></span> Authority Protocol (AI Social)</div>
+                <div class="flex items-start gap-3"><span class="text-[#1A73E8]">></span> Unlimited Domain Routing</div>
+            </div>
+            <a href="https://pinesentry.lemonsqueezy.com/checkout/buy/1431594?embed=1" class="lemonsqueezy-button btn-primary w-full">[ Deploy Protocol ]</a>
+        </div>
+    </div>
+</div>
+</body></html>

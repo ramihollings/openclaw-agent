@@ -1,158 +1,149 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Cost Calculator | mr.technology</title>
-    
+<!DOCTYPE html><html lang="en"><head><title>Cost Calculator | mr.technology</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.2/dist/terminal.min.css" />
+    <meta name="description" content="Token spend forecast.">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/jpeg" href="/logo.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Cost Calculator","description":"Token spend forecast.","author":{"@type":"Organization","name":"mr.technology"},"publisher":{"@type":"Organization","name":"mr.technology","logo":{"@type":"ImageObject","url":"https://mr.technology/logo.jpg"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mr.technology/calculator"}}</script>
     <style>
-        :root {
-            --global-font-size: 15px;
-            --global-line-height: 1.4;
-            --global-space: 10px;
-            --font-stack: 'Courier New', Courier, font-family: monospace;
-            --mono-font-stack: 'Courier New', Courier, font-family: monospace;
-            --background-color: #000000;
-            --font-color: #e8e9ed;
-            --invert-font-color: #222225;
-            --secondary-color: #00ff41;
-            --tertiary-color: #1A73E8;
-            --primary-color: #00ff41;
-            --error-color: #EA4335;
-            --progress-bar-background: #3f3f44;
-            --progress-bar-fill: #00ff41;
-        }
-        body { padding: 20px; max-width: 1000px; margin: 0 auto; background-color: #000; color: #e8e9ed; }
-        .logo-ascii { white-space: pre; font-size: 8px; line-height: 1; color: var(--primary-color); margin-bottom: 20px; }
-        .terminal-nav { border-bottom: 1px solid #333; margin-bottom: 40px; padding-bottom: 10px; }
-        .terminal-card { border: 1px solid #333; padding: 20px; margin-bottom: 20px; background: #050505; }
-        .terminal-card:hover { border-color: var(--primary-color); }
-        .calculator-input { background: #111; border: 1px solid #333; color: var(--primary-color); width: 100%; padding: 10px; margin-top: 5px; }
-        .badge-security { border: 1px solid var(--primary-color); color: var(--primary-color); padding: 2px 6px; font-size: 10px; text-transform: uppercase; display: inline-block; margin-top: 10px; }
-        footer { margin-top: 60px; border-top: 1px solid #333; padding-top: 20px; font-size: 12px; color: #666; }
-        .term-green { color: #00ff41; }
-        a { color: #00ff41; text-decoration: none; }
-        a:hover { background: #00ff41; color: #000; }
-        .terminal-button { border: 1px solid #00ff41; padding: 5px 10px; cursor: pointer; display: inline-block; margin-top: 10px; }
-        .terminal-button.primary { background: #00ff41; color: #000; }
+        :root { --blue: #1A73E8; --red: #EA4335; --bg: #000000; --glass-bg: rgba(255, 255, 255, 0.02); --glass-border: rgba(255, 255, 255, 0.08); --ease-google: cubic-bezier(0.2, 0, 0, 1); }
+        body { background-color: var(--bg); color: #ffffff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-panel { background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 24px; transition: all 0.3s var(--ease-google); position: relative; }
+        .glass-pill { background: var(--glass-bg); backdrop-filter: blur(24px); border: 1px solid var(--glass-border); border-radius: 100px; }
+        .stagger-1 { animation: slideUp 0.6s var(--ease-google) 0.05s both; opacity: 0; }
+        .stagger-2 { animation: slideUp 0.6s var(--ease-google) 0.10s both; opacity: 0; }
+        .stagger-3 { animation: slideUp 0.6s var(--ease-google) 0.15s both; opacity: 0; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background-color: var(--blue); box-shadow: 0 0 10px var(--blue); animation: pulse 2s infinite var(--ease-google); display: inline-block; }
+        @keyframes pulse { 0% { transform: scale(0.95); opacity: 0.8; } 70% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 6px rgba(26, 115, 232, 0); } 100% { transform: scale(0.95); opacity: 0.8; } }
+        .data-path { stroke: rgba(255,255,255,0.1); stroke-width: 2; fill: none; stroke-dasharray: 6 6; animation: dash 20s linear infinite; }
+        .data-packet { fill: var(--blue); filter: drop-shadow(0 0 8px var(--blue)); opacity: 0; transition: opacity 0.3s; }
+        .routing-active .data-packet { opacity: 1; offset-path: path("M0,0 Q50,100 100,0"); animation: movePacket 1.5s var(--ease-google) infinite; }
+        @keyframes dash { to { stroke-dashoffset: -100; } }
+        @keyframes movePacket { 0% { offset-distance: 0%; opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
+        .terminal-scroll { height: 120px; overflow: hidden; position: relative; }
+        .terminal-scroll::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(to bottom, transparent, var(--bg)); }
+        .log-lines { animation: scrollLogs 10s linear infinite; }
+        @keyframes scrollLogs { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+        .bg-orbs { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+        .orb { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(26,115,232,0.15) 0%, transparent 70%); filter: blur(60px); animation: floatOrb 20s ease-in-out infinite alternate; }
+        @keyframes floatOrb { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(100px, -50px) scale(1.2); } }
+        .btn-primary { background: var(--blue); color: #fff; border-radius: 100px; padding: 10px 28px; font-weight: 600; font-size: 14px; transition: all 0.2s var(--ease-google); border: 1px solid transparent; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;}
+        .btn-primary:hover { box-shadow: 0 0 20px rgba(26,115,232,0.4); transform: translateY(-1px); }
+        .btn-outline { background: transparent; color: #fff; border-radius: 100px; padding: 10px 28px; font-weight: 600; font-size: 14px; transition: all 0.2s var(--ease-google); border: 1px solid rgba(255,255,255,0.2); cursor: pointer; display: inline-flex; align-items: center; justify-content: center;}
+        .btn-outline:hover { border-color: var(--blue); color: var(--blue); background: rgba(26,115,232,0.05); }
+        .prose-custom p { margin-bottom: 1.5rem; line-height: 1.8; color: rgba(255,255,255,0.7); }
+        .prose-custom h2 { color: #fff; font-size: 2rem; font-weight: 800; margin-top: 3rem; margin-bottom: 1.5rem; letter-spacing: -0.04em; }
+        .prose-custom h3 { color: #fff; font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; }
+        .prose-custom pre { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; margin: 2rem 0; overflow-x: auto; }
+        .prose-custom code { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--blue); }
+        .prose-custom pre code { color: #fff; }
+        .badge { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: var(--blue); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block; }
+        .calc-input { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; padding: 12px; color: white; width: 100%; focus: outline-none; focus: border-color: var(--blue); }
     </style>
-
-</head>
-<body class="terminal">
-    
-    <div class="terminal-nav">
-        <header class="terminal-logo">
-            <div class="logo">
-                <a href="/" class="no-style term-green">MR.TECHNOLOGY@HUB:~#</a>
+</head><body>
+    <nav class="fixed top-6 inset-x-0 z-[100] flex justify-center pointer-events-none">
+        <div class="glass-pill px-6 py-3 flex items-center gap-6 pointer-events-auto shadow-2xl flex-wrap justify-center">
+            <div class="flex items-center gap-3">
+                <img src="/logo.jpg" class="w-6 h-6 rounded-full grayscale border border-white/20">
+                <span class="mono text-[11px] tracking-widest uppercase font-bold text-white hidden sm:inline">mr.technology // sys.root</span>
             </div>
-        </header>
-        <nav class="terminal-menu">
-            <ul>
-                <li><a class="menu-item " href="/">Home</a></li>
-                <li><a class="menu-item " href="/marketplace">Marketplace</a></li>
-                <li><a class="menu-item " href="/playbooks">Playbooks</a></li>
-                <li><a class="menu-item active" href="/calculator">Calculator</a></li>
-            </ul>
-        </nav>
+            <div class="hidden sm:block w-[1px] h-4 bg-white/20"></div>
+            <div class="flex items-center gap-2">
+                <a href="/" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all text-white/60 hover:text-white hover:bg-white/10">[ Hub ]</a>
+                <a href="/payloads" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all text-white/60 hover:text-white hover:bg-white/10">[ Payloads ]</a>
+                <a href="/marketplace" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all text-white/60 hover:text-white hover:bg-white/10">[ Store ]</a>
+                <a href="/calculator" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-[#1A73E8] text-white shadow-[0_0_15px_rgba(26,115,232,0.3)]">[ Calc ]</a>
+                <a href="/trust" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all text-white/60 hover:text-white hover:bg-white/10">[ Trust ]</a>
+            </div>
+        </div>
+    </nav>
+    
+<div class="max-w-[800px] mx-auto px-6 pt-40 pb-32 min-h-screen relative z-10 flex flex-col gap-12">
+    <div class="text-center space-y-4 stagger-1 mb-8">
+        <h1 class="text-5xl font-bold tracking-tight italic">Token_Calc.</h1>
+        <p class="text-lg text-white/50 font-light max-w-2xl mx-auto">Forecast AI agent expenditures entirely client-side. Zero server compute.</p>
     </div>
     
-    <main>
+    <div class="glass-panel p-10 stagger-2 space-y-8">
+        <div id="calc-status" class="mono text-xs text-[#1A73E8]">Initializing Live Pricing Sync...</div>
         
-    <section>
-        <h2>AI Cost Calculator</h2>
-        <p>Forecast your AI token spend entirely in-browser. Live pricing fetched from the community dataset.</p>
-        
-        <div class="terminal-card">
-            <div id="calc-status">Fetching live model pricing...</div>
-            <div id="calculator-ui" style="display:none; margin-top: 20px;">
-                <div class="form-group">
-                    <label>Select Model:</label>
-                    <select id="model-select" class="calculator-input" style="background: #111; color: #00ff41;"></select>
+        <div id="calculator-ui" style="display:none;" class="space-y-6">
+            <div class="space-y-2">
+                <label class="text-xs mono uppercase text-white/40">Select Compute Model</label>
+                <select id="model-select" class="calc-input"></select>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                    <label class="text-xs mono uppercase text-white/40">Avg Prompt Tokens</label>
+                    <input type="number" id="tokens-prompt" value="1000" class="calc-input">
                 </div>
-                <div class="form-group" style="margin-top: 15px;">
-                    <label>Estimated Prompt Tokens (avg/request):</label>
-                    <input type="number" id="tokens-prompt" value="1000" class="calculator-input">
+                <div class="space-y-2">
+                    <label class="text-xs mono uppercase text-white/40">Avg Completion Tokens</label>
+                    <input type="number" id="tokens-completion" value="500" class="calc-input">
                 </div>
-                <div class="form-group" style="margin-top: 15px;">
-                    <label>Estimated Completion Tokens (avg/request):</label>
-                    <input type="number" id="tokens-completion" value="500" class="calculator-input">
-                </div>
-                <div class="form-group" style="margin-top: 15px;">
-                    <label>Daily Request Frequency:</label>
-                    <input type="number" id="frequency" value="100" class="calculator-input">
-                </div>
-                <hr>
-                <div id="calc-results">
-                    <h3 class="term-green">Projected Monthly Cost: <span id="monthly-total">$0.00</span></h3>
-                    <p id="model-details" style="font-size: 11px; opacity: 0.6;"></p>
+            </div>
+            <div class="space-y-2">
+                <label class="text-xs mono uppercase text-white/40">Daily Request Frequency</label>
+                <input type="number" id="frequency" value="100" class="calc-input">
+            </div>
+            
+            <div class="pt-8 border-t border-white/5">
+                <div class="flex justify-between items-end">
+                    <div class="space-y-1">
+                        <span class="text-xs mono uppercase text-white/40">Projected Monthly Total</span>
+                        <h2 class="text-4xl font-bold text-[#1A73E8]" id="monthly-total">$0.00</h2>
+                    </div>
+                    <p id="model-details" class="text-[10px] mono text-white/20"></p>
                 </div>
             </div>
         </div>
-
-        <script>
-            async function initCalculator() {
-                const status = document.getElementById('calc-status');
-                const ui = document.getElementById('calculator-ui');
-                const select = document.getElementById('model-select');
-                
-                try {
-                    const response = await fetch('https://www.llm-prices.com/current-v1.json');
-                    if (!response.ok) throw new Error('Network error');
-                    const data = await response.json();
-                    
-                    status.innerText = "Live Pricing Sync: OK";
-                    ui.style.display = "block";
-                    
-                    data.models.sort((a,b) => a.name.localeCompare(b.name)).forEach(m => {
-                        const opt = document.createElement('option');
-                        opt.value = JSON.stringify(m);
-                        opt.innerText = m.name + " (" + m.provider + ")";
-                        select.appendChild(opt);
-                    });
-
-                    function calculate() {
-                        const val = select.value;
-                        if (!val) return;
-                        const m = JSON.parse(val);
-                        const pTok = parseInt(document.getElementById('tokens-prompt').value) || 0;
-                        const cTok = parseInt(document.getElementById('tokens-completion').value) || 0;
-                        const freq = parseInt(document.getElementById('frequency').value) || 0;
-                        
-                        const costPerReq = (pTok * m.input_price / 1000000) + (cTok * m.output_price / 1000000);
-                        const monthly = costPerReq * freq * 30;
-                        
-                        document.getElementById('monthly-total').innerText = "$" + monthly.toFixed(2);
-                        document.getElementById('model-details').innerText = "Pricing: $" + m.input_price + " / 1M input, $" + m.output_price + " / 1M output.";
-                    }
-
-                    select.onchange = calculate;
-                    document.querySelectorAll('.calculator-input').forEach(i => i.oninput = calculate);
-                    calculate();
-
-                } catch (e) {
-                    status.innerText = "Error syncing live data. Loading local fallback pricing...";
-                    const fallback = [
-                        { name: "Gemini 1.5 Pro", provider: "Google", input_price: 3.5, output_price: 10.5 },
-                        { name: "Gemini 1.5 Flash", provider: "Google", input_price: 0.075, output_price: 0.3 }
-                    ];
-                    ui.style.display = "block";
-                    fallback.forEach(m => {
-                        const opt = document.createElement('option');
-                        opt.value = JSON.stringify(m);
-                        opt.innerText = m.name + " (Fallback)";
-                        select.appendChild(opt);
-                    });
-                }
+    </div>
+</div>
+<script>
+    async function initCalculator() {
+        const status = document.getElementById('calc-status');
+        const ui = document.getElementById('calculator-ui');
+        const select = document.getElementById('model-select');
+        try {
+            const response = await fetch('https://www.llm-prices.com/current-v1.json');
+            if (!response.ok) throw new Error();
+            const data = await response.json();
+            status.innerText = "Live Sync: Active // Source: llm-prices.com";
+            ui.style.display = "block";
+            data.models.sort((a,b) => a.name.localeCompare(b.name)).forEach(m => {
+                const opt = document.createElement('option');
+                opt.value = JSON.stringify(m);
+                opt.innerText = m.name + " (" + m.provider + ")";
+                select.appendChild(opt);
+            });
+            function calculate() {
+                const m = JSON.parse(select.value);
+                const pTok = parseInt(document.getElementById('tokens-prompt').value);
+                const cTok = parseInt(document.getElementById('tokens-completion').value);
+                const freq = parseInt(document.getElementById('frequency').value);
+                const costPerReq = (pTok * m.input_price / 1000000) + (cTok * m.output_price / 1000000);
+                document.getElementById('monthly-total').innerText = "$" + (costPerReq * freq * 30).toFixed(2);
+                document.getElementById('model-details').innerText = "$" + m.input_price + " in / $" + m.output_price + " out";
             }
-            window.onload = initCalculator;
-        </script>
-    </section>
-
-    </main>
-    <footer>
-        <p>© 2026 MR.TECHNOLOGY // SYSTEM_STABLE // NO_COMPUTE_OVERHEAD</p>
-    </footer>
-</body>
-</html>
+            select.onchange = calculate;
+            document.querySelectorAll('.calc-input').forEach(i => i.oninput = calculate);
+            calculate();
+        } catch (e) {
+            status.innerText = "Sync Failed. Loading Offline Primitives...";
+            const fallback = [{ name: "Gemini 1.5 Pro", input_price: 3.5, output_price: 10.5, provider: "Google" }];
+            ui.style.display = "block";
+            fallback.forEach(m => {
+                const opt = document.createElement('option');
+                opt.value = JSON.stringify(m);
+                opt.innerText = m.name;
+                select.appendChild(opt);
+            });
+        }
+    }
+    initCalculator();
+</script>
+</body></html>

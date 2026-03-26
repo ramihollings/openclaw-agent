@@ -1,12 +1,12 @@
-<!DOCTYPE html><html lang="en"><head><title>System Trust | mr.technology</title>
+<!DOCTYPE html><html lang="en"><head><title>Guard Protocol | mr.technology</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Trust metrics.">
+    <meta name="description" content="Deterministic security for autonomous agent execution.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/jpeg" href="/logo.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"System Trust","description":"Trust metrics.","author":{"@type":"Organization","name":"mr.technology"},"publisher":{"@type":"Organization","name":"mr.technology","logo":{"@type":"ImageObject","url":"https://mr.technology/logo.jpg"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mr.technology/trust"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Guard Protocol","description":"Deterministic security for autonomous agent execution.","author":{"@type":"Organization","name":"mr.technology"},"publisher":{"@type":"Organization","name":"mr.technology","logo":{"@type":"ImageObject","url":"https://mr.technology/logo.jpg"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mr.technology/guard"}}</script>
     <style>
         :root { --blue: #1A73E8; --red: #EA4335; --bg: #000000; --glass-bg: rgba(255, 255, 255, 0.02); --glass-border: rgba(255, 255, 255, 0.08); --ease-google: cubic-bezier(0.2, 0, 0, 1); }
         body { background-color: var(--bg); color: #ffffff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
@@ -55,26 +55,30 @@
             </div>
             <div class="hidden sm:block w-[1px] h-4 bg-white/20"></div>
             <div class="flex items-center gap-2">
-                <a href="/" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all text-white/60 hover:text-white hover:bg-white/10">[ Hub ]</a>
+                <a href="/" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-[#1A73E8] text-white shadow-[0_0_15px_rgba(26,115,232,0.3)]">[ Hub ]</a>
                 <a href="/payloads" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all text-white/60 hover:text-white hover:bg-white/10">[ Payloads ]</a>
                 <a href="/marketplace" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all text-white/60 hover:text-white hover:bg-white/10">[ Store ]</a>
                 <a href="/calculator" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all text-white/60 hover:text-white hover:bg-white/10">[ Calc ]</a>
-                <a href="/trust" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-[#1A73E8] text-white shadow-[0_0_15px_rgba(26,115,232,0.3)]">[ Trust ]</a>
+                <a href="/trust" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all text-white/60 hover:text-white hover:bg-white/10">[ Trust ]</a>
             </div>
         </div>
     </nav>
     
-<div class="bg-orbs"><div class="orb w-[700px] h-[700px] top-[40%] left-[20%] opacity-30" style="animation-delay: -2s;"></div></div>
-<div class="max-w-[1000px] mx-auto px-6 pt-40 pb-32 min-h-screen relative z-10 flex flex-col gap-12 text-center md:text-left">
-    <div class="text-center space-y-4 stagger-1 mb-8"><h1 class="text-5xl font-bold tracking-tight">System Trust</h1><p class="text-lg text-white/50 font-light max-w-2xl mx-auto">Verified operations and legal frameworks.</p></div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-2 mb-8">
-        <div class="glass-panel p-6 flex flex-col items-center justify-center text-center gap-2"><span class="mono text-[10px] text-white/40 uppercase">Uptime</span><span class="text-3xl font-bold text-[#1A73E8]">100%</span></div>
-        <div class="glass-panel p-6 flex flex-col items-center justify-center text-center gap-2"><span class="mono text-[10px] text-white/40 uppercase">Transactions</span><span class="text-3xl font-bold text-[#1A73E8]">Secured</span></div>
-        <div class="glass-panel p-6 flex flex-col items-center justify-center text-center gap-2"><span class="mono text-[10px] text-white/40 uppercase">Nodes</span><div class="flex items-center gap-2"><span class="pulse-dot"></span><span class="text-3xl font-bold text-white uppercase">Active</span></div></div>
-    </div>
-    <div class="space-y-8 stagger-3 max-w-3xl mx-auto">
-        <div class="glass-panel p-10 space-y-4"><h3>Terms of Service</h3><p class="text-white/60 font-light leading-relaxed text-sm">Usage of mr.technology protocols implies operational consent.</p></div>
-        <div class="glass-panel p-10 space-y-4 border-[#EA4335]/30 text-center md:text-left"><h3 class="text-[#EA4335]">Refund Policy</h3><p class="text-white/60 font-light leading-relaxed text-sm">Due to the deterministic and proprietary nature of the source code provided, all sales are absolutely final once repository access has been granted.</p></div>
-    </div>
-</div>
-</body></html>
+    <div class="bg-orbs"><div class="orb w-[600px] h-[600px] top-[10%] right-[10%] opacity-20"></div></div>
+    <div class="max-w-[800px] mx-auto px-6 pt-40 pb-32 min-h-screen relative z-10 flex flex-col gap-8">
+        <a href="/" class="text-[#1A73E8] mono text-sm flex items-center gap-2 hover:text-white transition-colors w-fit font-bold"><- Back to Hub</a>
+        <div class="glass-panel p-10 md:p-16 stagger-1">
+            <div class="flex items-center gap-3 mb-8"><span class="badge">Protocol_Release</span><span class="material-symbols-outlined text-[#1A73E8] text-sm">shield</span></div>
+            <h1 class="text-4xl md:text-6xl mono text-white mb-10 font-bold leading-tight">Guard Protocol</h1>
+            <p class="text-2xl text-white/40 italic font-light mb-12">Deterministic security for autonomous agent execution.</p>
+            <div class="text-white/70 leading-relaxed text-xl font-light prose-custom">
+                <h2>Description</h2><p>The Guard Protocol acts as a hard-coded security firewall that sits between your AI agent and your local system. It ensures that no matter what a 'rogue prompt' or 'injection attack' tries to do, the agent can only perform actions that you have explicitly authorized.</p>
+                <h2>Operational Logic</h2><p>It utilizes a library of 39+ pre-vetted JSON schemas. When an agent requests a tool call (e.g., reading a file or making a network request), the Guard Engine intercepts the payload, validates it against the active 'Role Profile', and rejects any deviation instantly.</p>
+                <h3>Deployment Guide</h3><pre><code>1. Select a role from the vault (e.g., DATA_ANALYSIS_ONLY).
+2. Inject the provided JSON schema into your agent's system prompt.
+3. Enable the Hub's Middleware to intercept all outgoing tool-call requests.</code></pre>
+                <div class="p-10 glass-panel border-[#1A73E8]/30 bg-blue-500/5 mt-16"><h3 class="m-0 text-[#1A73E8]">Why you need it</h3><p class="text-white/80 m-0">Without the Guard Protocol, a self-improving agent is a liability. A single hallucination could lead to recursive file deletion or the accidental exfiltration of your environment secrets (keys/tokens).</p></div>
+            </div>
+            <div class="mt-24 pt-10 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-8"><div class="mono text-[10px] text-white/20 uppercase tracking-[0.4em]">Protocol Status: Operational</div><a href="/marketplace" class="btn-primary shadow-[0_0_30px_rgba(26,115,232,0.2)]">[ Access Infrastructure ]</a></div>
+        </div>
+    </div></body></html>

@@ -4,7 +4,7 @@
     <meta name="description" content="Intelligence archive.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/jpeg" href="/logo.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Payload Archive","description":"Intelligence archive.","author":{"@type":"Organization","name":"mr.technology"},"publisher":{"@type":"Organization","name":"mr.technology","logo":{"@type":"ImageObject","url":"https://mr.technology/logo.jpg"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mr.technology/payloads"}}</script>
     <style>
@@ -18,7 +18,7 @@
         .stagger-3 { animation: slideUp 0.6s var(--ease-google) 0.15s both; opacity: 0; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background-color: var(--blue); box-shadow: 0 0 10px var(--blue); animation: pulse 2s infinite var(--ease-google); display: inline-block; }
-        @keyframes pulse { 0% { transform: scale(0.95); opacity: 0.8; } 70% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 6px rgba(26, 115, 232, 0); } 100% { transform: scale(0.95); opacity: 0.8; } }
+        @keyframes pulse { 0% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.7); } 70% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 6px rgba(26, 115, 232, 0); } 100% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(26, 115, 232, 0); } }
         .data-path { stroke: rgba(255,255,255,0.1); stroke-width: 2; fill: none; stroke-dasharray: 6 6; animation: dash 20s linear infinite; }
         .data-packet { fill: var(--blue); filter: drop-shadow(0 0 8px var(--blue)); opacity: 0; transition: opacity 0.3s; }
         .routing-active .data-packet { opacity: 1; offset-path: path("M0,0 Q50,100 100,0"); animation: movePacket 1.5s var(--ease-google) infinite; }
@@ -42,7 +42,9 @@
         .prose-custom code { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--blue); }
         .prose-custom pre code { color: #fff; }
         .badge { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: var(--blue); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block; }
-        .calc-input { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; padding: 12px; color: white; width: 100%; focus: outline-none; focus: border-color: var(--blue); }
+        .calc-input { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px; color: white; width: 100%; font-family: 'JetBrains Mono', monospace; font-size: 13px; outline: none; transition: border-color 0.2s; }
+        .calc-input:focus { border-color: var(--blue); }
+        select.calc-input { appearance: none; cursor: pointer; }
     </style>
 </head><body>
     <nav class="fixed top-6 inset-x-0 z-[100] flex justify-center pointer-events-none">
@@ -64,32 +66,39 @@
     
 <div class="bg-orbs"><div class="orb w-[600px] h-[600px] top-[-20%] left-[-10%]"></div></div>
 <div class="max-w-[800px] mx-auto px-6 pt-40 pb-32 min-h-screen relative z-10 flex flex-col gap-12">
-    <div class="text-center space-y-4 stagger-1 mb-8"><h1 class="text-5xl font-bold tracking-tight italic">Payloads & Playbooks.</h1><p class="text-lg text-white/50 font-light max-w-2xl mx-auto">Intelligence briefings and security standards.</p></div>
+    <div class="text-center space-y-4 stagger-1 mb-8"><h1 class="text-5xl font-bold tracking-tight italic">Payloads & Playbooks.</h1><p class="text-lg text-white/50 font-light max-w-2xl mx-auto">Technical briefings and architectural standards.</p></div>
     
     <div class="space-y-6">
-    <div class="text-xs mono uppercase text-white/20 tracking-widest pl-4">Security Playbooks</div>
+    <div class="text-[10px] mono uppercase text-white/20 tracking-[0.3em] pl-4">Security Playbooks</div>
     
-    <a href="/playbook-boundary-pinning" class="glass-panel p-10 group hover:border-[#1A73E8] transition-colors block">
-        <div class="flex items-center gap-3 mb-4"><span class="badge !text-[#EA4335] !border-[#EA4335]/30">Security Standard</span></div>
-        <h2 class="text-2xl mono text-white mb-6 font-bold group-hover:text-[#1A73E8] transition-colors">Boundary Pinning: Restricting Host Access</h2>
-        <p class="text-white/50 text-lg">Defining explicit trust boundaries by pinning exec allowlists and enforcing sandbox mode.</p>
+    <a href="/playbook-boundary-pinning" class="glass-panel p-10 group hover:border-[#EA4335] transition-colors block border-white/5">
+        <div class="flex items-center gap-3 mb-4"><span class="badge !text-[#EA4335] !border-[#EA4335]/30">Verified Standard</span></div>
+        <h2 class="text-3xl mono text-white mb-6 font-bold group-hover:text-white transition-colors">Boundary Pinning: Restricting Host Access</h2>
+        <p class="text-white/50 text-lg font-light leading-relaxed">Defining explicit trust boundaries by pinning exec allowlists and enforcing sandbox mode.</p>
+        <div class="mt-8 text-xs font-bold text-[#EA4335] mono uppercase tracking-widest">Execute Read -></div>
     </a>
     </div>
 
-    <div class="space-y-6 mt-20">
-    <div class="text-xs mono uppercase text-white/20 tracking-widest pl-4">Intelligence Payloads</div>
+    <div class="space-y-6 mt-24">
+    <div class="text-[10px] mono uppercase text-white/20 tracking-[0.3em] pl-4">Intelligence Payloads</div>
     
-    <a href="/payload-functional-tool" class="glass-panel p-10 group hover:border-[#1A73E8] transition-colors block">
-        <h2 class="text-2xl mono text-[#1A73E8] mb-6 font-bold group-hover:text-white transition-colors">PAYLOAD // Mar 17 Functional Tool Calling in LLMs</h2>
-        <p class="text-white/50 text-lg">How to design robust schemas for reliable agentic tool execution with modern LLMs. Strict JSON schemas, descriptive parameter docstrings, and constrained token lengths are essential.</p>
+    <a href="/payload-functional-tool" class="glass-panel p-10 group hover:border-[#1A73E8] transition-colors block border-white/5">
+        <div class="flex items-center gap-3 mb-6"><span class="badge">Payload_FUNCTIONAL-TOOL</span></div>
+        <h2 class="text-3xl mono text-[#1A73E8] mb-6 font-bold group-hover:text-white transition-colors">PAYLOAD // Mar 17 Functional Tool Calling in LLMs</h2>
+        <p class="text-white/50 text-lg font-light leading-relaxed">How to design robust schemas for reliable agentic tool execution with modern LLMs. Strict JSON schemas, descriptive parameter docstrings, and constrained token lengths are essential.</p>
+        <div class="mt-8 text-xs font-bold text-[#1A73E8] mono uppercase tracking-widest">Execute Read -></div>
     </a>
-    <a href="/payload-sqlite-edge" class="glass-panel p-10 group hover:border-[#1A73E8] transition-colors block">
-        <h2 class="text-2xl mono text-[#1A73E8] mb-6 font-bold group-hover:text-white transition-colors">PAYLOAD // Mar 17 SQLite at the Edge</h2>
-        <p class="text-white/50 text-lg">Architecting persistent storage for edge workers using distributed SQLite patterns. Why we migrated away from centralized PostgreSQL clusters.</p>
+    <a href="/payload-sqlite-edge" class="glass-panel p-10 group hover:border-[#1A73E8] transition-colors block border-white/5">
+        <div class="flex items-center gap-3 mb-6"><span class="badge">Payload_SQLITE-EDGE</span></div>
+        <h2 class="text-3xl mono text-[#1A73E8] mb-6 font-bold group-hover:text-white transition-colors">PAYLOAD // Mar 17 SQLite at the Edge</h2>
+        <p class="text-white/50 text-lg font-light leading-relaxed">Architecting persistent storage for edge workers using distributed SQLite patterns. Why we migrated away from centralized PostgreSQL clusters.</p>
+        <div class="mt-8 text-xs font-bold text-[#1A73E8] mono uppercase tracking-widest">Execute Read -></div>
     </a>
-    <a href="/payload-bgp-swarms" class="glass-panel p-10 group hover:border-[#1A73E8] transition-colors block">
-        <h2 class="text-2xl mono text-[#1A73E8] mb-6 font-bold group-hover:text-white transition-colors">PAYLOAD // Mar 17 Border Gateway Protocol for AI Swarms</h2>
-        <p class="text-white/50 text-lg">Understanding how global traffic is routed at scale through BGP configurations. We break down ASNs, peering agreements, and how to mitigate route hijacking in decentralized agent networks.</p>
+    <a href="/payload-bgp-swarms" class="glass-panel p-10 group hover:border-[#1A73E8] transition-colors block border-white/5">
+        <div class="flex items-center gap-3 mb-6"><span class="badge">Payload_BGP-SWARMS</span></div>
+        <h2 class="text-3xl mono text-[#1A73E8] mb-6 font-bold group-hover:text-white transition-colors">PAYLOAD // Mar 17 Border Gateway Protocol for AI Swarms</h2>
+        <p class="text-white/50 text-lg font-light leading-relaxed">Understanding how global traffic is routed at scale through BGP configurations. We break down ASNs, peering agreements, and how to mitigate route hijacking in decentralized agent networks.</p>
+        <div class="mt-8 text-xs font-bold text-[#1A73E8] mono uppercase tracking-widest">Execute Read -></div>
     </a>
     </div>
 </div>

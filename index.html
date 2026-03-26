@@ -4,7 +4,7 @@
     <meta name="description" content="Secure agent compute.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/jpeg" href="/logo.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Command Center","description":"Secure agent compute.","author":{"@type":"Organization","name":"mr.technology"},"publisher":{"@type":"Organization","name":"mr.technology","logo":{"@type":"ImageObject","url":"https://mr.technology/logo.jpg"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mr.technology/"}}</script>
     <style>
@@ -18,7 +18,7 @@
         .stagger-3 { animation: slideUp 0.6s var(--ease-google) 0.15s both; opacity: 0; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background-color: var(--blue); box-shadow: 0 0 10px var(--blue); animation: pulse 2s infinite var(--ease-google); display: inline-block; }
-        @keyframes pulse { 0% { transform: scale(0.95); opacity: 0.8; } 70% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 6px rgba(26, 115, 232, 0); } 100% { transform: scale(0.95); opacity: 0.8; } }
+        @keyframes pulse { 0% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.7); } 70% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 6px rgba(26, 115, 232, 0); } 100% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(26, 115, 232, 0); } }
         .data-path { stroke: rgba(255,255,255,0.1); stroke-width: 2; fill: none; stroke-dasharray: 6 6; animation: dash 20s linear infinite; }
         .data-packet { fill: var(--blue); filter: drop-shadow(0 0 8px var(--blue)); opacity: 0; transition: opacity 0.3s; }
         .routing-active .data-packet { opacity: 1; offset-path: path("M0,0 Q50,100 100,0"); animation: movePacket 1.5s var(--ease-google) infinite; }
@@ -42,7 +42,9 @@
         .prose-custom code { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--blue); }
         .prose-custom pre code { color: #fff; }
         .badge { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: var(--blue); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block; }
-        .calc-input { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; padding: 12px; color: white; width: 100%; focus: outline-none; focus: border-color: var(--blue); }
+        .calc-input { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px; color: white; width: 100%; font-family: 'JetBrains Mono', monospace; font-size: 13px; outline: none; transition: border-color 0.2s; }
+        .calc-input:focus { border-color: var(--blue); }
+        select.calc-input { appearance: none; cursor: pointer; }
     </style>
 </head><body>
     <nav class="fixed top-6 inset-x-0 z-[100] flex justify-center pointer-events-none">
@@ -120,4 +122,12 @@
         </a>
     </div>
 </div>
+<script>
+    setInterval(() => {
+        const latency = document.getElementById('metric-latency');
+        if(latency) latency.innerText = (10 + Math.floor(Math.random() * 5)) + 'ms';
+        const threads = document.getElementById('metric-threads');
+        if(threads) threads.innerText = (40 + Math.floor(Math.random() * 8));
+    }, 3000);
+</script>
 </body></html>
